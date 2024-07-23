@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+
+body {
+    background-color: rgb(209, 230, 241);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+
+}
+
+
+#container {
+    height: 70vh;
+    width: 60vw;
+    background-color: white;
+    border-radius: 30px;
+    margin: 15vh auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#background-right {
+
+    float: right;
+    height: 100%;
+    width: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: linear-gradient(rgb(75, 75, 210), rgb(157, 157, 221));
+
+
+}
+
+#background-right-text * {
+    margin: 20px 0;
+}
+
+#background-right-text {
+    height: 50%;
+    width: 90%;
+    text-align: center;
+    padding: 40px 0;
+    font-size: 1.12rem;
+}
+
+#background-right-text span {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#background-right-text button {
+
+    background: none;
+    border: 1px solid white;
+
+
+}
+
+#signInContainer {
+    height: 80%;
+    width: 50%;
+    padding: 10px 10px;
+    display: flex-box;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#signInContainer * {
+    margin: 15px 0;
+}
+
+#accountCards {
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+.cards {
+    height: 5vh;
+    width: 5vh;
+    font-size: 1.2rem;
+    border: 1px solid rgb(166, 164, 164);
+    box-shadow: 2px 2px 2px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hoverEffect {
+    transition: transform 0.5s;
+
+}
+
+.hoverEffect:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
+.cards a {
+    text-decoration: none;
+    color: black;
+
+}
+
+#signInContainer span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#signInContainer p {
+    color: gray;
+}
+
+
+#signInContainer input {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 20vw;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(231, 227, 227);
+}
+
+.button {
+    width: 9vw;
+    height: 5vh;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    outline: none;
+}
+
+#signInContainer button {
+
+    background-color: rgb(75, 75, 210);
+}
