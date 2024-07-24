@@ -5,16 +5,15 @@ $(document).ready(function () {
 
 
         if (count == 0) {
-
-            $("#signInContainer").hide(1000)
-            $("#signUpContainer").show()
+            $("#signInContainer").hide()
+            $("#signUpContainer").slideDown(1000)
             $("#rightContainerText p").text("Already registered?")
             $("#rightContainer button").text("SIGN IN")
             count++;
         }
         else {
-            $("#signUpContainer").hide(1000)
-            $("#signInContainer").show()
+            $("#signUpContainer").hide()
+            $("#signInContainer").slideDown(1000)
             $("#rightContainerText p").text("Register with your personal details to use all of site features")
             $("#rightContainer button").text("SIGN UP")
             count = 0;

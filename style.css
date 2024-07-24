@@ -26,13 +26,11 @@ body {
     border-radius: 30px;
     margin: 15vh auto;
     display: flex;
-    justify-content: center;
     align-items: center;
 
 }
 
-#background-right {
-
+#rightContainer {
     float: right;
     height: 100%;
     width: 50%;
@@ -49,11 +47,11 @@ body {
 
 }
 
-#background-right-text * {
+#rightContainerText * {
     margin: 20px 0;
 }
 
-#background-right-text {
+#rightContainerText {
     height: 50%;
     width: 90%;
     text-align: center;
@@ -61,18 +59,13 @@ body {
     font-size: 1.12rem;
 }
 
-#background-right-text span {
-    font-size: 2.5rem;
-    font-weight: bold;
-}
 
-#background-right-text button {
+#rightContainerText button {
 
     background: none;
     border: 1px solid white;
-
-
 }
+
 
 #signInContainer {
     height: 80%;
@@ -126,11 +119,6 @@ body {
 
 }
 
-#signInContainer span {
-    font-size: 2rem;
-    font-weight: bold;
-}
-
 #signInContainer p {
     color: gray;
 }
@@ -160,4 +148,44 @@ body {
 #signInContainer button {
 
     background-color: rgb(75, 75, 210);
+}
+
+.hide {
+    display: none;
+}
+
+#signUpContainer {
+    height: 100%;
+    width: 50%;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+#signUpContainer table {
+    width: 100%;
+}
+
+
+#signUpContainer * {
+    margin: 8px 0;
+}
+
+#signUpContainer input {
+    font-size: 1rem;
+    height: 5vh;
+    width: 100%;
+    border-radius: 5px;
+    float: right;
+    border: 1px solid gray;
+    padding: 2px;
+}
+
+
+#signUpContainer button {
+    background-color: rgb(75, 75, 210);
+}
+
+.span {
+    font-size: 2rem;
+    font-weight: bold;
 }
