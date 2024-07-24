@@ -19,6 +19,8 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Construction Builder</title>
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
     <div id="container">
         <div id="signInContainer">
             <form action="/signIn" method="post">
-                <span id="title">Sign In</span>
+                <span id="title" class="span">Sign In</span>
                 <div id="accountCards">
                     <div class="cards hoverEffect">
                         <a href=""><i class="fa-brands fa-google-plus-g"></i></a>
@@ -43,18 +45,93 @@
                     </div>
                 </div>
                 <p>or use your email password</p>
-                <input type="email" required placeholder="Email"><br>
-                <input type="password" required placeholder="Password">
+                <input type="email" required placeholder="Email" name="signInEmail"><br>
+                <input type="password" required placeholder="Password" name="signInPassword">
                 <p>Forget Your Password?</p>
                 <button type="submit" class="button hoverEffect">SIGN IN</button>
             </form>
         </div>
 
-        <div id="background-right">
-            <div id="background-right-text">
-                <span>Hello, Buddy!</span>
+        <div id="signUpContainer" class="hidden">
+            <form action="/signUp">
+                <span id="title" class="span">Sign Up</span>
+                <div id="signUpInputs">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="firstName">First Name: </label>
+                            </td>
+
+                            <td>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="lastName">Last Name: </label>
+                            </td>
+                            <td>
+                                <input type="text" id="lastName" name="lastName" required>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="contactNumber">Contact Number: </label>
+                            </td>
+                            <td>
+                                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="dateOfBirth">Date of Birth: </label>
+                            </td>
+                            <td>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="signUpEmail">Email: </label>
+                            </td>
+                            <td>
+
+                                <input type="email" id="signUpEmail" name="signUpEmail" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="signUpPassword">Password: </label>
+                            </td>
+                            <td>
+                                <input type="password" id="signUpPassword" name="signUpPassword" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="button hoverEffect">SIGN UP</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </form>
+        </div>
+
+        <div id="rightContainer">
+            <div id="rightContainerText">
+                <span class="span">Hello, Buddy!</span>
                 <p>Register with your personal details to use all of site features</p>
-                <a href="/signUp"> <button type="submit" class="button hoverEffect">SIGN UP</button></a>
+                <button type="submit" class="button hoverEffect" id="signUpButton" onclick="change()">SIGN
+                    UP</button>
             </div>
         </div>
 
