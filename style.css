@@ -20,10 +20,7 @@ body {
     border-radius: 30px;
     margin: 15vh auto;
     display: flex;
-<<<<<<< HEAD
-=======
     justify-content: end;
->>>>>>> master
     align-items: center;
 
 
@@ -52,14 +49,6 @@ body {
     color: white;
 }
 
-<<<<<<< HEAD
-=======
-#rightContainerText P {
-    height: 8vh;
-}
-
-
->>>>>>> master
 #rightContainerText {
     height: 50%;
     width: 90%;
@@ -69,24 +58,15 @@ body {
 }
 
 
-<<<<<<< HEAD
-#rightContainerText button {
-=======
->>>>>>> master
 
 #rightContainerText button {
 
     background: white;
     border: 1px solid white;
-<<<<<<< HEAD
-=======
     color: rgb(75, 75, 210);
-    animation: none;
 
 
->>>>>>> master
 }
-
 
 #signInContainer {
     height: 80%;
@@ -140,8 +120,6 @@ body {
 
 }
 
-<<<<<<< HEAD
-=======
 .span {
     font-size: 2rem;
     font-weight: bold;
@@ -149,7 +127,6 @@ body {
 }
 
 
->>>>>>> master
 #signInContainer p {
     color: gray;
 }
@@ -182,38 +159,6 @@ body {
     background-color: rgb(75, 75, 210);
 }
 
-<<<<<<< HEAD
-.hide {
-    display: none;
-}
-
-#signUpContainer {
-    height: 100%;
-    width: 50%;
-    padding: 10px 10px;
-    text-align: center;
-}
-
-#signUpContainer table {
-    width: 100%;
-}
-
-
-#signUpContainer * {
-    margin: 8px 0;
-}
-
-#signUpContainer input {
-    font-size: 1rem;
-    height: 5vh;
-    width: 100%;
-    border-radius: 5px;
-    float: right;
-    border: 1px solid gray;
-    padding: 2px;
-}
-
-=======
 
 
 
@@ -225,7 +170,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 
 #signUpInputs {
@@ -235,7 +179,7 @@ body {
 }
 
 #signUpInputs table * {
-    margin: 0.7vw 0;
+    margin: 0.5vw 0;
 }
 
 #signUpInputs table input {
@@ -251,59 +195,22 @@ body {
 #signUpInputs table label {
     float: left;
 }
->>>>>>> master
 
 #signUpContainer button {
     background-color: rgb(75, 75, 210);
 }
 
-<<<<<<< HEAD
-.span {
-    font-size: 2rem;
-    font-weight: bold;
-=======
-.button:active {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
+#signUpContainer #gender {
+    display: flex;
+
+}
+
+#signUpContainer #gender input {
+    cursor: pointer;
 }
 
 
 
 .hidden {
     display: none;
-}
-
-#signUpContainer #gender {
-    display: flex;
-    justify-content: space-evenly;
-
-}
-
-#signUpContainer #gender input {
-    font-size: 0.5rem;
-    cursor: pointer;
-
-}
-
-@keyframes shake {
-    0% {
-        translate: 2px;
-    }
-
-    25% {
-        translate: -2px;
-    }
-
-    50% {
-        translate: 2px;
-    }
-
-    75% {
-        translate: -2px;
-    }
-
-    100% {
-        translate: 2px;
-    }
->>>>>>> master
 }

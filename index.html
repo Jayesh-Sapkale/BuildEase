@@ -19,19 +19,14 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Construction Builder</title>
-    <<<<<<< HEAD <script src="./jquery.js">
-        </script>
-        <script src="./script.js"></script>
-        =======
-        <script src="jquery.js"></script>
-        <script src="script.js"></script>
-        >>>>>>> master
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
 
     <div id="container">
-        <div id="signInContainer">
+        <div id="signInContainer" class="">
             <form action="/signIn" method="post">
                 <span id="title" class="span">Sign In</span>
                 <div id="accountCards">
@@ -53,80 +48,10 @@
                 <input type="email" required placeholder="Email" name="signInEmail"><br>
                 <input type="password" required placeholder="Password" name="signInPassword">
                 <p>Forget Your Password?</p>
-                <button type="submit" class="button hoverEffect" id="signInButton">SIGN IN</button>
+                <button type="submit" class="button hoverEffect">SIGN IN</button>
             </form>
         </div>
-        <div id="signUpContainer" class="hide">
-            <span id="title" class="span ">Sign Up</span>
-            <table>
-                <tr>
-                    <td>
-                        <label for="firstName">First Name: </label>
-                    </td>
-                    <td>
-                        <input type="text" required id="firstName" name="firstName">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="lastName">Last Name: </label>
-                    </td>
-                    <td>
-                        <input type="text" required id="lastName" name="lastName">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="email">Email: </label>
-                    </td>
-                    <td>
-                        <input type="email" required id="email" name="email">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="dateOfBirth">Date of Birth: </label>
-                    </td>
-                    <td>
-                        <input type="date" required id="dateOfBirth" name="dateOfBirth">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="contact">Contact Number: </label>
-                    </td>
-                    <td>
-                        <input type="tel" required id="contact" name="contact">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="signUpPassword">Password: </label>
-                    </td>
-                    <td>
-                        <input type="password" required id="signUpPassword" name="signUpPassword">
-                    </td>
-                </tr>
 
-                <<<<<<< HEAD <tr>
-                    <td>
-                        <label for="signUpPassword2">Re-Enter Password: </label>
-                    </td>
-                    <td>
-                        <input type="password" required id="signUpPassword2" name="signUpPassword2">
-                    </td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="2">
-                            <button type="submit" class="button hoverEffect" id="signUpButton">SIGN UP</button>
-                        </td>
-
-                    </tr>
-            </table>
-
-        </div>
-        =======
         <div id="signUpContainer" class="hidden">
             <form action="/signUp">
                 <span id="title" class="span">Sign Up</span>
@@ -163,20 +88,21 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="gender">Gender: </label>
-                            </td>
-                            <td id="gender">
-                                <label for="gender">Male</label> <input type="radio" id="male" name="gender" required>
-                                <label for="gender">Female</label> <input type="radio" id="female" name="gender"
-                                    required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
                                 <label for="dateOfBirth">Date of Birth: </label>
                             </td>
                             <td>
                                 <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="gender">Gender: </label>
+                            </td>
+                            <td id="gender">
+                                <label for="male">Male</label> <input type="radio" id="male" name="gender" required>
+                                <label for="female">Female</label> <input type="radio" id="female" name="gender"
+                                    required>
 
                             </td>
                         </tr>
@@ -211,7 +137,6 @@
             </form>
         </div>
 
-        >>>>>>> master
         <div id="rightContainer">
             <div id="rightContainerText">
                 <span class="span">Hello, Buddy!</span>
