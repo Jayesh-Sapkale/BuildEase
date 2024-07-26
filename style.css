@@ -49,6 +49,11 @@ body {
     color: white;
 }
 
+#rightContainerText P {
+    height: 8vh;
+}
+
+
 #rightContainerText {
     height: 50%;
     width: 90%;
@@ -64,6 +69,7 @@ body {
     background: white;
     border: 1px solid white;
     color: rgb(75, 75, 210);
+    animation: none;
 
 
 }
@@ -170,6 +176,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+
 }
 
 #signUpInputs {
@@ -179,7 +186,7 @@ body {
 }
 
 #signUpInputs table * {
-    margin: 1vw 0;
+    margin: 0.7vw 0;
 }
 
 #signUpInputs table input {
@@ -200,8 +207,47 @@ body {
     background-color: rgb(75, 75, 210);
 }
 
+.button:active {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
 
 
 .hidden {
     display: none;
+}
+
+#signUpContainer #gender {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+#signUpContainer #gender input {
+    font-size: 0.5rem;
+    cursor: pointer;
+
+}
+
+@keyframes shake {
+    0% {
+        translate: 2px;
+    }
+
+    25% {
+        translate: -2px;
+    }
+
+    50% {
+        translate: 2px;
+    }
+
+    75% {
+        translate: -2px;
+    }
+
+    100% {
+        translate: 2px;
+    }
 }
