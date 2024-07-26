@@ -3,7 +3,7 @@ $(document).ready(function () {
     var count = 0;
     change = function () {
 
-        
+
         if (count == 0) {
 <<<<<<< HEAD
             $("#signInContainer").hide()
