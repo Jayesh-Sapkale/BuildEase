@@ -47,6 +47,7 @@ body {
 #rightContainerText * {
     margin: 20px 0;
     color: white;
+    height: 5vh;
 }
 
 #rightContainerText {
@@ -213,4 +214,34 @@ body {
 
 .hidden {
     display: none;
+}
+
+.shake:active {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes shake {
+
+    0% {
+        transform: translate(2px);
+    }
+
+    25% {
+        transform: translate(-2px);
+    }
+
+    50% {
+        transform: translate(2px);
+    }
+
+    75% {
+        transform: translate(-2px);
+    }
+
+    100% {
+        transform: translate(2px);
+    }
+
 }
