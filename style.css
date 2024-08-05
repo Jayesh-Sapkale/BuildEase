@@ -55,7 +55,7 @@
 }
 
 #signInContainer {
-    height: 80%;
+    height: 95%;
     width: 50%;
     padding: 10px 10px;
     display: flex-box;
@@ -123,6 +123,7 @@
     border-radius: 10px;
     border: none;
     background-color: rgb(231, 227, 227);
+    margin:0 auto;
 }
 
 

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var count = 0;
-    change = function () {
+    change = () => {
 
 
         if (count == 0) {
@@ -26,6 +26,18 @@ $(document).ready(function () {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

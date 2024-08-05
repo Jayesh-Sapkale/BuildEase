@@ -71,3 +71,11 @@ body {
     }
 
 }
+
+.errorSpan {
+    /* border: 2px solid black; */
+    color: red;
+    font-size: 0.8rem;
+    height: 3vh;
+    width: 100%;
+}

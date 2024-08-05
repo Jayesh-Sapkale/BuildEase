@@ -27,9 +27,6 @@
 
 <body>
 
-
-
-
     <div id="container">
         <div id="signInContainer" class="">
             <form action="/signIn" method="post">
@@ -61,13 +58,16 @@
 
                 </div>
                 <p>or use your email & password</p>
-                <input type="email" required placeholder="Email" name="signInEmail"><br>
-                <input type="password" required placeholder="Password" name="signInPassword">
+                <input type="email" required placeholder="Email" name="signInEmail" id="signInEmail"><br>
+                <span id="signInEmailError" class="errorSpan "></span><br>
+                <input type="password" required placeholder="Password" name="signInPassword" id="signInPassword"><br>
+                <span id="signInPasswordError" class="errorSpan "></span><br>
+
                 <p>Forget Your Password?</p>
                 <div id="signInContainerButtons">
-                    <button type="submit" class="button hoverEffect shake">SIGN IN</button>
-                    <button type="submit" class="button hoverEffect shake hidden" onclick="change()"
-                        name="signUpButton">SIGN UP</button>
+                    <button type="submit" class="button hoverEffect ">SIGN IN</button>
+                    <button type="submit" class="button hoverEffect shake hidden" onclick="change()" name="signUpButton"
+                        id="signUpButton">SIGN UP</button>
                 </div>
             </form>
         </div>
@@ -142,7 +142,6 @@
                             </td>
                             <td>
                                 <input type="password" id="signUpPassword" name="signUpPassword" required>
-
                             </td>
                         </tr>
                         <tr>
@@ -151,7 +150,6 @@
                             </td>
                             <td>
                                 <input type="password" id="signUpPasswordConfirm" name="signUpPasswordConfirm" required>
-
                             </td>
                         </tr>
                         <tr>
