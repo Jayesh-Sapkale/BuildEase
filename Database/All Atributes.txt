@@ -1,0 +1,93 @@
+Attributes Regarding User Registration details
+0.User Id
+1.username
+2.password
+3.firstName
+4.lastName
+5.birthdate
+6.gender
+7.email
+8.phone
+
+
+Attributes Regarding Builders Registration details
+1.Builder Id
+2.Full name
+3.Personal mobile number
+4.personal mail
+5.Address
+6.years of experience
+7.Certifications if any..
+8.Sites id which they are currently       working
+9.Rate per day or hour
+10.specialization[Houses , Apartments etc]
+11.Rating (generated via performance)
+12.Emergency contact details
+13.Brief intro (description)
+14.Availability (Status)
+
+Required Attributes for Admin Collection:
+1.	admin_id: Unique identifier for the admin
+2.	username: Admin's login username
+3.	password_hash: Hashed password for security
+o	first_name: Admin's first name
+o	middle_name (optional): Admin's middle name
+o	last_name: Admin's last name
+o	date_of_birth: Admin's date of birth
+6.	contact_details:
+o	email: Admin's email address
+o	phone_number: Admin's phone number
+o	backup_email (optional): Admin's backup email address
+7.	address:
+o	street: Street address
+o	city: City
+o	state: State
+o	zip_code: ZIP code
+o	country: Country
+8.	status: Current status of the admin account (e.g., active, inactive)
+o	last_login: Timestamp of last login
+o	last_password_change: Timestamp of last password change
+
+
+Company Details
+0.Builder Id (Association)
+1. company_id
+2. name
+3. address
+	street
+	city
+	state
+	zip_code
+	country
+4. contact_details
+	phone_number
+	email
+	fax_number
+	website
+5. founding_date
+6. registration_number
+7. license_number
+9. company_profile
+
+12. services_offered
+
+annual_revenue
+number_of_employees
+
+
+Attributes regarding projects
+project_id
+project_name
+location
+start_date
+end_date
+project_status
+description
+
+Atrributes regarding customer reviews
+review_id	
+customer_id
+builder_id
+rating
+review
+review_date

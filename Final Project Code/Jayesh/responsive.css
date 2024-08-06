@@ -1,0 +1,64 @@
+@media only screen and (max-width:950px) {
+    #rightContainer {
+        display: none;
+    }
+
+    #signInContainer {
+        width: 100%;
+    }
+
+
+    #signInContainer input {
+        width: 50vw;
+    }
+
+    #signInContainer button[name="signUpButton"] {
+        display: inline-block;
+    }
+
+    #signInContainerButtons {
+        display: flex;
+        gap: 20px;
+        width: fit-content;
+        padding: 10px;
+        margin: 2px auto;
+    }
+
+    #container {
+        width: 50vw;
+    }
+
+    #signUpContainer {
+        width: 90vw;
+    }
+
+
+}
+
+@media only screen and (max-width:820px) {
+    #container {
+        width: 55vw;
+    }
+
+
+
+    #signUpContainer {
+        width: fit-content;
+        padding: 5px;
+    }
+}
+
+@media only screen and (max-width:500px) {
+
+
+    #container {
+        height: 85vh;
+        width: 90vw;
+        padding: 10px;
+        margin: 10% auto;
+    }
+
+
+
+
+}
