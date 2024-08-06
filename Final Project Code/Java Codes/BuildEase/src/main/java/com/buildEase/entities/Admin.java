@@ -1,23 +1,24 @@
 package com.buildEase.entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "Admin")
 @Data
 @AllArgsConstructor
 public class Admin extends BaseClass {
     @Temporal(TemporalType.TIMESTAMP)
-    private Date lastLogin;
+    private LocalDate lastLogin;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date lastPasswordChange;
+    private LocalDate lastPasswordChange;
 
 
 	public Admin() {

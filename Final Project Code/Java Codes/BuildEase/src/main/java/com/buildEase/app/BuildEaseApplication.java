@@ -6,10 +6,10 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import com.buildEase.entities.BaseClass;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableJpaRepositories
 public class BuildEaseApplication {
 
 	public static void main(String[] args) {

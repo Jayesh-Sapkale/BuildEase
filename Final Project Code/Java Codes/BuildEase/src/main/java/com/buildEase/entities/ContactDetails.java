@@ -1,6 +1,7 @@
 package com.buildEase.entities;
 
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Embeddable
 @Data
 @NoArgsConstructor
+@Table(name = "ContactDetails")
 public class ContactDetails {
     @NotNull
     @Size(min = 10, max = 10)
