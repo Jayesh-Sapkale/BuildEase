@@ -45,5 +45,10 @@ public class Builder extends BaseClass {
 		super();
 		this.setRole("builder");
 	}
+
+	public Builder(Integer builderId) {
+		super();
+		
+	}
 }
 

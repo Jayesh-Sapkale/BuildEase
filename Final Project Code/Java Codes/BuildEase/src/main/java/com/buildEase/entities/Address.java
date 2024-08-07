@@ -1,5 +1,6 @@
 package com.buildEase.entities;
 
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.NonNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Embeddable
 public class Address {
     @NonNull
     private String city;

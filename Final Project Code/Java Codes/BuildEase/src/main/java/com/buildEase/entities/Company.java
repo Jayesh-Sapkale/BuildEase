@@ -12,9 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -27,11 +26,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "Company")
 public class Company {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer companyId;
     
-    @JoinColumn(name = "")
+    @ManyToOne
+    @JoinColumn(name = "builder_id") // referencedColumnName = "id"
     private Builder builder;
 
     @NotNull
@@ -46,17 +47,16 @@ public class Company {
     private ContactDetails contactDetails;
 
     @NotNull
-    @Temporal(TemporalType.DATE)
     private LocalDate foundingDate;
 
     @NotNull
-    @Min(5)
-    @Max(5)
+    @Min(10000)
+    @Max(99999)
     private int licenseNumber;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private ConstructionType constructionType; // Enum values: [WAREHOUSE, HOUSE, APARTMENT, MALL]
+    private ConstructionType constructionType;
 
     @NotNull
     private double annualRevenue;
@@ -65,4 +65,3 @@ public class Company {
     @Min(5)
     private int numberOfEmployees;
 }
-

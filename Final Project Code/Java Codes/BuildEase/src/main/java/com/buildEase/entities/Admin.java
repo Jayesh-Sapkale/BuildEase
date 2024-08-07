@@ -4,8 +4,7 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -14,10 +13,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Admin extends BaseClass {
-    @Temporal(TemporalType.TIMESTAMP)
+    
     private LocalDate lastLogin;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDate lastPasswordChange;
 
 

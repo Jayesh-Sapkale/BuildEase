@@ -23,12 +23,9 @@ import lombok.NoArgsConstructor;
 public class ConstructionDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer projectDetailId;
+    private Integer projectDetailId; //constructionDetailId
 
-    @OneToOne
-    @JoinColumn(name = "projectId")
-    private Project project;
-
+    
     @NotNull
     private double areaInSqFt;
 
