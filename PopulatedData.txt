@@ -1,0 +1,103 @@
+-- Insert data into the builder table
+INSERT INTO builder (
+    address_line1, city, pincode, state, birthdate, email, first_name, gender, last_name, password, phone, role, username, availability, construction_type, emergency_contact_number, rate_per_month, years_of_experience
+) VALUES
+('123 Main St', 'Pune', '411001', 'Maharashtra', '1985-06-15', 'builder1@example.com', 'Ramesh', 'Male', 'Sharma', 'password123', '9876543210', 'Builder', 'ramesh_sharma', 'YES', 'APARTMENT', '9876543211', 50000.00, 10),
+('456 Park Ave', 'Pune', '411002', 'Maharashtra', '1979-03-21', 'builder2@example.com', 'Suresh', 'Male', 'Patil', 'password123', '9876543212', 'Builder', 'suresh_patil', 'YES', 'HOUSE', '9876543213', 60000.00, 15),
+('789 Lakeview Rd', 'Pune', '411003', 'Maharashtra', '1982-11-10', 'builder3@example.com', 'Rajesh', 'Male', 'Deshmukh', 'password123', '9876543214', 'Builder', 'rajesh_deshmukh', 'NO', 'MALL', '9876543215', 75000.00, 12),
+('321 River St', 'Pune', '411004', 'Maharashtra', '1987-05-30', 'builder4@example.com', 'Anita', 'Female', 'Kulkarni', 'password123', '9876543216', 'Builder', 'anita_kulkarni', 'YES', 'WAREHOUSE', '9876543217', 45000.00, 8),
+('654 Mountain Blvd', 'Pune', '411005', 'Maharashtra', '1990-09-25', 'builder5@example.com', 'Vijay', 'Male', 'Joshi', 'password123', '9876543218', 'Builder', 'vijay_joshi', 'NO', 'APARTMENT', '9876543219', 55000.00, 5),
+('789 Hillside Dr', 'Pune', '411006', 'Maharashtra', '1983-07-14', 'builder6@example.com', 'Kiran', 'Female', 'Gaikwad', 'password123', '9876543220', 'Builder', 'kiran_gaikwad', 'YES', 'HOUSE', '9876543221', 62000.00, 11),
+('987 Valley Rd', 'Pune', '411007', 'Maharashtra', '1977-12-05', 'builder7@example.com', 'Nitin', 'Male', 'Rao', 'password123', '9876543222', 'Builder', 'nitin_rao', 'YES', 'MALL', '9876543223', 70000.00, 18),
+('432 Forest Ln', 'Pune', '411008', 'Maharashtra', '1988-02-19', 'builder8@example.com', 'Sunita', 'Female', 'Pawar', 'password123', '9876543224', 'Builder', 'sunita_pawar', 'NO', 'WAREHOUSE', '9876543225', 48000.00, 9),
+('654 Seaside Blvd', 'Pune', '411009', 'Maharashtra', '1991-11-28', 'builder9@example.com', 'Manoj', 'Male', 'Kulkarni', 'password123', '9876543226', 'Builder', 'manoj_kulkarni', 'YES', 'APARTMENT', '9876543227', 53000.00, 6),
+('789 Ridge Rd', 'Pune', '411010', 'Maharashtra', '1984-08-22', 'builder10@example.com', 'Aarti', 'Female', 'Patil', 'password123', '9876543228', 'Builder', 'aarti_patil', 'YES', 'HOUSE', '9876543229', 61000.00, 10);
+
+
+-- Insert data into the user table
+INSERT INTO user (
+    address_line1, city, pincode, state, birthdate, email, first_name, gender, last_name, password, phone, role, username, creation_date
+) VALUES
+('123 Main St', 'Pune', '411001', 'Maharashtra', '1985-06-15', 'john.doe@example.com', 'John', 'Male', 'Doe', 'password123', '9876543210', 'User', 'john_doe', '2024-08-01'),
+('456 Park Ave', 'Mumbai', '400001', 'Maharashtra', '1990-03-21', 'jane.doe@example.com', 'Jane', 'Female', 'Doe', 'password456', '9876543211', 'User', 'jane_doe', '2024-08-02'),
+('789 Lakeview Rd', 'Bangalore', '560001', 'Karnataka', '1987-11-10', 'raj.kumar@example.com', 'Raj', 'Male', 'Kumar', 'password789', '9876543212', 'User', 'raj_kumar', '2024-08-03'),
+('321 River St', 'Delhi', '110001', 'Delhi', '1992-05-30', 'anita.sharma@example.com', 'Anita', 'Female', 'Sharma', 'password101', '9876543213', 'User', 'anita_sharma', '2024-08-04'),
+('654 Mountain Blvd', 'Chennai', '600001', 'Tamil Nadu', '1989-09-25', 'vijay.patel@example.com', 'Vijay', 'Male', 'Patel', 'password102', '9876543214', 'User', 'vijay_patel', '2024-08-05'),
+('789 Hillside Dr', 'Hyderabad', '500001', 'Telangana', '1993-07-14', 'kiran.gaikwad@example.com', 'Kiran', 'Female', 'Gaikwad', 'password103', '9876543215', 'User', 'kiran_gaikwad', '2024-08-06'),
+('987 Valley Rd', 'Kolkata', '700001', 'West Bengal', '1980-12-05', 'amit.singh@example.com', 'Amit', 'Male', 'Singh', 'password104', '9876543216', 'User', 'amit_singh', '2024-08-07'),
+('432 Forest Ln', 'Ahmedabad', '380001', 'Gujarat', '1988-02-19', 'sunita.pawar@example.com', 'Sunita', 'Female', 'Pawar', 'password105', '9876543217', 'User', 'sunita_pawar', '2024-08-08'),
+('654 Seaside Blvd', 'Jaipur', '302001', 'Rajasthan', '1991-11-28', 'manoj.kulkarni@example.com', 'Manoj', 'Male', 'Kulkarni', 'password106', '9876543218', 'User', 'manoj_kulkarni', '2024-08-09'),
+('789 Ridge Rd', 'Lucknow', '226001', 'Uttar Pradesh', '1984-08-22', 'aarti.patil@example.com', 'Aarti', 'Female', 'Patil', 'password107', '9876543219', 'User', 'aarti_patil', '2024-08-10');
+
+
+-- Insert data into the admin table
+INSERT INTO admin (
+    address_line1, city, pincode, state, birthdate, email, first_name, gender, last_name, password, phone, role, username, last_login, last_password_change
+) VALUES
+('123 Ganadhish Park', 'Sangli', '416415', 'Maharashtra', '2000-01-21', 'gururajkamble143@gmail.com', 'Gururaj', 'Male', 'Kamble', 'Kamble@143', '9730681250', 'Admin', 'gururaj_kamble', '2024-08-01', '2024-07-01'),
+('456 Rajgurunagar', 'Pune', '412404', 'Maharashtra', '2001-01-01', 'vallabhjadhav789@gmail.com', 'Vallabh', 'Male', 'jadhav', 'Jadhav@143', '9075938091', 'Admin', 'vallabh_jadhav', '2024-08-02', '2024-07-02'),
+('789 Bikaner', 'Bikaner', '334003', 'Rajasthan', '2000-10-15', 'mimanshacdac@gmail.com', 'Mimansha', 'Female', 'Shekhawat', 'Mimansha@123', '8184567901', 'Admin', 'mimansha_shekhawat', '2024-08-03', '2024-07-03'),
+('101 Jalgaon', 'Jalgaon', '425001', 'Maharashtra', '2001-08-29', 'jayeshsapkale792@gmail.com', 'Jayesh', 'Male', 'Sapkale', 'jayesh@1234', '922390271', 'Admin', 'jayesh_sapkale', '2024-08-04', '2024-07-04');
+
+
+-- Insert data into the company table based on builder data
+INSERT INTO company (
+    address_line1, city, pincode, state, annual_revenue, construction_type, email, phone_number, website, founding_date, license_number, name, number_of_employees, builder_id
+) VALUES
+('101 Sky Towers Rd', 'Pune', '411001', 'Maharashtra', 10000000.00, 'APARTMENT', 'contact@skytowers.com', '0205551234', 'www.skytowers.com', '2000-05-15', 34455, 'Sky Towers Pvt Ltd', 100, 1),
+('202 Skyline Ln', 'Pune', '411002', 'Maharashtra', 8500000.00, 'HOUSE', 'info@skylinebuilders.com', '0206662345', 'www.skylinebuilders.com', '2001-07-20',45566, 'Skyline Builders Ltd', 120, 2),
+('303 Highrise Blvd', 'Pune', '411003', 'Maharashtra', 9200000.00, 'MALL', 'support@highrisedevelopments.com', '0207773456', 'www.highrisedevelopments.com', '2002-10-10', 56677, 'Highrise Developments', 150, 3),
+('404 Cityscape Ave', 'Pune', '411004', 'Maharashtra', 7800000.00, 'APARTMENT', 'contact@cityscape.com', '0208884567', 'www.cityscape.com', '2003-12-18', 67788, 'Cityscape Properties', 90, 4),
+('505 Urban St', 'Pune', '411005', 'Maharashtra', 8600000.00, 'WAREHOUSE', 'info@urbanbuilders.com', '0209995678', 'www.urbanbuilders.com', '2004-03-25', 78899, 'Urban Builders Ltd', 110, 5),
+('606 Metro Rd', 'Pune', '411006', 'Maharashtra', 9000000.00, 'APARTMENT', 'sales@metrodevelopments.com', '0201112345', 'www.metrodevelopments.com', '2005-06-30', 89900, 'Metro Developments', 130, 6),
+('707 Horizon Blvd', 'Pune', '411007', 'Maharashtra', 9500000.00, 'HOUSE', 'support@horizonbuilders.com', '0202223456', 'www.horizonbuilders.com', '2006-09-12', 90011, 'Horizon Builders', 140, 7),
+('808 Downtown St', 'Pune', '411008', 'Maharashtra', 8800000.00, 'MALL', 'contact@downtownproperties.com', '0203334567', 'www.downtownproperties.com', '2007-11-22', 11122, 'Downtown Properties', 160, 8),
+('909 Pinnacle Rd', 'Pune', '411009', 'Maharashtra', 8400000.00, 'WAREHOUSE', 'info@pinnacledevelopers.com', '0204445678', 'www.pinnacledevelopers.com', '2008-04-05', 12233, 'Pinnacle Developers', 105, 9),
+('1010 Summit Ln', 'Pune', '411010', 'Maharashtra', 9100000.00, 'APARTMENT', 'sales@summithomes.com', '0205556789', 'www.summithomes.com', '2009-08-15', 23344, 'Summit Homes Pvt Ltd', 125, 10);
+
+
+-- Insert data into the project table using data from previous tables
+INSERT INTO project (
+    address_line1, city, pincode, state, end_date, project_description, project_name, project_status, start_date, total_price, builder_id, project_detail_id, user_id
+) VALUES
+('123 Skyline Rd', 'Pune', '411001', 'Maharashtra', '2025-05-01', 'Luxury apartment complex with modern amenities.', 'Skyline Residency', 'IN_PROGRESS', '2023-06-01', 50000000.00, 1, 1, 1),
+('456 Cityscape Blvd', 'Pune', '411002', 'Maharashtra', '2024-12-31', 'Commercial mall with retail spaces and offices.', 'Cityscape Mall', 'IN_PROGRESS', '2022-09-15', 75000000.00, 2, 2, 2),
+('789 Pinnacle Ln', 'Pune', '411003', 'Maharashtra', '2025-08-30', 'High-rise residential tower with premium facilities.', 'Pinnacle Heights', 'PENDING', '2024-01-20', 60000000.00, 3, 3, 3),
+('1010 Horizon St', 'Pune', '411004', 'Maharashtra', '2024-11-15', 'Warehouse complex for logistics and storage.', 'Horizon Warehouses', 'COMPLETE', '2021-07-10', 30000000.00, 4, 4, 4),
+('1111 Downtown Ave', 'Pune', '411005', 'Maharashtra', '2026-01-01', 'Mixed-use development with residential and commercial units.', 'Downtown Hub', 'IN_PROGRESS', '2023-03-01', 90000000.00, 5, 5, 5),
+('1212 Summit Rd', 'Pune', '411006', 'Maharashtra', '2024-10-20', 'Residential community with houses and amenities.', 'Summit Gardens', 'IN_PROGRESS', '2022-05-15', 45000000.00, 6, 6, 6),
+('1313 Urban Blvd', 'Pune', '411007', 'Maharashtra', '2025-04-15', 'Retail complex with multiple stores and food court.', 'Urban Plaza', 'PENDING', '2023-11-01', 70000000.00, 7, 7, 7),
+('1414 Metro Dr', 'Pune', '411008', 'Maharashtra', '2025-07-10', 'Luxury villas with private gardens and pools.', 'Metro Villas', 'IN_PROGRESS', '2023-04-01', 80000000.00, 8, 8, 8),
+('1515 Northstar Ave', 'Pune', '411009', 'Maharashtra', '2024-09-01', 'Residential apartments with modern infrastructure.', 'Northstar Residency', 'COMPLETE', '2021-08-01', 50000000.00, 9, 9, 9),
+('1616 Greenfield Ln', 'Pune', '411010', 'Maharashtra', '2024-06-15', 'Commercial office spaces in prime location.', 'Greenfield Offices', 'IN_PROGRESS', '2022-01-15', 65000000.00, 10, 10, 10);
+
+
+INSERT INTO construction_detail (
+    area_in_sq_ft, builder_name, construction_description, construction_type, project_id
+) VALUES
+(2000.00, 'Skyline Builders Ltd', 'Luxury apartment with modern amenities and green spaces.', 'APARTMENT', 1),
+(5000.00, 'Sky Towers Pvt Ltd', 'Commercial mall with retail shops, offices, and parking.', 'MALL', 2),
+(3000.00, 'Highrise Developments', 'High-rise residential tower with premium facilities.', 'APARTMENT', 3),
+(8000.00, 'Urban Builders Ltd', 'Warehouse for logistics and storage with large capacity.', 'WAREHOUSE', 4),
+(6000.00, 'Cityscape Properties', 'Mixed-use development with residential and commercial units.', 'HOUSE', 5),
+(4000.00, 'Metro Developments', 'Residential community with standalone houses and shared amenities.', 'HOUSE', 6),
+(7000.00, 'Horizon Builders', 'Retail complex with multiple stores, food court, and parking.', 'MALL', 7),
+(4500.00, 'Downtown Properties', 'Luxury villas with private gardens, pools, and security.', 'HOUSE', 8),
+(5500.00, 'Pinnacle Developers', 'Residential apartments with modern design and infrastructure.', 'APARTMENT', 9),
+(6000.00, 'Greenfield Builders', 'Commercial office spaces in a prime business district.', 'MALL', 10);
+
+
+-- Insert data into the construction_detail table using data from previous tables
+INSERT INTO construction_detail (
+    area_in_sq_ft, builder_name, construction_description, construction_type, project_id
+) VALUES
+(2000.00, 'Skyline Builders Ltd', 'Luxury apartment with modern amenities and green spaces.', 'APARTMENT', 1),
+(5000.00, 'Sky Towers Pvt Ltd', 'Commercial mall with retail shops, offices, and parking.', 'MALL', 2),
+(3000.00, 'Highrise Developments', 'High-rise residential tower with premium facilities.', 'APARTMENT', 3),
+(8000.00, 'Urban Builders Ltd', 'Warehouse for logistics and storage with large capacity.', 'WAREHOUSE', 4),
+(6000.00, 'Cityscape Properties', 'Mixed-use development with residential and commercial units.', 'HOUSE', 5),
+(4000.00, 'Metro Developments', 'Residential community with standalone houses and shared amenities.', 'HOUSE', 6),
+(7000.00, 'Horizon Builders', 'Retail complex with multiple stores, food court, and parking.', 'MALL', 7),
+(4500.00, 'Downtown Properties', 'Luxury villas with private gardens, pools, and security.', 'HOUSE', 8),
+(5500.00, 'Pinnacle Developers', 'Residential apartments with modern design and infrastructure.', 'APARTMENT', 9),
+(6000.00, 'Greenfield Builders', 'Commercial office spaces in a prime business district.', 'MALL', 10);
