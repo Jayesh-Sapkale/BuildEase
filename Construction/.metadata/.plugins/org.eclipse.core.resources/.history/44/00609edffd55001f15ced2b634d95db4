@@ -1,0 +1,5 @@
+package com.construction.entities;
+
+public enum ProjectStatus {
+	PENDING, ONGOING, COMPLETED, CANCELLED
+}

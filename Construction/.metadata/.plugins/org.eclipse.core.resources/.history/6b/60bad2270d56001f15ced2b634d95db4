@@ -1,0 +1,23 @@
+package com.construction.dtos;
+
+import com.construction.entitiesCommon.ConstructionDescription;
+import com.construction.enums.ConstructionType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ConstructionDetailDTO {
+
+    private Integer projectDetailId;
+    private Integer projectId; // Reference to project by ID
+    private Double areaInSqft;
+    private ConstructionType constructionType;
+    private String builderName;
+    private ConstructionDescription constructionDescription;
+
+
+}

@@ -1,0 +1,84 @@
+package com.construction.entities;
+
+import java.time.LocalDate;
+
+import com.construction.enums.Gender;
+import com.construction.enums.Role;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "customer")
+@Getter
+@Setter
+@Data
+@AllArgsConstructor
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, length = 50)
+    private String username;
+
+    @Column(nullable = false, length = 50)
+    private String password;
+
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private BuilderExtraDetails builderExtraDetails;
+
+    
+    @Column(name = "first_name", nullable = false, length = 50)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lastName;
+
+    @Column(name = "birthdate", nullable = false)
+    private LocalDate birthdate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10) // Assuming gender like 'MALE', 'FEMALE', etc.
+    private Gender gender;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(length = 10)
+    private String phone;
+ 
+    @Embedded
+    private Address address;//[country,state,city,pincode,state]
+
+    @Column(name = "last_login", nullable = false)
+    private LocalDate lastLogin;
+
+    @Column(name = "last_password_change", nullable = false)
+    private LocalDate lastPasswordChange;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Role role;
+
+	public Customer() {
+		this.setLastLogin(LocalDate.now());
+		this.setLastPasswordChange(LocalDate.now());
+	}
+        
+}

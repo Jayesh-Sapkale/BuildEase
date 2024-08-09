@@ -1,0 +1,54 @@
+package com.construction.entities;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "builderreview")
+@Getter
+@Setter
+@Data
+public class BuilderReview {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer reviewId;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+    
+    @Column(nullable = false)
+    private Integer rating;
+
+    @Lob
+    @Column(nullable = false)
+    private String review;
+
+    @Column(nullable = false)
+    private LocalDate reviewDate;
+
+    @ManyToOne
+    @JoinColumn(name = "builder_id", referencedColumnName = "builderId")
+    private BuilderExtraDetails builder;
+
+	public BuilderReview() {
+		super();
+		this.setReviewDate(LocalDate.now());
+	}
+    
+    
+
+}

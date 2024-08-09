@@ -1,0 +1,61 @@
+Write a entity classes for below databases
+1)customer
+id INT
+username VARCHAR(50)
+password VARCHAR(50)
+first_name VARCHAR(50)
+last_name VARCHAR(50)
+birthdate DATE
+gender ENUM(...)
+email VARCHAR(100)
+phone VARCHAR(10)
+address TEXT
+last_login DATETIME
+last_password_change DATETIME
+role ENUM(Admin,Builder,User)
+
+2)builder_extra_details
+builder_id INT
+years_of_experience INT
+rate_per_month DECIMAL(10,2)
+construction_type ENUM(...)
+emergency_contact_number VARCHAR(10)
+availability ENUM('YES', 'NO')
+name VARCHAR(100)
+address TEXT
+phone_number VARCHAR(10)
+email VARCHAR(100)
+website VARCHAR(100)
+founding_date DATE
+license_number VARCHAR(5)
+annual_revenue DECIMAL(15,2)
+number_of_employees INT
+
+3)project
+project_id INT
+project_name VARCHAR(100)
+pincode VARCHAR(6)
+start_date DATE
+end_date DATE
+project_status ENUM(...)
+project_description TEXT
+total_price DECIMAL(15,2)
+builder_id INT
+customer_id INT
+project_detail_id INT
+
+4)construction_detai
+project_detail_id INT
+project_id INT
+area_in_sqft DOUBLE
+construction_type ENUM(...)
+builder_name VARCHAR(100)
+construction_description TEXT
+
+5)review
+review_id INT
+customer_id INT
+rating INT
+review TEXT
+review_date DATE
+builder_id INT

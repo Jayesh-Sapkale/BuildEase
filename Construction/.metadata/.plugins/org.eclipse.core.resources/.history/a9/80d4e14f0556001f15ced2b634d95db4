@@ -1,0 +1,52 @@
+package com.construction.entities;
+
+import com.construction.enums.ConstructionType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "construction_detail")
+@Getter
+@Setter
+@Data
+public class ConstructionDetail {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int projectDetailId;
+
+    @OneToOne
+    @JoinColumn(name = "project_id",referencedColumnName = "projectId")
+    private Project project;
+    
+    @Column(nullable = false)
+    private double areaInSqft;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ConstructionType constructionType;
+
+    @Column(nullable = false, length = 100)
+    private String builderName;
+
+    @Embedded
+    @Column(nullable = false)
+    private ConstructionDescription constructionDescription;
+
+    
+    
+}
+

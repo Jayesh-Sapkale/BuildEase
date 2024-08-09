@@ -1,0 +1,39 @@
+package com.construction.dtos;
+
+
+
+import java.time.LocalDate;
+
+import com.construction.classes.Address;
+import com.construction.enums.Availability;
+import com.construction.enums.ConstructionType;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class BuilderExtraDetailsDTO {
+
+    private int builderId;
+    private int customerId; // Store the customer's ID instead of the full customer entity
+    private int yearsOfExperience;
+    private double ratePerMonth;
+    private ConstructionType constructionType;
+    private String emergencyContactNumber;
+    private Availability availability;
+    private String name;
+    private Address address;
+    private String phoneNumber;
+    private String email;
+    private String website;
+    private LocalDate foundingDate;
+    private String licenseNumber;
+    private double annualRevenue;
+    private int numberOfEmployees;
+
+    // Additional fields or methods if necessary
+}
+

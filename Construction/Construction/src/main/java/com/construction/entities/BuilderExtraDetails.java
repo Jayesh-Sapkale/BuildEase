@@ -1,0 +1,86 @@
+package com.construction.entities;
+
+import java.time.LocalDate;
+
+import com.construction.entitiesCommon.Address;
+import com.construction.enums.Availability;
+import com.construction.enums.ConstructionType;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "builder_extra_details")
+@Getter
+@Setter
+@Data
+public class BuilderExtraDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer builderId;
+    
+    @OneToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+    
+    @Column(nullable = false)
+    private Integer yearsOfExperience;
+
+    @Column(nullable = false)
+    private Double ratePerMonth;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false,length = 20)
+    private ConstructionType constructionType;
+
+    @Column(nullable = false,length = 10)
+    private String emergencyContactNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Availability availability;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(nullable = false)
+    @Embedded
+    private Address address;
+
+    @Column(nullable = false,length = 10)
+    private String phoneNumber;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(length = 100)
+    private String website;
+
+    @Column(nullable = false)
+    private LocalDate foundingDate;
+
+    @Column(length = 5)
+    private String licenseNumber;
+
+    @Column(nullable = false, precision = 15)
+    private Double annualRevenue;
+    
+    @Column(nullable = false)
+    private Integer numberOfEmployees;
+
+    
+}
+

@@ -1,0 +1,17 @@
+package com.construction.entities;
+
+import lombok.Data;
+
+@Data
+public class ConstructionDescription {
+
+    private String constructionType;
+    private String address;
+    private double areaInSqft;
+    private int numberOfFloors;
+    private int numberOfUnits; // For apartments, mall stores, or warehouse sections
+    private String constructionMaterial; // Concrete, steel, wood, etc.
+    private boolean parkingAvailable;
+    private int yearBuilt;
+    private String description;	
+}

@@ -1,0 +1,62 @@
+package com.construction.entities;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.Date;
+
+@Entity
+@Table(name = "customer")
+@Getter
+@Setter
+@Data
+public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, length = 50)
+    private String username;
+
+    @Column(nullable = false, length = 50)
+    private String password;
+
+    @Column(name = "first_name", nullable = false, length = 50)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lastName;
+
+    @Column(name = "birthdate", nullable = false)
+    private LocalDate birthdate;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10) // Assuming gender like 'MALE', 'FEMALE', etc.
+    private Gender gender;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(length = 10)
+    private String phone;
+
+   
+    @Embedded
+    private Address address;
+
+    @Column(name = "last_login", nullable = false)
+    private Date lastLogin;
+
+    @Column(name = "last_password_change", nullable = false)
+    private Date lastPasswordChange;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
+    private Role role;
+
+    
+}

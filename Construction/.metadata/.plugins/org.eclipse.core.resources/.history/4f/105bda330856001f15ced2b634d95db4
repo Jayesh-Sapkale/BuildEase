@@ -1,0 +1,30 @@
+package com.construction.dtos;
+
+import java.time.LocalDate;
+
+import com.construction.classes.Address;
+import com.construction.enums.ProjectStatus;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProjectDTO {
+
+    private int projectId;
+    private String projectName;
+    private Address address;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private ProjectStatus projectStatus;
+    private String projectDescription;
+    private double totalPrice;
+    private int builderId; // Reference to builder by ID
+    private int customerId; // Reference to customer by ID
+    private int projectDetailId; // Reference to project detail by ID
+
+    // Additional fields or methods if necessary
+}

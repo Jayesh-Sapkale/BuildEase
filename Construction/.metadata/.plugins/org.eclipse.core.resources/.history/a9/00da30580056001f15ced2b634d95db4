@@ -1,0 +1,41 @@
+package com.construction.entities;
+
+import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "builderreview")
+public class BuilderReview {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int reviewId;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+    
+    @Column(nullable = false)
+    private int rating;
+
+    @Lob
+    @Column(nullable = false)
+    private String review;
+
+    @Column(nullable = false)
+    private Date reviewDate;
+
+    @ManyToOne
+    @JoinColumn(name = "builder_id", referencedColumnName = "builderId")
+    private BuilderExtraDetails builder;
+
+}

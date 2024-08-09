@@ -1,0 +1,65 @@
+package com.construction.entities;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "builder_extra_details")
+public class BuilderExtraDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int builderId;
+
+    private int yearsOfExperience;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private double ratePerMonth;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ConstructionType constructionType;
+
+    @Column(length = 10)
+    private String emergencyContactNumber;
+
+    @Enumerated(EnumType.STRING)
+    private Availability availability;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Lob
+    private String address;
+
+    @Column(length = 10)
+    private String phoneNumber;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(length = 100)
+    private String website;
+
+    @Temporal(TemporalType.DATE)
+    private Date foundingDate;
+
+    @Column(length = 5)
+    private String licenseNumber;
+
+    @Column(nullable = false, precision = 15, scale = 2)
+    private double annualRevenue;
+
+    private int numberOfEmployees;
+
+    // Getters and Setters
+
+    public enum ConstructionType {
+        RESIDENTIAL, COMMERCIAL, INDUSTRIAL, OTHER
+    }
+
+    public enum Availability {
+        YES, NO
+    }
+}
+

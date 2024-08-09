@@ -1,0 +1,97 @@
+##Insert data into customer table
+
+-- Inserting 10 USER roles
+INSERT INTO customer (city, country, pin_code, state, street, birthdate, email, first_name, gender, last_login, last_name, last_password_change, password, phone, role, username)
+VALUES 
+('Pune', 'India', '411001', 'Maharashtra', 'Shivaji Nagar', '1988-04-12', 'akash.kulkarni@example.com', 'Akash', 'MALE', '2024-08-09', 'Kulkarni', '2024-08-01', 'password123', '9876543210', 'USER', 'akashkulkarni'),
+('Pune', 'India', '411002', 'Maharashtra', 'Deccan Gymkhana', '1991-06-22', 'vaishali.deshmukh@example.com', 'Vaishali', 'FEMALE', '2024-08-09', 'Deshmukh', '2024-07-15', 'securePass1', '8765432109', 'USER', 'vaishalideshmukh'),
+('Pune', 'India', '411003', 'Maharashtra', 'Kothrud', '1985-11-11', 'rajat.patil@example.com', 'Rajat', 'MALE', '2024-08-09', 'Patil', '2024-06-20', 'myPassw0rd', '7654321098', 'USER', 'rajatpatil'),
+('Pune', 'India', '411004', 'Maharashtra', 'Aundh', '1993-02-14', 'priyanka.ghadge@example.com', 'Priyanka', 'FEMALE', '2024-08-09', 'Ghadge', '2024-05-30', 'passEmily92', '6543210987', 'USER', 'priyankaghadge'),
+('Pune', 'India', '411005', 'Maharashtra', 'Wakad', '1989-09-30', 'siddharth.joshi@example.com', 'Siddharth', 'MALE', '2024-08-09', 'Joshi', '2024-04-25', 'wilsonSecure', '5432109876', 'USER', 'siddharthjoshi'),
+('Pune', 'India', '411006', 'Maharashtra', 'Baner', '1987-07-19', 'mohini.jadhav@example.com', 'Mohini', 'FEMALE', '2024-08-09', 'Jadhav', '2024-03-18', 'mohiniPune87', '4321098765', 'USER', 'mohinijadhav'),
+('Pune', 'India', '411007', 'Maharashtra', 'Viman Nagar', '1986-01-25', 'omkar.kulkarni@example.com', 'Omkar', 'MALE', '2024-08-09', 'Kulkarni', '2024-02-22', 'omkarSecure86', '3210987654', 'USER', 'omkarkulkarni'),
+('Pune', 'India', '411008', 'Maharashtra', 'Kalyani Nagar', '1992-08-08', 'smita.shinde@example.com', 'Smita', 'FEMALE', '2024-08-09', 'Shinde', '2024-01-20', 'shindePass92', '2109876543', 'USER', 'smitashinde'),
+('Pune', 'India', '411009', 'Maharashtra', 'Kharadi', '1984-12-12', 'rohan.khanolkar@example.com', 'Rohan', 'MALE', '2024-08-09', 'Khanolkar', '2023-12-30', 'rohanSecure84', '1098765432', 'USER', 'rohankhanolkar'),
+('Pune', 'India', '411010', 'Maharashtra', 'Magarpatta', '1990-10-10', 'neha.bhagat@example.com', 'Neha', 'FEMALE', '2024-08-09', 'Bhagat', '2023-11-25', 'nehaPune90', '0987654321', 'USER', 'nehabhagat');
+
+
+INSERT INTO customer (city, country, pin_code, state, street, birthdate, email, first_name, gender, last_login, last_name, last_password_change, password, phone, role, username)
+VALUES 
+('Pune', 'India', '411011', 'Maharashtra', 'Hinjewadi', '1979-05-15', 'suresh.bhosale@example.com', 'Suresh', 'MALE', '2024-08-09', 'Bhosale', '2024-07-01', 'builderSuresh79', '9988776655', 'BUILDER', 'sureshbhosale'),
+('Pune', 'India', '411012', 'Maharashtra', 'Pimple Saudagar', '1982-03-11', 'anita.pawar@example.com', 'Anita', 'FEMALE', '2024-08-09', 'Pawar', '2024-06-15', 'pawarSecure82', '8877665544', 'BUILDER', 'anitapawar'),
+('Pune', 'India', '411013', 'Maharashtra', 'Hadapsar', '1980-07-22', 'sunil.more@example.com', 'Sunil', 'MALE', '2024-08-09', 'More', '2024-05-20', 'moreBuilder80', '7766554433', 'BUILDER', 'sunilmore'),
+('Pune', 'India', '411014', 'Maharashtra', 'Yerwada', '1984-11-05', 'shweta.patil@example.com', 'Shweta', 'FEMALE', '2024-08-09', 'Patil', '2024-04-10', 'shwetaSecure84', '6655443322', 'BUILDER', 'shwetapatil'),
+('Pune', 'India', '411015', 'Maharashtra', 'Saswad', '1981-09-29', 'amol.jadhav@example.com', 'Amol', 'MALE', '2024-08-09', 'Jadhav', '2024-03-05', 'amolPune81', '5544332211', 'BUILDER', 'amoljadhav'),
+('Pune', 'India', '411016', 'Maharashtra', 'Bavdhan', '1978-12-08', 'priyanka.kadam@example.com', 'Priyanka', 'FEMALE', '2024-08-09', 'Kadam', '2024-02-28', 'kadamSecure78', '4433221100', 'BUILDER', 'priyankakadam'),
+('Pune', 'India', '411017', 'Maharashtra', 'Dhankawadi', '1983-01-20', 'vishal.pawar@example.com', 'Vishal', 'MALE', '2024-08-09', 'Pawar', '2024-01-22', 'vishalBuilder83', '3322110099', 'BUILDER', 'vishalpawar'),
+('Pune', 'India', '411018', 'Maharashtra', 'Balewadi', '1986-06-10', 'rekha.shirke@example.com', 'Rekha', 'FEMALE', '2024-08-09', 'Shirke', '2023-12-10', 'rekhaSecure86', '2211009988', 'BUILDER', 'rekhashirke'),
+('Pune', 'India', '411019', 'Maharashtra', 'Mundhwa', '1985-04-16', 'ajay.rane@example.com', 'Ajay', 'MALE', '2024-08-09', 'Rane', '2023-11-18', 'ajayBuilder85', '1100998877', 'BUILDER', 'ajayrane'),
+('Pune', 'India', '411020', 'Maharashtra', 'Undri', '1977-08-25', 'nikita.deshpande@example.com', 'Nikita', 'FEMALE', '2024-08-09', 'Deshpande', '2023-10-25', 'nikitaSecure77', '9988771122', 'BUILDER', 'nikitadeshpande');
+
+
+##Insert data into  builder_extra_details table
+
+INSERT INTO builder_extra_details (
+    city, country, pin_code, state, street, annual_revenue, availability, construction_type, 
+    email, emergency_contact_number, founding_date, license_number, name, number_of_employees, 
+    phone_number, rate_per_month, website, years_of_experience, customer_id
+)
+VALUES 
+('Pune', 'India', '411011', 'Maharashtra', 'Hinjewadi', 15000000.00, 'YES', 'APARTMENT', 'suresh.bhosale@example.com', '9988776655', '2005-04-12', 'L1234', 'Bhosale Builders', 150, '9988776655', 120000.00, 'www.bhosalebuilders.com', 15, 1),
+('Pune', 'India', '411012', 'Maharashtra', 'Pimple Saudagar', 18000000.00, 'YES', 'HOUSE', 'anita.pawar@example.com', '8877665544', '2010-03-19', 'L5678', 'Pawar Construction', 200, '8877665544', 150000.00, 'www.pawarconstruction.com', 14, 2),
+('Pune', 'India', '411013', 'Maharashtra', 'Hadapsar', 20000000.00, 'NO', 'MALL', 'sunil.more@example.com', '7766554433', '2012-06-25', 'L9012', 'More Developers', 180, '7766554433', 180000.00, 'www.moredevelopers.com', 12, 3),
+('Pune', 'India', '411014', 'Maharashtra', 'Yerwada', 25000000.00, 'YES', 'WAREHOUSE', 'shweta.patil@example.com', '6655443322', '2008-11-15', 'L3456', 'Patil Infra', 220, '6655443322', 200000.00, 'www.patilinfra.com', 16, 4),
+('Pune', 'India', '411015', 'Maharashtra', 'Saswad', 22000000.00, 'NO', 'APARTMENT', 'amol.jadhav@example.com', '5544332211', '2015-09-05', 'L7890', 'Jadhav Builders', 175, '5544332211', 170000.00, 'www.jadhavbuilders.com', 9, 5),
+('Pune', 'India', '411016', 'Maharashtra', 'Bavdhan', 27000000.00, 'YES', 'HOUSE', 'priyanka.kadam@example.com', '4433221100', '2013-08-08', 'L2345', 'Kadam Realty', 210, '4433221100', 160000.00, 'www.kadamrealty.com', 11, 6),
+('Pune', 'India', '411017', 'Maharashtra', 'Dhankawadi', 23000000.00, 'YES', 'MALL', 'vishal.pawar@example.com', '3322110099', '2007-01-10', 'L6789', 'Vishal Constructions', 190, '3322110099', 140000.00, 'www.vishalconstructions.com', 17, 7),
+('Pune', 'India', '411018', 'Maharashtra', 'Balewadi', 26000000.00, 'NO', 'WAREHOUSE', 'rekha.shirke@example.com', '2211009988', '2011-06-22', 'L1235', 'Shirke Builders', 200, '2211009988', 180000.00, 'www.shirkebuilders.com', 13, 8),
+('Pune', 'India', '411019', 'Maharashtra', 'Mundhwa', 24000000.00, 'YES', 'APARTMENT', 'ajay.rane@example.com', '1100998877', '2009-04-16', 'L4567', 'Rane Developers', 160, '1100998877', 130000.00, 'www.ranedevelopers.com', 15, 9),
+('Pune', 'India', '411020', 'Maharashtra', 'Undri', 30000000.00, 'NO', 'HOUSE', 'nikita.deshpande@example.com', '9988771122', '2004-08-25', 'L8901', 'Deshpande Constructions', 250, '9988771122', 210000.00, 'www.deshpandeconstructions.com', 20, 10);
+
+
+##Insert data into project table
+
+INSERT INTO project (city, country, pin_code, state, street, end_date, project_description, project_name, project_status, start_date, total_price, builder_id, project_detail_id, customer_id)
+VALUES 
+('Pune', 'India', '411011', 'Maharashtra', 'Kothrud', '2024-12-31', 'Luxury apartments with modern amenities.', 'Kothrud Heights', 'ONGOING', '2023-01-15', 50000000.00, 11, 1, 11),
+('Pune', 'India', '411012', 'Maharashtra', 'Baner', '2025-06-30', 'High-rise residential towers.', 'Baner Residency', 'ONGOING', '2023-09-01', 75000000.00, 12, 2, 12),
+('Pune', 'India', '411013', 'Maharashtra', 'Viman Nagar', '2024-08-15', 'Commercial mall with retail spaces.', 'Viman Mall', 'ONGOING', '2022-10-10', 100000000.00, 13, 3, 13),
+('Pune', 'India', '411014', 'Maharashtra', 'Koregaon Park', '2026-01-20', 'Luxury villas and townhouses.', 'Koregaon Villas', 'PENDING', '2024-03-01', 80000000.00, 14, 4, 14),
+('Pune', 'India', '411015', 'Maharashtra', 'Hinjewadi', '2025-09-30', 'IT park with modern infrastructure.', 'Hinjewadi IT Hub', 'ONGOING', '2023-05-15', 120000000.00, 15, 5, 15),
+('Pune', 'India', '411016', 'Maharashtra', 'Balewadi', '2023-12-31', 'Mixed-use development with residential and commercial spaces.', 'Balewadi Central', 'COMPLETED', '2021-06-10', 60000000.00, 16, 6, 16),
+('Pune', 'India', '411017', 'Maharashtra', 'Aundh', '2025-03-31', 'Affordable housing project.', 'Aundh Affordable Homes', 'PENDING', '2024-07-01', 45000000.00, 17, 7, 17),
+('Pune', 'India', '411018', 'Maharashtra', 'Wakad', '2023-10-10', 'Industrial warehouse complex.', 'Wakad Industrial Park', 'COMPLETED', '2021-08-20', 85000000.00, 18, 8, 18),
+('Pune', 'India', '411019', 'Maharashtra', 'Hadapsar', '2024-11-30', 'Residential complex with amenities.', 'Hadapsar Greens', 'ONGOING', '2022-03-01', 70000000.00, 19, 9, 19),
+('Pune', 'India', '411020', 'Maharashtra', 'Undri', '2025-12-15', 'Luxury apartments in serene environment.', 'Undri Serene Heights', 'PENDING', '2024-02-15', 65000000.00, 20, 10, 20);
+
+##Insert data into construction_detail table
+
+INSERT INTO construction_detail (area_in_sqft, builder_name, address, construction_material, description, number_of_floors, number_of_units, parking_available, year_built, construction_type)
+VALUES
+(1500.00, "Yash Constructions", "123 Main Street, Pune", "Concrete, Brick", "Modern apartment with eco-friendly materials.", 10, 50, 1, 2023, "APARTMENT"),
+(2000.00, "Skyline Projects", "456 Elm Street, Pune", "Steel, Glass", "High-rise building with luxury amenities.", 20, 100, 1, 2022, "APARTMENT"),
+(3000.00, "Mall Developers Pvt Ltd.", "789 Oak Avenue, Pune", "Steel, Concrete", "Spacious warehouse with high storage capacity.", 5, 10, 1, 2024, "WAREHOUSE"),
+(2500.00, "Elite Homes", "101 Pine Road, Pune", "Wood, Stone", "Exclusive house with modern design.", 2, 1, 1, 2021, "HOUSE"),
+(1800.00, "IT Infra Solutions", "202 Maple Drive, Pune", "Concrete, Steel", "Tech office space with state-of-the-art facilities.", 8, 30, 1, 2023, "MALL"),
+(2200.00, "Urban Developers", "303 Cedar Street, Pune", "Brick, Concrete", "Residential apartments with a community center.", 12, 60, 1, 2022, "APARTMENT"),
+(3500.00, "Affordable Homes Ltd.", "404 Birch Lane, Pune", "Concrete, Glass", "Affordable housing units with modern amenities.", 15, 75, 1, 2023, "HOUSE"),
+(2800.00, "Industrial Builders Inc.", "505 Willow Way, Pune", "Steel, Concrete", "Industrial building with high ceilings and large floor area.", 3, 5, 1, 2024, "WAREHOUSE"),
+(1600.00, "Green Earth Constructions", "606 Spruce Boulevard, Pune", "Wood, Brick", "Eco-friendly residential complex.", 7, 40, 1, 2023, "HOUSE"),
+(2900.00, "Serene Heights", "707 Fir Street, Pune", "Concrete, Stone", "Luxury apartments with scenic views.", 14, 70, 1, 2024, "APARTMENT");
+
+
+##Insert data into builderreview table
+
+
+INSERT INTO builderreview (rating, review, review_date, builder_id, customer_id)
+VALUES
+(5, 'Excellent service and quality. Highly recommend!', '2024-08-01', 1, 1),
+(4, 'Good work, but there were minor delays.', '2024-08-02', 2, 2),
+(3, 'Average experience. The project was completed on time but lacked attention to detail.', '2024-08-03', 3, 3),
+(5, 'Exceptional quality and professionalism. Very satisfied!', '2024-08-04', 4, 4),
+(2, 'Not happy with the final outcome. Issues with construction quality.', '2024-08-05', 5, 5),
+(4, 'Overall good experience. Some minor issues resolved quickly.', '2024-08-06', 6, 6),
+(3, 'The project was okay, but communication could have been better.', '2024-08-07', 7, 7),
+(5, 'Fantastic job! Exceeded expectations in every way.', '2024-08-08', 8, 8),
+(4, 'Good work but a bit overpriced for the quality provided.', '2024-08-09', 9, 9),
+(5, 'Highly professional and timely delivery. Would hire again.', '2024-08-10', 10, 10);

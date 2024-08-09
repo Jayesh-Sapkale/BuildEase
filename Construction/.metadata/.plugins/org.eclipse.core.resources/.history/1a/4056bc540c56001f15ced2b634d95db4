@@ -1,0 +1,35 @@
+package com.construction.dtos;
+
+
+
+import java.time.LocalDate;
+
+import com.construction.entitiesCommon.Address;
+import com.construction.enums.Gender;
+import com.construction.enums.Role;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CustomerDto {
+
+    private int id;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthdate;
+    private Gender gender;
+    private String email;
+    private String phone;
+    private Address address;
+    private LocalDate lastLogin;
+    private LocalDate lastPasswordChange;
+    private Role role;
+
+    // Additional fields or methods if necessary
+}
+

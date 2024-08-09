@@ -1,0 +1,31 @@
+package com.construction.entities;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "review")
+public class BuilderReview {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int reviewId;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+    private int rating;
+
+    @Lob
+    private String review;
+
+    @Temporal(TemporalType.DATE)
+    private Date reviewDate;
+
+    @ManyToOne
+    @JoinColumn(name = "builder_id", referencedColumnName = "builderId")
+    private BuilderExtraDetails builder;
+
+    // Getters and Setters
+}

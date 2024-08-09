@@ -1,0 +1,34 @@
+package com.construction.entities;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "construction_detail")
+public class ConstructionDetail {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int projectDetailId;
+
+    @OneToOne(mappedBy = "constructionDetail")
+    private Project project;
+
+    private double areaInSqft;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ConstructionType constructionType;
+
+    @Column(nullable = false, length = 100)
+    private String builderName;
+
+    @Lob
+    private String constructionDescription;
+
+    // Getters and Setters
+
+    public enum ConstructionType {
+        RESIDENTIAL, COMMERCIAL, INDUSTRIAL, OTHER
+    }
+}
+
