@@ -57,6 +57,18 @@
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
+.navbar-user-icon {
+  margin-left: 15px;
+  display: inline-block;
+}
+
+.navbar-user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .navbar-mobile-menu {
   top: 0px;
   left: 0px;

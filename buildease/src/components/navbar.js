@@ -33,6 +33,15 @@ const Navbar = (props) => {
                 <span className="thq-body-small">Sign-Up</span>
               </button>
             </Link>
+            {props.userImageSrc && (
+              <div className="navbar-user-icon">
+                <img
+                  src={props.userImageSrc}
+                  alt="User"
+                  className="navbar-user-image"
+                />
+              </div>
+            )}
           </div>
         </div>
         <div data-thq="thq-burger-menu" className="navbar-burger-menu">
@@ -77,11 +86,13 @@ const Navbar = (props) => {
 Navbar.defaultProps = {
   logoSrc: main_logo,
   logoAlt: "BUILDEASE",
+  userImageSrc: null,
 };
 
 Navbar.propTypes = {
   logoSrc: PropTypes.string,
   logoAlt: PropTypes.string,
+  userImageSrc: PropTypes.string,
 };
 
 export default Navbar;

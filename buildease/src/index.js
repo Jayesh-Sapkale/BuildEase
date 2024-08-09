@@ -17,6 +17,7 @@ import Contact from "./pages/contactus";
 import Services from "./pages/services";
 import Projects from "./pages/projects";
 import Footer from "./components/footer";
+import Profile1 from "./pages/profile";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/projects" component={Projects}></Route>
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/profile" component={Profile1} />
           <Route path="/NotFound1" component={NotFound1} />
           <Route path="*" component={NotFound1} />
           <Redirect to="*" />
