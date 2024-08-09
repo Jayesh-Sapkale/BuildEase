@@ -12,7 +12,7 @@ public class BuildEaseApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BuildEaseApplication.class, args);
-
+		System.out.println("Link: http://localhost:8081/swagger-ui/index.html#/");
 	}
 
 	@Bean

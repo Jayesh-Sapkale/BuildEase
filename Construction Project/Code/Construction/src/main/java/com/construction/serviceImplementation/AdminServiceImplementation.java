@@ -244,7 +244,7 @@ public class AdminServiceImplementation implements AdminService {
 	}
 
 	@Override
-	public ConstructionDetailsDto getConstructionDetailsById(Integer constructionId) {
+	public ConstructionDetailsDto getConstructionDetailById(Integer constructionId) {
 		ConstructionDetails constructionDetails = constructionDetailsRepository.findById(constructionId).orElseThrow(
 				() -> new EntityNotFoundException("Construction detail not found with ID: " + constructionId));
 		return modelMapper.map(constructionDetails, ConstructionDetailsDto.class);
@@ -258,7 +258,7 @@ public class AdminServiceImplementation implements AdminService {
 	}
 
 	@Override
-	public ApiResponse removeConstructionDetailsById(Integer id) {
+	public ApiResponse removeConstructionDetailById(Integer id) {
 		if (!constructionDetailsRepository.existsById(id)) {
 			throw new EntityNotFoundException("Construction detail not found with ID: " + id);
 		}

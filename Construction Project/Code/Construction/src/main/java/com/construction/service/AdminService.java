@@ -61,11 +61,11 @@ public interface AdminService {
 
 	public ApiResponse removeAllCompanies();
 
-	public ConstructionDetailsDto getConstructionDetailsById(Integer constructionId);
+	public ConstructionDetailsDto getConstructionDetailById(Integer constructionId);
 
 	public List<ConstructionDetailsDto> getAllConstructionDetails();
 
-	public ApiResponse removeConstructionDetailsById(Integer id);
+	public ApiResponse removeConstructionDetailById(Integer id);
 
 	public ApiResponse removeAllConstructionDetails();
 

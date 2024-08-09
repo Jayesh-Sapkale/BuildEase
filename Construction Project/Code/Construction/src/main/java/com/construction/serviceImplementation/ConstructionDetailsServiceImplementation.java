@@ -23,7 +23,7 @@ public class ConstructionDetailsServiceImplementation implements ConstructionDet
 	private ModelMapper modelMapper;
 
 	@Override
-	public ConstructionDetailsDto addNewConstructionDetails(ConstructionDetailsDto constructionDetailsDto) {
+	public ConstructionDetailsDto addNewConstructionDetail(ConstructionDetailsDto constructionDetailsDto) {
 		ConstructionDetails constructionDetails = modelMapper.map(constructionDetailsDto, ConstructionDetails.class);
 		ConstructionDetails savedConstructionDetails = constructionDetailsRepository.save(constructionDetails);
 		// entity
@@ -32,7 +32,7 @@ public class ConstructionDetailsServiceImplementation implements ConstructionDet
 	}
 
 	@Override
-	public ConstructionDetailsDto updateConstructionDetails(ConstructionDetailsDto constructionDetailsDto) {
+	public ConstructionDetailsDto updateConstructionDetail(ConstructionDetailsDto constructionDetailsDto) {
 		ConstructionDetails constructionDetails = constructionDetailsRepository
 				.findById(constructionDetailsDto.getConstructionDetailId())
 				.orElseThrow(() -> new EntityNotFoundException(

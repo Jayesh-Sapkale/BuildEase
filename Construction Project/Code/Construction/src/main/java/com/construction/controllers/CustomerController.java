@@ -13,27 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.construction.dtos.CustomerDto;
 import com.construction.service.CustomerService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
 
-	@Autowired
-	private CustomerService customerService;
+    @Autowired
+    private CustomerService customerService;
 
-	@PostMapping
-	public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
-		System.out.println("In customer controller post request");
-		System.out.println(customerDto);
-		return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
+    @PostMapping
+    @Operation(summary = "Add new customer", operationId = "addNewCustomer")
+    public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
+    }
 
-	}
-
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody CustomerDto customerDto) {
-		System.out.println("In customer controller put request");
-		customerDto.setId(id); // Set the ID to ensure we are updating the correct customer
-		CustomerDto updatedCustomer = customerService.updateCustomer(customerDto);
-		return ResponseEntity.ok(updatedCustomer);
-	}
-
+    @PutMapping(value = "/{id}")
+    @Operation(summary = "Update customer by id", operationId = "updateCustomerById")
+    public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody CustomerDto customerDto) {
+        customerDto.setId(id); // Set the ID to ensure we are updating the correct customer
+        CustomerDto updatedCustomer = customerService.updateCustomer(customerDto);
+        return ResponseEntity.ok(updatedCustomer);
+    }
 }

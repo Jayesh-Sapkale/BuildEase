@@ -13,29 +13,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.service.BuilderReviewService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @RestController
-@RequestMapping("/builderReview")
+@RequestMapping(value="/builderReview")
 public class BuilderReviewController {
 
-	@Autowired
-	private BuilderReviewService builderReviewService;
+    @Autowired
+    private BuilderReviewService builderReviewService;
 
-	@PostMapping
-	public ResponseEntity<?> addNewBuilderReview(@RequestBody BuilderReviewDto builderReviewDto) {
-		System.out.println("In builderReview controller post request");
-		System.out.println(builderReviewDto);
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(builderReviewService.addNewBuilderReview(builderReviewDto));
+    @PostMapping
+    @Operation(summary = "Add new builder review", operationId = "addNewBuilderReview")
+    public ResponseEntity<?> addNewBuilderReview(@RequestBody BuilderReviewDto builderReviewDto) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(builderReviewService.addNewBuilderReview(builderReviewDto));
+    }
 
-	}
-
-	@PutMapping("/{id}")
-	public ResponseEntity<?> updateBuilderReview(@PathVariable Integer id,
-			@RequestBody BuilderReviewDto builderReviewDto) {
-		System.out.println("In builderReview controller put request");
-		builderReviewDto.setId(id); // Set the ID to ensure we are updating the correct builderReview
-		BuilderReviewDto updatedBuilderReview = builderReviewService.updateBuilderReview(builderReviewDto);
-		return ResponseEntity.ok(updatedBuilderReview);
-	}
-
+    @PutMapping(value="/{id}")
+    @Operation(summary = "Update builder review by id", operationId = "updateBuilderReviewById")
+    public ResponseEntity<?> updateBuilderReview(@PathVariable Integer id,
+            @RequestBody BuilderReviewDto builderReviewDto) {
+        builderReviewDto.setId(id); // Set the ID to ensure we are updating the correct builderReview
+        BuilderReviewDto updatedBuilderReview = builderReviewService.updateBuilderReview(builderReviewDto);
+        return ResponseEntity.ok(updatedBuilderReview);
+    }
 }
