@@ -2,6 +2,7 @@ package com.buildEase.entities;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,20 +26,20 @@ public class BaseClass {
 
     @NotNull
     @Size(min = 10)
-    @Pattern(regexp = "^[a-zA-Z]+$")
+//    @Pattern(regexp = "^[a-zA-Z]+$")
     private String username;
 
     @NotNull
     @Size(min = 10)
-    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#\\$%\\^&\\*])")
+//    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#\\$%\\^&\\*])")
     private String password;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z]+$")
+//    @Pattern(regexp = "^[a-zA-Z]+$")
     private String firstName;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z]+$")
+//    @Pattern(regexp = "^[a-zA-Z]+$")
     private String lastName;
 
     @NotNull
@@ -56,6 +57,7 @@ public class BaseClass {
     private String phone;
 
     @NotNull
+    @Embedded
     private Address address;
 
     @NotNull

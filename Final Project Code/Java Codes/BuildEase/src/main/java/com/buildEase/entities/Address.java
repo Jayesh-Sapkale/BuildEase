@@ -12,16 +12,11 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Embeddable
 public class Address {
-    @NonNull
     private String city;
 
-    @NonNull
-	@Size(min = 6, max = 6)
     private String pincode;
 
-    @NonNull
     private String state;
 
-    @NonNull
     private String addressLine1;
 }

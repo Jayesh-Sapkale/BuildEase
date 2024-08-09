@@ -22,6 +22,8 @@ public class Admin extends BaseClass {
 	public Admin() {
 		super();
 		this.setRole("admin");
+		this.setLastLogin(LocalDate.now());
+		this.setLastPasswordChange(LocalDate.now());
 	}
 	
 	

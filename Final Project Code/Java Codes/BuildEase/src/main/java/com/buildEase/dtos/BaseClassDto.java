@@ -2,12 +2,12 @@ package com.buildEase.dtos;
 
 import java.time.LocalDate;
 
+import com.buildEase.entities.Address;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,7 +50,7 @@ public class BaseClassDto {
     private String phone;
 
     @NotNull
-    private String address;
+    private Address address;
 
     @NotNull
     @JsonProperty(access = Access.READ_ONLY)
