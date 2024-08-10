@@ -24,10 +24,26 @@ public class ProjectServiceImplementation implements ProjectService {
 
 	@Override
 	public ProjectDto addNewProject(ProjectDto projectDto) {
+
+		projectDto.setBuilderName(projectDto.getBuilder().getBasicDetails().getFirstName() + " "
+				+ projectDto.getBuilder().getBasicDetails().getLastName());
+		projectDto.setCustomerName(projectDto.getCustomer().getBasicDetails().getFirstName() + " "
+				+ projectDto.getCustomer().getBasicDetails().getLastName());
+		projectDto.setConstructionType(projectDto.getConstructionDetails().getConstructionType().toString());
+		projectDto.setCity(projectDto.getAddress().getCity());
 		Project project = modelMapper.map(projectDto, Project.class);
 		Project savedProject = projectRepository.save(project); // This persists the entity and returns the managed
 																// entity
-		return modelMapper.map(savedProject, ProjectDto.class); // Convert the saved entity back to DTO and return
+		
+		ProjectDto savedProjectDto =modelMapper.map(savedProject, ProjectDto.class);
+		savedProjectDto.setBuilderName(projectDto.getBuilder().getBasicDetails().getFirstName() + " "
+				+ projectDto.getBuilder().getBasicDetails().getLastName());
+		savedProjectDto.setCustomerName(projectDto.getCustomer().getBasicDetails().getFirstName() + " "
+				+ projectDto.getCustomer().getBasicDetails().getLastName());
+		savedProjectDto.setConstructionType(projectDto.getConstructionDetails().getConstructionType().toString());
+		savedProjectDto.setCity(projectDto.getAddress().getCity());
+		
+		return savedProjectDto; // Convert the saved entity back to DTO and return
 	}
 
 	@Override
@@ -36,7 +52,14 @@ public class ProjectServiceImplementation implements ProjectService {
 				() -> new EntityNotFoundException("Project not found with ID: " + projectDto.getProjectId()));
 		modelMapper.map(projectDto, project);
 		Project updatedProject = projectRepository.save(project);
-		return modelMapper.map(updatedProject, ProjectDto.class);
+		ProjectDto savedProjectDto =modelMapper.map(updatedProject, ProjectDto.class);
+		savedProjectDto.setBuilderName(projectDto.getBuilder().getBasicDetails().getFirstName() + " "
+				+ projectDto.getBuilder().getBasicDetails().getLastName());
+		savedProjectDto.setCustomerName(projectDto.getCustomer().getBasicDetails().getFirstName() + " "
+				+ projectDto.getCustomer().getBasicDetails().getLastName());
+		savedProjectDto.setConstructionType(projectDto.getConstructionDetails().getConstructionType().toString());
+		savedProjectDto.setCity(projectDto.getAddress().getCity());
+		return savedProjectDto;
 	}
 
 }

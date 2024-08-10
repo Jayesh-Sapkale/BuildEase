@@ -30,7 +30,7 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).body(adminService.addNewAdmin(adminDto));
     }
 
-    @GetMapping(value="/{id}")
+    @GetMapping(value="/getAdminById/{id}")
     @Operation(summary = "Get admin by id", operationId = "getAdminById")
     public ResponseEntity<?> getAdminById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getAdminById(id));
@@ -42,7 +42,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllAdmins());
     }
 
-    @PutMapping(value="/{id}")
+    @PutMapping(value="/updateAdminById/{id}")
     @Operation(summary = "Update admin by id", operationId = "updateAdminById")
     public ResponseEntity<?> updateAdmin(@PathVariable Integer id, @RequestBody AdminDto adminDto) {
         adminDto.setId(id); // Set the ID to ensure we are updating the correct admin
@@ -50,19 +50,19 @@ public class AdminController {
         return ResponseEntity.ok(updatedAdmin);
     }
 
-    @DeleteMapping(value="/{id}")
+    @DeleteMapping(value="/removeAdminById/{id}")
     @Operation(summary = "Delete admin by id", operationId = "removeAdminById")
     public ResponseEntity<?> removeAdmin(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeAdmin(id));
     }
 
-    @DeleteMapping(value="/deleteAllAdmins")
+    @DeleteMapping(value="/removeAllAdmins")
     @Operation(summary = "Delete all admins", operationId = "removeAllAdmins")
     public ResponseEntity<?> removeAllAdmins() {
         return ResponseEntity.ok(adminService.removeAllAdmins());
     }
 
-    @GetMapping(value="/customer/{id}")
+    @GetMapping(value="/getCustomerById/{id}")
     @Operation(summary = "Get customer by id", operationId = "getCustomerById")
     public ResponseEntity<?> getCustomerById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getCustomerById(id));
@@ -74,19 +74,19 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllCustomers());
     }
 
-    @DeleteMapping(value="/customer/{id}")
+    @DeleteMapping(value="/removeCustomerById/{id}")
     @Operation(summary = "Delete customer by id", operationId = "removeCustomerById")
     public ResponseEntity<?> removeCustomer(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeCustomer(id));
     }
 
-    @DeleteMapping(value="/deleteAllCustomers")
+    @DeleteMapping(value="/removeAllCustomers")
     @Operation(summary = "Delete all customers", operationId = "removeAllCustomers")
     public ResponseEntity<?> removeAllCustomers() {
         return ResponseEntity.ok(adminService.removeAllCustomers());
     }
 
-    @GetMapping(value="/builder/{id}")
+    @GetMapping(value="/getBuilderById/{id}")
     @Operation(summary = "Get builder by id", operationId = "getBuilderById")
     public ResponseEntity<?> getBuilderById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getBuilderById(id));
@@ -98,19 +98,19 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllBuilders());
     }
 
-    @DeleteMapping(value="/builder/{id}")
+    @DeleteMapping(value="/removeBuilderById/{id}")
     @Operation(summary = "Delete builder by id", operationId = "removeBuilderById")
     public ResponseEntity<?> removeBuilder(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeBuilder(id));
     }
 
-    @DeleteMapping(value="/deleteAllBuilders")
+    @DeleteMapping(value="/removeAllBuilders")
     @Operation(summary = "Delete all builders", operationId = "removeAllBuilders")
     public ResponseEntity<?> removeAllBuilders() {
         return ResponseEntity.ok(adminService.removeAllBuilders());
     }
 
-    @GetMapping(value="/builderReview/{id}")
+    @GetMapping(value="/getBuilderReviewById/{id}")
     @Operation(summary = "Get builder review by id", operationId = "getBuilderReviewById")
     public ResponseEntity<?> getBuilderReviewById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getBuilderReviewById(id));
@@ -122,91 +122,91 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllBuilderReviews());
     }
 
-    @DeleteMapping(value="/builderReview/{id}")
+    @DeleteMapping(value="/removeBuilderReviewById/{id}")
     @Operation(summary = "Delete builder review by id", operationId = "removeBuilderReviewById")
     public ResponseEntity<?> removeBuilderReview(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeBuilderReview(id));
     }
 
-    @DeleteMapping(value="/deleteAllBuilderReviews")
+    @DeleteMapping(value="/removeAllBuilderReviews")
     @Operation(summary = "Delete all builder reviews", operationId = "removeAllBuilderReviews")
     public ResponseEntity<?> removeAllBuilderReviews() {
         return ResponseEntity.ok(adminService.removeAllBuilderReviews());
     }
 
-    @GetMapping(value="/builderReview/ratings/{builderId}")
+    @GetMapping(value="/getRatingsByBuilderId/{builderId}")
     @Operation(summary = "Get ratings by builder id", operationId = "getRatingsByBuilderId")
     public ResponseEntity<?> getRatings(@PathVariable Integer builderId) {
         return ResponseEntity.ok(adminService.getRatings(builderId));
     }
 
-    @GetMapping(value="/company/{id}")
+    @GetMapping(value="/getCompanyById/{id}")
     @Operation(summary = "Get company by id", operationId = "getCompanyById")
     public ResponseEntity<?> getCompanyById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.getCompanyById(id));
     }
 
-    @GetMapping(value="/getAllBuilderCompanies")
+    @GetMapping(value="/getAllCompanies")
     @Operation(summary = "Get all companies", operationId = "getAllCompanies")
     public ResponseEntity<?> getAllCompanies() {
         return ResponseEntity.ok(adminService.getAllCompanies());
     }
 
-    @GetMapping(value="/company/builder/{builderId}")
+    @GetMapping(value="/getCompanyByBuilderId/{builderId}")
     @Operation(summary = "Get company by builder id", operationId = "getCompanyByBuilderId")
     public ResponseEntity<?> getCompanyByBuilderId(@PathVariable Integer builderId) {
         return ResponseEntity.ok(adminService.getCompanyByBuilderId(builderId));
     }
 
-    @DeleteMapping(value="/company/builder/{builderId}")
+    @DeleteMapping(value="/removeCompanyByBuilderId/{builderId}")
     @Operation(summary = "Delete company by builder id", operationId = "removeCompanyByBuilderId")
     public ResponseEntity<?> removeCompanyByBuilderId(@PathVariable Integer builderId) {
         return ResponseEntity.ok(adminService.removeCompanyByBuilderId(builderId));
     }
 
-    @DeleteMapping(value="/deleteAllBuilderCompanies")
+    @DeleteMapping(value="/removeAllCompanies")
     @Operation(summary = "Delete all companies", operationId = "removeAllCompanies")
     public ResponseEntity<?> removeAllCompanies() {
         return ResponseEntity.ok(adminService.removeAllCompanies());
     }
 
-    @GetMapping(value="/constructionDetails/{constructionId}")
+    @GetMapping(value="/getConstructionDetailById/{constructionId}")
     @Operation(summary = "Get construction details by id", operationId = "getConstructionDetailById")
     public ResponseEntity<?> getConstructionDetailById(@PathVariable Integer constructionId) {
         return ResponseEntity.ok(adminService.getConstructionDetailById(constructionId));
     }
 
-    @GetMapping(value="/getAllBuilderConstructionDetails")
+    @GetMapping(value="/getAllConstructionDetails")
     @Operation(summary = "Get all construction details", operationId = "getAllConstructionDetails")
     public ResponseEntity<?> getAllConstructionDetails() {
         return ResponseEntity.ok(adminService.getAllConstructionDetails());
     }
 
-    @DeleteMapping(value="/constructionDetails/{id}")
+    @DeleteMapping(value="/removeConstructionDetailById/{id}")
     @Operation(summary = "Delete construction detail by id", operationId = "removeConstructionDetailById")
     public ResponseEntity<?> removeConstructionDetailById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeConstructionDetailById(id));
     }
 
-    @DeleteMapping(value="/deleteAllBuilderConstructionDetails")
+    @DeleteMapping(value="/removeAllConstructionDetails")
     @Operation(summary = "Delete all construction details", operationId = "removeAllConstructionDetails")
     public ResponseEntity<?> removeAllConstructionDetails() {
         return ResponseEntity.ok(adminService.removeAllConstructionDetails());
     }
 
-    @GetMapping(value="/project/{projectId}")
+    @GetMapping(value="/getProjectByProjectId/{projectId}")
     @Operation(summary = "Get project by id", operationId = "getProjectByProjectId")
     public ResponseEntity<?> getProjectByProjectId(@PathVariable Integer projectId) {
         return ResponseEntity.ok(adminService.getProjectByProjectId(projectId));
     }
 
-    @GetMapping(value="/project/builder/{builderId}")
+    @GetMapping(value="/getProjectsByBuilderId/{builderId}")
     @Operation(summary = "Get projects by builder id", operationId = "getProjectsByBuilderId")
     public ResponseEntity<?> getProjectsByBuilderId(@PathVariable Integer builderId) {
         return ResponseEntity.ok(adminService.getProjectsByBuilderId(builderId));
     }
 
-    @GetMapping(value="/project/customer/{customerId}")
+    @GetMapping(value="/getProjectByCustomerId/{customerId}")
     @Operation(summary = "Get project by customer id", operationId = "getProjectByCustomerId")
     public ResponseEntity<?> getProjectByCustomerId(@PathVariable Integer customerId) {
         return ResponseEntity.ok(adminService.getProjectByCustomerId(customerId));
@@ -218,13 +218,13 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllProjects());
     }
 
-    @DeleteMapping(value="/project/{id}")
+    @DeleteMapping(value="/removeProjectById/{id}")
     @Operation(summary = "Delete project by id", operationId = "removeProjectById")
     public ResponseEntity<?> removeProjectById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeProjectById(id));
     }
 
-    @DeleteMapping(value="/deleteAllBuilderProjects")
+    @DeleteMapping(value="/removeAllProjects")
     @Operation(summary = "Delete all projects", operationId = "removeAllProjects")
     public ResponseEntity<?> removeAllProjects() {
         return ResponseEntity.ok(adminService.removeAllProjects());

@@ -563,3 +563,27 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 21:36:22.719
 !MESSAGE Classpath changed for project: Construction
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:27.297
+!MESSAGE Classpath changed for project: BuildEase
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:46.046
+!MESSAGE Classpath changed for project: BuildEase
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:46.083
+!MESSAGE Boot project ADDED: BuildEase
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:46.084
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:46.108
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:53.520
+!MESSAGE Classpath changed for project: BuildEase
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:32:54.870
+!MESSAGE Classpath changed for project: BuildEase
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-08-09 22:33:38.176
+!MESSAGE Classpath changed for project: BuildEase

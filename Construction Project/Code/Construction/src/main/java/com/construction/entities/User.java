@@ -1,5 +1,8 @@
 package com.construction.entities;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.BasicDetails;
 import com.construction.entities.utils.ContactDetails;
@@ -36,14 +39,17 @@ public class User {
 	private String password;
 
 	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "addressId")
 	private Address address;
 
 	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "basicDetailsId")
 	private BasicDetails basicDetails;
 
 	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "contactDetailsId")
 	private ContactDetails contactDetails;
 

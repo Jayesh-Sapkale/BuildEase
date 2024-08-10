@@ -24,14 +24,17 @@ public class BuilderServiceImplementation implements BuilderService {
 
 	@Override
 	public BuilderDto addNewBuilder(BuilderDto builderDto) {
+
 		Builder builder = modelMapper.map(builderDto, Builder.class);
-		Builder savedBuilder = builderRepository.save(builder); // This persists the entity and returns the managed entity
-		return modelMapper.map(savedBuilder, BuilderDto.class); // Convert the saved entity back to DTO and return
+
+		Builder savedBuilder = builderRepository.save(builder); // This persists the entity and returns the managed
+		BuilderDto savedBuilderDto = modelMapper.map(savedBuilder, BuilderDto.class);
+		savedBuilderDto.setCity(builderDto.getAddress().getCity());
+		savedBuilderDto.setName(
+				builderDto.getBasicDetails().getFirstName() + " " + builderDto.getBasicDetails().getLastName());
+		savedBuilderDto.setContactNumber(builderDto.getContactDetails().getContactNumber());// entity
+		return savedBuilderDto; // Convert the saved entity back to DTO and return
 	}
-
-	
-
-	
 
 	@Override
 	public BuilderDto updateBuilder(BuilderDto builderDto) {
@@ -39,11 +42,12 @@ public class BuilderServiceImplementation implements BuilderService {
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found with ID: " + builderDto.getId()));
 		modelMapper.map(builderDto, builder);
 		Builder updatedBuilder = builderRepository.save(builder);
-		return modelMapper.map(updatedBuilder, BuilderDto.class);
+		BuilderDto savedBuilderDto = modelMapper.map(updatedBuilder, BuilderDto.class);
+		savedBuilderDto.setCity(builderDto.getAddress().getCity());
+		savedBuilderDto.setName(
+				builderDto.getBasicDetails().getFirstName() + " " + builderDto.getBasicDetails().getLastName());
+		savedBuilderDto.setContactNumber(builderDto.getContactDetails().getContactNumber());// entity
+		return savedBuilderDto;
 	}
-
-	
-
-	
 
 }

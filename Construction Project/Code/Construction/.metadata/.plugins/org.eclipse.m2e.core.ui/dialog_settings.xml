@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\CDAC\ADVANCED JAVA\MyCodes\Construction Project\Construction"/>
 			<item value="D:\CDAC\CDAC PROJECT\Construction Project\Code\Construction"/>
 		</list>
 		<list key="projectNameTemplate">

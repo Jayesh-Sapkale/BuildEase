@@ -5,12 +5,14 @@ import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @AllArgsConstructor
 public class Admin extends User {
-
+	
 	private LocalDate lastLogin;
 
 	private LocalDate lastPasswordChange;

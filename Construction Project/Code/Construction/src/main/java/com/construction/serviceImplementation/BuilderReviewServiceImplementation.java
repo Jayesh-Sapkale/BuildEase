@@ -11,6 +11,7 @@ import com.construction.entities.BuilderReview;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.BuilderReviewRepository;
 import com.construction.service.BuilderReviewService;
+import com.construction.updateDtos.UpdateBuilderReviewDto;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -29,20 +30,38 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 
 	@Override
 	public BuilderReviewDto addNewBuilderReview(BuilderReviewDto builderReviewDto) {
+
 		BuilderReview builderReview = modelMapper.map(builderReviewDto, BuilderReview.class);
 		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview); // This persists the entity and
 		// returns the managed entity
-		return modelMapper.map(savedBuilderReview, BuilderReviewDto.class); // Convert the saved entity back to DTO and
-																			// return
+
+		BuilderReviewDto savedBuilderReviewDto = modelMapper.map(savedBuilderReview, BuilderReviewDto.class);
+
+		savedBuilderReviewDto.setCustomerName(builderReviewDto.getCustomer().getBasicDetails().getFirstName() + " "
+				+ builderReviewDto.getCustomer().getBasicDetails().getLastName());
+		savedBuilderReviewDto.setBuilderName(builderReviewDto.getBuilder().getBasicDetails().getFirstName() + " "
+				+ builderReviewDto.getBuilder().getBasicDetails().getLastName());
+
+		return savedBuilderReviewDto; // Convert the saved entity back to DTO and
+										// return
 	}
 
 	@Override
-	public BuilderReviewDto updateBuilderReview(BuilderReviewDto builderReviewDto) {
-		BuilderReview builderReview = builderReviewRepository.findById(builderReviewDto.getId()).orElseThrow(
-				() -> new EntityNotFoundException("BuilderReview not found with ID: " + builderReviewDto.getId()));
-		modelMapper.map(builderReviewDto, builderReview);
+	public BuilderReviewDto updateBuilderReview(UpdateBuilderReviewDto builderReviewUpdateDto) {
+		BuilderReview builderReview = builderReviewRepository.findById(builderReviewUpdateDto.getId())
+				.orElseThrow(() -> new EntityNotFoundException(
+						"BuilderReview not found with ID: " + builderReviewUpdateDto.getId()));
+		modelMapper.map(builderReviewUpdateDto, builderReview);
 		BuilderReview updatedBuilderReview = builderReviewRepository.save(builderReview);
-		return modelMapper.map(updatedBuilderReview, BuilderReviewDto.class);
+
+		BuilderReviewDto savedBuilderReviewDto = modelMapper.map(updatedBuilderReview, BuilderReviewDto.class);
+
+		savedBuilderReviewDto.setCustomerName(updatedBuilderReview.getCustomer().getBasicDetails().getFirstName() + " "
+				+ updatedBuilderReview.getCustomer().getBasicDetails().getLastName());
+		savedBuilderReviewDto.setBuilderName(updatedBuilderReview.getBuilder().getBasicDetails().getFirstName() + " "
+				+ updatedBuilderReview.getBuilder().getBasicDetails().getLastName());
+
+		return savedBuilderReviewDto;
 	}
 
 	@Override
@@ -54,6 +73,7 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 		BuilderReview builderReview = modelMapper.map(builderReviewDto, BuilderReview.class);
 		builderReview.setBuilder(new Builder(builderId)); // Assuming Builder has a constructor that accepts ID
 		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview);
+
 		return modelMapper.map(savedBuilderReview, BuilderReviewDto.class);
 	}
 

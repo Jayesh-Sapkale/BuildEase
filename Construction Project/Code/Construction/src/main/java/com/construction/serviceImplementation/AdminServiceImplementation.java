@@ -62,24 +62,44 @@ public class AdminServiceImplementation implements AdminService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+//	Admin Service
+
 	@Override
 	public AdminDto addNewAdmin(AdminDto adminDto) {
+
 		Admin admin = modelMapper.map(adminDto, Admin.class);
 		Admin savedAdmin = adminRepository.save(admin); // This persists the entity and returns the managed entity
-		return modelMapper.map(savedAdmin, AdminDto.class); // Convert the saved entity back to DTO and return
+		AdminDto savedAdminDto = modelMapper.map(savedAdmin, AdminDto.class);
+		savedAdminDto.setCity(adminDto.getAddress().getCity());
+		savedAdminDto
+				.setName(adminDto.getBasicDetails().getFirstName() + " " + adminDto.getBasicDetails().getLastName());
+		savedAdminDto.setContactNumber(adminDto.getContactDetails().getContactNumber());
+		return savedAdminDto; // Convert the saved entity back to DTO and return
 	}
 
 	@Override
 	public AdminDto getAdminById(Integer id) {
 		Admin admin = adminRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Admin not found with ID: " + id));
-		return modelMapper.map(admin, AdminDto.class);
+
+		AdminDto adminDto = modelMapper.map(admin, AdminDto.class);
+		adminDto.setCity(admin.getAddress().getCity());
+		adminDto.setName(admin.getBasicDetails().getFirstName() + " " + admin.getBasicDetails().getLastName());
+		adminDto.setContactNumber(admin.getContactDetails().getContactNumber());
+		return adminDto;
 	}
 
 	@Override
 	public List<AdminDto> getAllAdmins() {
 		List<Admin> admins = adminRepository.findAll();
-		return admins.stream().map(admin -> modelMapper.map(admin, AdminDto.class)).collect(Collectors.toList());
+		return admins.stream().map(admin -> {
+			AdminDto adminDto = modelMapper.map(admin, AdminDto.class);
+
+			adminDto.setCity(admin.getAddress().getCity());
+			adminDto.setName(admin.getBasicDetails().getFirstName() + " " + admin.getBasicDetails().getLastName());
+			adminDto.setContactNumber(admin.getContactDetails().getContactNumber());
+			return adminDto;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
@@ -88,7 +108,12 @@ public class AdminServiceImplementation implements AdminService {
 				.orElseThrow(() -> new EntityNotFoundException("Admin not found with ID: " + adminDto.getId()));
 		modelMapper.map(adminDto, admin);
 		Admin updatedAdmin = adminRepository.save(admin);
-		return modelMapper.map(updatedAdmin, AdminDto.class);
+		AdminDto savedAdminDto = modelMapper.map(updatedAdmin, AdminDto.class);
+		savedAdminDto.setCity(adminDto.getAddress().getCity());
+		savedAdminDto
+				.setName(adminDto.getBasicDetails().getFirstName() + " " + adminDto.getBasicDetails().getLastName());
+		savedAdminDto.setContactNumber(adminDto.getContactDetails().getContactNumber());
+		return savedAdminDto;
 	}
 
 	@Override
@@ -107,18 +132,32 @@ public class AdminServiceImplementation implements AdminService {
 		return new ApiResponse("All admins removed successfully");
 	}
 
+//	Customer Service
+
 	@Override
 	public CustomerDto getCustomerById(Integer id) {
 		Customer customer = customerRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Customer not found with ID: " + id));
-		return modelMapper.map(customer, CustomerDto.class);
+		CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
+
+		customerDto.setName(customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
+		customerDto.setCity(customer.getAddress().getCity());
+		customerDto.setContactNumber(customer.getContactDetails().getContactNumber());
+		return customerDto;
 	}
 
 	@Override
 	public List<CustomerDto> getAllCustomers() {
 		List<Customer> customers = customerRepository.findAll();
-		return customers.stream().map(customer -> modelMapper.map(customer, CustomerDto.class))
-				.collect(Collectors.toList());
+		return customers.stream().map(customer -> {
+
+			CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
+			customerDto.setCity(customer.getAddress().getCity());
+			customerDto.setName(
+					customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
+			customerDto.setContactNumber(customer.getContactDetails().getContactNumber());
+			return customerDto;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
@@ -137,18 +176,32 @@ public class AdminServiceImplementation implements AdminService {
 		return new ApiResponse("All customers removed successfully");
 	}
 
+//	Builder Service
+
 	@Override
 	public BuilderDto getBuilderById(Integer id) {
 		Builder builder = builderRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found with ID: " + id));
-		return modelMapper.map(builder, BuilderDto.class);
+		BuilderDto builderDto = modelMapper.map(builder, BuilderDto.class);
+		builderDto.setCity(builder.getAddress().getCity());
+		builderDto.setContactNumber(builder.getContactDetails().getContactNumber());
+		builderDto.setName(builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());
+		return builderDto;
 	}
 
 	@Override
 	public List<BuilderDto> getAllBuilders() {
 		List<Builder> builders = builderRepository.findAll();
-		return builders.stream().map(builder -> modelMapper.map(builder, BuilderDto.class))
-				.collect(Collectors.toList());
+		return builders.stream().map(builder -> {
+			BuilderDto builderDto = modelMapper.map(builder, BuilderDto.class);
+			builderDto.setCity(builder.getAddress().getCity());
+			builderDto.setContactNumber(builder.getContactDetails().getContactNumber());
+			builderDto
+					.setName(builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());
+			return builderDto;
+		}
+
+		).collect(Collectors.toList());
 	}
 
 	@Override
@@ -167,18 +220,35 @@ public class AdminServiceImplementation implements AdminService {
 		return new ApiResponse("All builders removed successfully");
 	}
 
+//	BuilderReview Service
+
 	@Override
 	public BuilderReviewDto getBuilderReviewById(Integer id) {
 		BuilderReview builderReview = builderReviewRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("BuilderReview not found with ID: " + id));
-		return modelMapper.map(builderReview, BuilderReviewDto.class);
+		BuilderReviewDto builderReviewDto = modelMapper.map(builderReview, BuilderReviewDto.class);
+		builderReviewDto.setCustomerName(builderReviewDto.getCustomer().getBasicDetails().getFirstName() + " "
+				+ builderReviewDto.getCustomer().getBasicDetails().getLastName());
+		builderReviewDto.setBuilderName(builderReviewDto.getBuilder().getBasicDetails().getFirstName() + " "
+				+ builderReviewDto.getBuilder().getBasicDetails().getLastName());
+		return builderReviewDto;
 	}
 
 	@Override
 	public List<BuilderReviewDto> getAllBuilderReviews() {
 		List<BuilderReview> builderReviews = builderReviewRepository.findAll();
-		return builderReviews.stream().map(builderReview -> modelMapper.map(builderReview, BuilderReviewDto.class))
-				.collect(Collectors.toList());
+		return builderReviews.stream().map(builderReview -> {
+			// Map the basic properties
+			BuilderReviewDto builderReviewDto = modelMapper.map(builderReview, BuilderReviewDto.class);
+
+			// Set additional properties
+			builderReviewDto.setBuilderName(builderReview.getBuilder().getBasicDetails().getFirstName() + " "
+					+ builderReview.getBuilder().getBasicDetails().getLastName());
+			builderReviewDto.setCustomerName(builderReview.getCustomer().getBasicDetails().getFirstName() + " "
+					+ builderReview.getCustomer().getBasicDetails().getLastName());
+
+			return builderReviewDto;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
@@ -206,25 +276,51 @@ public class AdminServiceImplementation implements AdminService {
 		return averageRating.intValue(); // Return as Integer
 	}
 
+//	Company Service
+
 	@Override
 	public CompanyDto getCompanyById(Integer id) {
 		Company company = companyRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Company not found with ID: " + id));
-		return modelMapper.map(company, CompanyDto.class);
+
+		CompanyDto companyDto = modelMapper.map(company, CompanyDto.class);
+
+		companyDto.setBuilderName(company.getBuilder().getBasicDetails().getFirstName() + " "
+				+ company.getBuilder().getBasicDetails().getLastName());
+		companyDto.setCity(company.getAddress().getCity());
+		companyDto.setContactNumber(company.getContactDetails().getContactNumber());
+		return companyDto;
 	}
 
 	@Override
 	public List<CompanyDto> getAllCompanies() {
 		List<Company> companys = companyRepository.findAll();
-		return companys.stream().map(company -> modelMapper.map(company, CompanyDto.class))
-				.collect(Collectors.toList());
+
+		return companys.stream().map(company -> {
+			CompanyDto companyDto = modelMapper.map(company, CompanyDto.class);
+
+			companyDto.setBuilderName(company.getBuilder().getBasicDetails().getFirstName() + " "
+					+ company.getBuilder().getBasicDetails().getLastName());
+			companyDto.setCity(company.getAddress().getCity());
+			companyDto.setContactNumber(company.getContactDetails().getContactNumber());
+
+			return companyDto;
+		}).collect(Collectors.toList());
+
 	}
 
 	@Override
 	public CompanyDto getCompanyByBuilderId(Integer builderId) {
 		Company company = companyRepository.findById(builderId)
 				.orElseThrow(() -> new EntityNotFoundException("Company not found with Builder ID: " + builderId));
-		return modelMapper.map(company, CompanyDto.class);
+		CompanyDto companyDto = modelMapper.map(company, CompanyDto.class);
+
+		companyDto.setBuilderName(company.getBuilder().getBasicDetails().getFirstName() + " "
+				+ company.getBuilder().getBasicDetails().getLastName());
+		companyDto.setCity(company.getAddress().getCity());
+		companyDto.setContactNumber(company.getContactDetails().getContactNumber());
+
+		return companyDto;
 	}
 
 	@Override
@@ -242,6 +338,8 @@ public class AdminServiceImplementation implements AdminService {
 		companyRepository.deleteAll();
 		return new ApiResponse("All companies removed successfully");
 	}
+
+//	Construction Service
 
 	@Override
 	public ConstructionDetailsDto getConstructionDetailById(Integer constructionId) {
@@ -272,13 +370,24 @@ public class AdminServiceImplementation implements AdminService {
 		return new ApiResponse("All construction details removed successfully");
 	}
 
+//	Project Service
+
 	@Override
 	public ProjectDto getProjectByProjectId(Integer projectId) {
 		// Find the Project entity by its ID
 		Project project = projectRepository.findById(projectId)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found with ID: " + projectId));
 		// Convert the Project entity to ProjectDto
-		return modelMapper.map(project, ProjectDto.class);
+
+		ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);
+
+		projectDto.setBuilderName(project.getBuilder().getBasicDetails().getFirstName() + " "
+				+ project.getBuilder().getBasicDetails().getLastName());
+		projectDto.setCustomerName(project.getCustomer().getBasicDetails().getFirstName() + " "
+				+ project.getCustomer().getBasicDetails().getLastName());
+		projectDto.setCity(project.getAddress().getCity());
+		projectDto.setConstructionType(project.getConstructionDetails().getConstructionType().toString());
+		return projectDto;
 	}
 
 	@Override
@@ -286,8 +395,23 @@ public class AdminServiceImplementation implements AdminService {
 		// Find all Project entities by builder ID
 		List<Project> projects = projectRepository.findProjectByBuilderId(builderId);
 		// Convert the list of Project entities to a list of ProjectDto
-		return projects.stream().map(project -> modelMapper.map(project, ProjectDto.class))
-				.collect(Collectors.toList());
+		return projects.stream().map(project -> {
+			// Map the basic properties
+			ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);
+
+			// Set additional properties
+			projectDto.setBuilderName(project.getBuilder().getBasicDetails().getFirstName() + " "
+					+ project.getBuilder().getBasicDetails().getLastName());
+			projectDto.setCustomerName(project.getCustomer().getBasicDetails().getFirstName() + " "
+					+ project.getCustomer().getBasicDetails().getLastName());
+			projectDto.setConstructionType(project.getConstructionDetails().getConstructionType().toString()); // Assuming
+																												// it's
+																												// an
+																												// enum
+			projectDto.setCity(project.getAddress().getCity());
+
+			return projectDto;
+		}).collect(Collectors.toList());
 	}
 
 	@Override
@@ -296,16 +420,41 @@ public class AdminServiceImplementation implements AdminService {
 		Project project = projectRepository.findProjectByUserId(userId)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found for user ID: " + userId));
 		// Convert the Project entity to ProjectDto
-		return modelMapper.map(project, ProjectDto.class);
+		ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);
+
+		projectDto.setBuilderName(project.getBuilder().getBasicDetails().getFirstName() + " "
+				+ project.getBuilder().getBasicDetails().getLastName());
+		projectDto.setCustomerName(project.getCustomer().getBasicDetails().getFirstName() + " "
+				+ project.getCustomer().getBasicDetails().getLastName());
+		projectDto.setCity(project.getAddress().getCity());
+		projectDto.setConstructionType(project.getConstructionDetails().getConstructionType().toString());
+		return projectDto;
 	}
 
 	@Override
 	public List<ProjectDto> getAllProjects() {
 		// Find all Project entities
 		List<Project> projects = projectRepository.findAll();
+
 		// Convert the list of Project entities to a list of ProjectDto
-		return projects.stream().map(project -> modelMapper.map(project, ProjectDto.class))
-				.collect(Collectors.toList());
+		return projects.stream().map(project -> {
+			// Map the basic properties
+			ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);
+
+			// Set additional properties
+			projectDto.setBuilderName(project.getBuilder().getBasicDetails().getFirstName() + " "
+					+ project.getBuilder().getBasicDetails().getLastName());
+			projectDto.setCustomerName(project.getCustomer().getBasicDetails().getFirstName() + " "
+					+ project.getCustomer().getBasicDetails().getLastName());
+			projectDto.setConstructionType(project.getConstructionDetails().getConstructionType().toString()); // Assuming
+																												// it's
+																												// an
+																												// enum
+			projectDto.setCity(project.getAddress().getCity());
+
+			return projectDto;
+		}).collect(Collectors.toList());
+
 	}
 
 	@Override

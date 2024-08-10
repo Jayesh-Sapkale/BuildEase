@@ -2,11 +2,9 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.entities.Builder;
-import com.construction.entities.Customer;
 import com.construction.entities.utils.Address;
-import com.construction.entities.utils.ConstructionDetails;
 import com.construction.enums.ProjectStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -25,19 +23,26 @@ public class ProjectDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer projectId;
 
-	
-	private Builder builder;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private BuilderDto builder;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private CustomerDto customer;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private AddressDto address;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private ConstructionDetailsDto constructionDetails;
 
-
-	private Customer customer;
-
-
-	private ConstructionDetails constructionDetails;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String builderName;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String customerName;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String constructionType;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String city;
 
 	@NotNull
 	private String projectName;
-
-	private Address address;
 
 	@NotNull
 	private LocalDate startDate;

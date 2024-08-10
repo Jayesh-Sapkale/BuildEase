@@ -22,13 +22,13 @@ public class BuilderController {
     @Autowired
     private BuilderService builderService;
 
-    @PostMapping
+    @PostMapping(value="/addNewBuilder")
     @Operation(summary = "Add new builder", operationId = "addNewBuilder")
     public ResponseEntity<?> addNewBuilder(@RequestBody BuilderDto builderDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(builderService.addNewBuilder(builderDto));
     }
 
-    @PutMapping(value="/{id}")
+    @PutMapping(value="/updateBuilderById/{id}")
     @Operation(summary = "Update builder by id", operationId = "updateBuilderById")
     public ResponseEntity<?> updateBuilder(@PathVariable Integer id, @RequestBody BuilderDto builderDto) {
         builderDto.setId(id); // Set the ID to ensure we are updating the correct builder

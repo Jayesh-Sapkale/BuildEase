@@ -2,6 +2,9 @@ package com.construction.entities;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ContactDetails;
 import com.construction.enums.ConstructionType;
@@ -34,19 +37,22 @@ public class Company {
 	private Integer companyId;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "builderId") // referencedColumnName = "id"
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "builderId") 
 	private Builder builder;
 
-	@NotNull
-	private String name;
+	private String companyName;
 
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "addressId")
 	private Address address;
 
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "contactDetailsId")
 	private ContactDetails contactDetails;
+
 
 	@NotNull
 	private LocalDate foundingDate;

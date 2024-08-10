@@ -24,11 +24,18 @@ public class ConstructionDetailsServiceImplementation implements ConstructionDet
 
 	@Override
 	public ConstructionDetailsDto addNewConstructionDetail(ConstructionDetailsDto constructionDetailsDto) {
+
 		ConstructionDetails constructionDetails = modelMapper.map(constructionDetailsDto, ConstructionDetails.class);
 		ConstructionDetails savedConstructionDetails = constructionDetailsRepository.save(constructionDetails);
 		// entity
-		return modelMapper.map(savedConstructionDetails, ConstructionDetailsDto.class); // Convert the saved entity back
-																						// to DTO and return
+
+		ConstructionDetailsDto savedConstructionDetailsDto = modelMapper.map(savedConstructionDetails,
+				ConstructionDetailsDto.class);
+
+		savedConstructionDetailsDto.setBuilderName(constructionDetailsDto.getBuilder().getBasicDetails().getFirstName()
+				+ " " + constructionDetailsDto.getBuilder().getBasicDetails().getLastName());
+		return savedConstructionDetailsDto; // Convert the saved entity back
+											// to DTO and return
 	}
 
 	@Override
@@ -39,7 +46,12 @@ public class ConstructionDetailsServiceImplementation implements ConstructionDet
 						"ConstructionDetails not found with ID: " + constructionDetailsDto.getConstructionDetailId()));
 		modelMapper.map(constructionDetailsDto, constructionDetails);
 		ConstructionDetails updatedConstructionDetails = constructionDetailsRepository.save(constructionDetails);
-		return modelMapper.map(updatedConstructionDetails, ConstructionDetailsDto.class);
+		ConstructionDetailsDto savedConstructionDetailsDto = modelMapper.map(updatedConstructionDetails,
+				ConstructionDetailsDto.class);
+
+		savedConstructionDetailsDto.setBuilderName(constructionDetailsDto.getBuilder().getBasicDetails().getFirstName()
+				+ " " + constructionDetailsDto.getBuilder().getBasicDetails().getLastName());
+		return savedConstructionDetailsDto;
 	}
 
 }

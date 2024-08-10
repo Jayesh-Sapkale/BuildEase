@@ -2,9 +2,14 @@ package com.construction.entities;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ConstructionDetails;
 import com.construction.enums.ProjectStatus;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -32,23 +37,29 @@ public class Project {
 	private Integer projectId;
 
 	@ManyToOne(cascade = CascadeType.ALL)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "builderId")
 	private Builder builder;
 
 	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
 	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "constructionDetailsId")
 	private ConstructionDetails constructionDetails;
+	
+	
+	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JoinColumn(name = "addressId")
+	private Address address;
 
 	@NotNull
 	private String projectName;
 
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-	@JoinColumn(name = "addressId")
-	private Address address;
 
 	@NotNull
 	private LocalDate startDate;

@@ -2,8 +2,6 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.entities.Builder;
-import com.construction.entities.Customer;
 import com.construction.entities.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -12,19 +10,29 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-public class BuilderReviewDto extends User {
+public class BuilderReviewDto  {
 
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer builderReviewId;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private CustomerDto customer;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private BuilderDto builder;
 
-	private Customer customer;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String customerName;
 
-	private Builder builder;
+	@JsonProperty(access = Access.READ_ONLY)
+	private String builderName;
 
 	@Min(0)
 	@Max(5)

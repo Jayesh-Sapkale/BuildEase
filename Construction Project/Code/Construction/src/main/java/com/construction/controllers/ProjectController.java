@@ -19,20 +19,20 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/project")
 public class ProjectController {
 
-    @Autowired
-    private ProjectService projectService;
+	@Autowired
+	private ProjectService projectService;
 
-    @PostMapping
-    @Operation(summary = "Add new project", operationId = "addNewProject")
-    public ResponseEntity<?> addNewProject(@RequestBody ProjectDto projectDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(projectService.addNewProject(projectDto));
-    }
+	@PostMapping(value = "/addNewProject")
+	@Operation(summary = "Add new project", operationId = "addNewProject")
+	public ResponseEntity<?> addNewProject(@RequestBody ProjectDto projectDto) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(projectService.addNewProject(projectDto));
+	}
 
-    @PutMapping(value="/{id}")
-    @Operation(summary = "Update project by id", operationId = "updateProjectById")
-    public ResponseEntity<?> updateProject(@PathVariable Integer id, @RequestBody ProjectDto projectDto) {
-        projectDto.setProjectId(id); // Set the ID to ensure we are updating the correct project
-        ProjectDto updatedProject = projectService.updateProject(projectDto);
-        return ResponseEntity.ok(updatedProject);
-    }
+	@PutMapping(value = "/updateProjectById/{id}")
+	@Operation(summary = "Update project by id", operationId = "updateProjectById")
+	public ResponseEntity<?> updateProject(@PathVariable Integer id, @RequestBody ProjectDto projectDto) {
+		projectDto.setProjectId(id); // Set the ID to ensure we are updating the correct project
+		ProjectDto updatedProject = projectService.updateProject(projectDto);
+		return ResponseEntity.ok(updatedProject);
+	}
 }

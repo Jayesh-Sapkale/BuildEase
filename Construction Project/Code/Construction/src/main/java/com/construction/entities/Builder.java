@@ -10,8 +10,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @AllArgsConstructor
 public class Builder extends User {
@@ -27,13 +29,14 @@ public class Builder extends User {
 	@Size(min = 10, max = 10)
 	private String emergencyContactNumber;
 
+
 	@Enumerated(EnumType.STRING)
 	private Availability availability; // Enum values: [YES, NO]
 
 	public Builder(Integer builderId) {
 		super();
 	}
-	
+
 	public Builder() {
 		super();
 		this.setRole("builder");

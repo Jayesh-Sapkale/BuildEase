@@ -19,23 +19,24 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/constructionDetails")
 public class ConstructionDetailsController {
 
-    @Autowired
-    private ConstructionDetailsService constructionDetailsService;
+	@Autowired
+	private ConstructionDetailsService constructionDetailsService;
 
-    @PostMapping
-    @Operation(summary = "Add new construction detail", operationId = "addNewConstructionDetail")
-    public ResponseEntity<?> addNewConstructionDetail(@RequestBody ConstructionDetailsDto constructionDetailsDto) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(constructionDetailsService.addNewConstructionDetail(constructionDetailsDto));
-    }
+	@PostMapping(value = "addNewConstructionDetail")
+	@Operation(summary = "Add new construction detail", operationId = "addNewConstructionDetail")
+	public ResponseEntity<?> addNewConstructionDetail(@RequestBody ConstructionDetailsDto constructionDetailsDto) {
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(constructionDetailsService.addNewConstructionDetail(constructionDetailsDto));
+	}
 
-    @PutMapping(value="/{id}")
-    @Operation(summary = "Update construction detail by id", operationId = "updateConstructionDetailById")
-    public ResponseEntity<?> updateConstructionDetail(@PathVariable Integer id,
-            @RequestBody ConstructionDetailsDto constructionDetailsDto) {
-        constructionDetailsDto.setConstructionDetailId(id); // Set the ID to ensure we are updating the correct construction detail
-        ConstructionDetailsDto updatedConstructionDetails = constructionDetailsService
-                .updateConstructionDetail(constructionDetailsDto);
-        return ResponseEntity.ok(updatedConstructionDetails);
-    }
+	@PutMapping(value = "/updateConstructionDetailById/{id}")
+	@Operation(summary = "Update construction detail by id", operationId = "updateConstructionDetailById")
+	public ResponseEntity<?> updateConstructionDetail(@PathVariable Integer id,
+			@RequestBody ConstructionDetailsDto constructionDetailsDto) {
+		constructionDetailsDto.setConstructionDetailId(id); // Set the ID to ensure we are updating the correct
+															// construction detail
+		ConstructionDetailsDto updatedConstructionDetails = constructionDetailsService
+				.updateConstructionDetail(constructionDetailsDto);
+		return ResponseEntity.ok(updatedConstructionDetails);
+	}
 }

@@ -24,10 +24,16 @@ public class CustomerServiceImplementation implements CustomerService {
 
 	@Override
 	public CustomerDto addNewCustomer(CustomerDto customerDto) {
+		
+		
 		Customer customer = modelMapper.map(customerDto, Customer.class);
 		Customer savedCustomer = customerRepository.save(customer); // This persists the entity and returns the managed
-																	// entity
-		return modelMapper.map(savedCustomer, CustomerDto.class); // Convert the saved entity back to DTO and return
+									
+		CustomerDto savedCustomerDto = modelMapper.map(savedCustomer, CustomerDto.class);
+		savedCustomerDto.setName(customerDto.getBasicDetails().getFirstName()+" "+customerDto.getBasicDetails().getLastName());
+		savedCustomerDto.setCity(customerDto.getAddress().getCity());
+		savedCustomerDto.setContactNumber(customerDto.getContactDetails().getContactNumber());// entity
+		return savedCustomerDto; // Convert the saved entity back to DTO and return
 	}
 
 	@Override
@@ -36,7 +42,11 @@ public class CustomerServiceImplementation implements CustomerService {
 				.orElseThrow(() -> new EntityNotFoundException("Customer not found with ID: " + customerDto.getId()));
 		modelMapper.map(customerDto, customer);
 		Customer updatedCustomer = customerRepository.save(customer);
-		return modelMapper.map(updatedCustomer, CustomerDto.class);
+		CustomerDto savedCustomerDto = modelMapper.map(updatedCustomer, CustomerDto.class);
+		savedCustomerDto.setName(customerDto.getBasicDetails().getFirstName()+" "+customerDto.getBasicDetails().getLastName());
+		savedCustomerDto.setCity(customerDto.getAddress().getCity());
+		savedCustomerDto.setContactNumber(customerDto.getContactDetails().getContactNumber());// entity
+		return savedCustomerDto; 
 	}
 
 }

@@ -22,13 +22,13 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping
+    @PostMapping(value = "/addNewCustomer/{id}")
     @Operation(summary = "Add new customer", operationId = "addNewCustomer")
     public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/updateCustomerById/{id}")
     @Operation(summary = "Update customer by id", operationId = "updateCustomerById")
     public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody CustomerDto customerDto) {
         customerDto.setId(id); // Set the ID to ensure we are updating the correct customer

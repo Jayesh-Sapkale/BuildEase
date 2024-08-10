@@ -2,7 +2,6 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.entities.Builder;
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ContactDetails;
 import com.construction.enums.ConstructionType;
@@ -26,18 +25,26 @@ public class CompanyDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer companyId;
 
-	private Builder builder;
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private AddressDto address;
 
-	@NotNull
-	private String name;
-
-	@NotNull
-	private Address address;
-
-	@NotNull
+	@JsonProperty(access = Access.WRITE_ONLY)
 	private ContactDetails contactDetails;
 
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private BuilderDto builder;
+
+	@JsonProperty(access = Access.READ_ONLY)
+	private String builderName;
 	
+	@JsonProperty(access = Access.READ_ONLY)
+	private String city;
+	
+	@JsonProperty(access = Access.READ_ONLY)
+	private String contactNumber;
+	
+	private String companyName;
+
 	private LocalDate foundingDate;
 
 	@NotNull

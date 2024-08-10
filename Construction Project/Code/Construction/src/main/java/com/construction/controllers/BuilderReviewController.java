@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.service.BuilderReviewService;
+import com.construction.updateDtos.UpdateBuilderReviewDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -22,19 +23,19 @@ public class BuilderReviewController {
     @Autowired
     private BuilderReviewService builderReviewService;
 
-    @PostMapping
+    @PostMapping(value="/addNewBuilderReview")
     @Operation(summary = "Add new builder review", operationId = "addNewBuilderReview")
     public ResponseEntity<?> addNewBuilderReview(@RequestBody BuilderReviewDto builderReviewDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(builderReviewService.addNewBuilderReview(builderReviewDto));
     }
 
-    @PutMapping(value="/{id}")
+    @PutMapping(value="/updateBuilderReviewById/{id}")
     @Operation(summary = "Update builder review by id", operationId = "updateBuilderReviewById")
     public ResponseEntity<?> updateBuilderReview(@PathVariable Integer id,
-            @RequestBody BuilderReviewDto builderReviewDto) {
-        builderReviewDto.setId(id); // Set the ID to ensure we are updating the correct builderReview
-        BuilderReviewDto updatedBuilderReview = builderReviewService.updateBuilderReview(builderReviewDto);
+            @RequestBody UpdateBuilderReviewDto builderReviewUpdateDto) {
+        builderReviewUpdateDto.setId(id); // Set the ID to ensure we are updating the correct builderReview
+        BuilderReviewDto updatedBuilderReview = builderReviewService.updateBuilderReview(builderReviewUpdateDto);
         return ResponseEntity.ok(updatedBuilderReview);
     }
 }
