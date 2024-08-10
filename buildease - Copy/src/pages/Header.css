@@ -1,0 +1,68 @@
+/* .header-buttons .btn {
+    background: none;
+    border: none;
+    color: #fff;
+  }
+  
+  .icon-settings, .icon-hamburger {
+    font-size: 24px;
+  }
+   */
+
+   .header {
+    background-color: #004d40; /* Dark green color for header background */
+    color: #ffffff; /* White text color */
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Ensure the header is the reference point for absolute positioning */
+  }
+  
+  .hamburger {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .icon-hamburger {
+    font-size: 24px;
+  }
+  
+  .header-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-settings {
+    font-size: 24px;
+    color: #ffffff; /* White color for the settings icon */
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Position it directly below the header-buttons */
+    right: 0;
+    background-color: #ffffff; /* White background for dropdown */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    z-index: 1000;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #004d40; /* Dark green color for text */
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dropdown-menu a:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f0f8ff; /* Light background on hover */
+  }
+  

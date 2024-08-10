@@ -1,0 +1,59 @@
+.container-fluid {
+    padding: 20px;
+  }
+  
+  .sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .sidenav.active {
+    transform: translateX(0);
+  }
+  
+  .sidenav-link {
+    display: block;
+    padding: 15px;
+    color: #004d40; /* Dark green color for links */
+    text-decoration: none;
+  }
+  
+  .sidenav-link:hover {
+    background-color: #e0f2f1; /* Light green background on hover */
+  }
+  
+  .confirm-cancel-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .confirm-btn, .cancel-btn {
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .confirm-btn {
+    background-color: #004d40; /* Dark green */
+    color: #fff;
+  }
+  
+  .cancel-btn {
+    background-color: #f44336; /* Red */
+    color: #fff;
+  }
+  
+  .main-content {
+    margin-left: 260px;
+    padding: 20px;
+  }
+  
