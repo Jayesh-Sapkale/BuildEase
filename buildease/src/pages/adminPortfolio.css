@@ -1,0 +1,195 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5; /* Light Gray */
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #333333; /* Dark Gray */
+    color: white;
+    border-bottom: 3px solid #555555; /* Slightly Lighter Dark Gray */
+    position: relative; /* Necessary for absolute positioning of dropdown menu */
+}
+
+/* Button styles for header */
+#back-button, #settings {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0 5px;
+    background: linear-gradient(145deg, #0066CC, #004C99); /* Gradient Blue */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+}
+
+#back-button:hover, #settings:hover {
+    background: linear-gradient(145deg, #0057D9, #003C8F); /* Darker Gradient Blue */
+    color: #FFFFFF; /* White */
+    transform: scale(1.05);
+}
+
+/* Header title styles */
+h1 {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    flex-grow: 1; /* Center the title */
+    color: white; /* White color for the header text */
+}
+
+/* Hamburger menu styles */
+#settings {
+    font-size: 24px; /* Larger font size for hamburger icon */
+}
+
+/* Settings menu styles */
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    right: 30px; /* Align with settings button */
+    background-color: #FFFFFF; /* White background for the dropdown */
+    border: 1px solid #CCCCCC; /* Light Gray border */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it appears on top of other content */
+    width: 200px; /* Adjust width as needed */
+}
+
+.settings-menu.visible {
+    display: block;
+}
+
+.settings-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.settings-menu li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #CCCCCC; /* Light Gray border */
+}
+
+.settings-menu li:last-child {
+    border-bottom: none;
+}
+
+.settings-menu li a {
+    color: #003366; /* Royal Blue */
+    text-decoration: none;
+    display: block;
+}
+
+.settings-menu li a:hover {
+    background-color: #F5F5F5; /* Light Gray */
+}
+
+/* Additional button styles */
+.button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    background: linear-gradient(145deg, #0066CC, #004C99); /* Gradient Blue */
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background: linear-gradient(145deg, #0057D9, #003C8F); /* Darker Gradient Blue */
+    transform: scale(1.05);
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+/* Ensure table width is consistent */
+.table-container {
+    width: 100%;
+    max-width: 900px; /* Ensure tables don't stretch too wide */
+    margin-bottom: 40px;
+}
+
+/* Table wrapper for responsive tables */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* General table styles */
+table {
+    width: 100%; /* Full width within section */
+    border-collapse: collapse;
+    background-color: #FFFFFF; /* White */
+    color: #333333; /* Dark Gray */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+th, td {
+    border: 1px solid #CCCCCC; /* Light Gray */
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #003366; /* Royal Blue */
+    color: #FFFFFF; /* White */
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+td {
+    background-color: #FFFFFF; /* White */
+}
+
+/* Alternate row background color */
+tbody tr:nth-child(even) td {
+    background-color: #F5F5F5; /* Light Gray */
+}
+
+/* Row hover effect */
+tbody tr:hover td {
+    background-color: #D3D3D3; /* Light Gray */
+    color: #003366; /* Royal Blue */
+}
+
+/* Consistent width for columns */
+th, td {
+    min-width: 120px; /* Adjust as needed */
+}
+
+/* Action button container styling */
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    justify-content: flex-start; /* Align buttons to the start */
+    align-items: center; /* Align buttons vertically in the center */
+}
+
+/* Footer button styles */
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.footer-buttons .button {
+    margin: 0 10px; /* Space between footer buttons */
+}
+
+
+
