@@ -226,11 +226,13 @@ public class AdminServiceImplementation implements AdminService {
 	public BuilderReviewDto getBuilderReviewById(Integer id) {
 		BuilderReview builderReview = builderReviewRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("BuilderReview not found with ID: " + id));
+		
+		Customer customer = builderReview.getCustomer();
 		BuilderReviewDto builderReviewDto = modelMapper.map(builderReview, BuilderReviewDto.class);
-		builderReviewDto.setCustomerName(builderReviewDto.getCustomer().getBasicDetails().getFirstName() + " "
-				+ builderReviewDto.getCustomer().getBasicDetails().getLastName());
-		builderReviewDto.setBuilderName(builderReviewDto.getBuilder().getBasicDetails().getFirstName() + " "
-				+ builderReviewDto.getBuilder().getBasicDetails().getLastName());
+		builderReviewDto.setCustomerName(customer.getBasicDetails().getFirstName() + " "
+				+ customer.getBasicDetails().getLastName());
+		builderReviewDto.setBuilderName(customer.getBasicDetails().getFirstName() + " "
+				+ customer.getBasicDetails().getLastName());
 		return builderReviewDto;
 	}
 
@@ -417,7 +419,7 @@ public class AdminServiceImplementation implements AdminService {
 	@Override
 	public ProjectDto getProjectByCustomerId(Integer userId) {
 		// Find the Project entity by user ID
-		Project project = projectRepository.findProjectByUserId(userId)
+		Project project = projectRepository.findProjectByCustomerId(userId)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found for user ID: " + userId));
 		// Convert the Project entity to ProjectDto
 		ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);

@@ -2,9 +2,7 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.entities.utils.Address;
 import com.construction.enums.ProjectStatus;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -23,12 +21,7 @@ public class ProjectDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer projectId;
 
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private BuilderDto builder;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private CustomerDto customer;
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private AddressDto address;
+	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private ConstructionDetailsDto constructionDetails;
 
@@ -40,6 +33,9 @@ public class ProjectDto {
 	private String constructionType;
 	@JsonProperty(access = Access.READ_ONLY)
 	private String city;
+	
+	@JsonProperty(access = Access.WRITE_ONLY)
+	private AddressDto address;
 
 	@NotNull
 	private String projectName;
@@ -58,6 +54,9 @@ public class ProjectDto {
 	private String projectDescription;
 
 	@NotNull
+	@JsonProperty(access = Access.READ_ONLY)
 	private double totalPrice; // Auto-generate as per (rate * area per square feet)
+	
+	
 
 }

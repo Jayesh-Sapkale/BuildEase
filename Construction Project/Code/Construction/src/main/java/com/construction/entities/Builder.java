@@ -2,6 +2,8 @@ package com.construction.entities;
 
 import com.construction.enums.Availability;
 import com.construction.enums.ConstructionType;
+import com.construction.enums.Role;
+import com.construction.enums.Status;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -39,7 +41,8 @@ public class Builder extends User {
 
 	public Builder() {
 		super();
-		this.setRole("builder");
+		this.setRole(Role.BUILDER);
+		this.setStatus(Status.ACTIVE);
 	}
 
 }

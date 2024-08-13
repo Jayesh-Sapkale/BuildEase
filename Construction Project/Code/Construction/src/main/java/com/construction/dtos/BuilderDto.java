@@ -1,16 +1,11 @@
 package com.construction.dtos;
 
-import java.util.List;
-
-import com.construction.entities.Company;
 import com.construction.enums.Availability;
 import com.construction.enums.ConstructionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;

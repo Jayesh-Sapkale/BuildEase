@@ -11,4 +11,4 @@ DESC CONTACT_DETAILS;
 DESC CUSTOMER;
 DESC PROJECT;
 
--- drop database construction;
+drop database construction;

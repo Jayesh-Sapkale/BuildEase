@@ -32,6 +32,8 @@ public class ConstructionDetails {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "builderId")
 	private Builder builder;
+	
+
 
 	@NotNull
 	private double areaInSqFt;

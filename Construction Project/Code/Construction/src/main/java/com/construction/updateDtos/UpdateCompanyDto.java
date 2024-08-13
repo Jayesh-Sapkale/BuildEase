@@ -1,14 +1,9 @@
 package com.construction.updateDtos;
 
-import com.construction.dtos.AddressDto;
-import com.construction.entities.utils.ContactDetails;
 import com.construction.enums.ConstructionType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

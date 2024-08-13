@@ -23,17 +23,18 @@ public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
 
-	@PostMapping(value = "/addNewCompany")
-	@Operation(summary = "Add new company", operationId = "addNewCompany")
-	public ResponseEntity<?> addNewCompany(@RequestBody CompanyDto companyDto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(companyService.addNewCompany(companyDto));
+	@PostMapping(value = "/addNewCompanyByBuilderId/{builderId}")
+	@Operation(summary = "Add new company", operationId = "addNewCompanyByBuilderId")
+	public ResponseEntity<?> addNewCompany(@RequestBody CompanyDto companyDto, @PathVariable Integer builderId) {
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(companyService.addNewCompanyByBuilderId(companyDto, builderId));
 	}
 
 	@PutMapping(value = "/updateCompanyById/{id}")
 	@Operation(summary = "Update company by id", operationId = "updateCompanyById")
 	public ResponseEntity<?> updateCompany(@PathVariable Integer id, @RequestBody UpdateCompanyDto companyUpdateDto) {
 		companyUpdateDto.setId(id); // Set the ID to ensure we are updating the correct company
-		
+
 		CompanyDto updatedCompany = companyService.updateCompany(companyUpdateDto);
 		return ResponseEntity.ok(updatedCompany);
 	}

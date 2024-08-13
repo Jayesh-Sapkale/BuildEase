@@ -2,7 +2,6 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.entities.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -22,11 +21,6 @@ public class BuilderReviewDto  {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer builderReviewId;
 	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private CustomerDto customer;
-	
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private BuilderDto builder;
 
 	@JsonProperty(access = Access.READ_ONLY)
 	private String customerName;

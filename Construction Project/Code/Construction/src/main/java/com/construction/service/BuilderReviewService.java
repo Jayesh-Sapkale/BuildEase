@@ -5,7 +5,7 @@ import com.construction.updateDtos.UpdateBuilderReviewDto;
 
 public interface BuilderReviewService {
 
-	public BuilderReviewDto addNewBuilderReview(BuilderReviewDto builderReviewDto);
+	public BuilderReviewDto addNewBuilderReviewByCustomerAndBuilderId(BuilderReviewDto builderReviewDto,Integer customerId,Integer builderId);
 
 	public BuilderReviewDto updateBuilderReview(UpdateBuilderReviewDto builderReviewUpdateDto);
 

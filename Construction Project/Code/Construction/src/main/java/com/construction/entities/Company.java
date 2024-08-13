@@ -38,7 +38,7 @@ public class Company {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "builderId") 
+	@JoinColumn(name = "builderId")
 	private Builder builder;
 
 	private String companyName;
@@ -52,7 +52,6 @@ public class Company {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "contactDetailsId")
 	private ContactDetails contactDetails;
-
 
 	@NotNull
 	private LocalDate foundingDate;

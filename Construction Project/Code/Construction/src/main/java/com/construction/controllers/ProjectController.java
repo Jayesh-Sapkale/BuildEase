@@ -22,17 +22,24 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	@PostMapping(value = "/addNewProject")
+	@PostMapping(value = "/addNewProject/{customerId}/{builderId}")
 	@Operation(summary = "Add new project", operationId = "addNewProject")
-	public ResponseEntity<?> addNewProject(@RequestBody ProjectDto projectDto) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(projectService.addNewProject(projectDto));
+	public ResponseEntity<?> addNewProject(@RequestBody ProjectDto projectDto,@PathVariable Integer customerId,@PathVariable Integer builderId) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(projectService.addNewProjectByCustomerAndBuilderId(projectDto,customerId,builderId));
 	}
 
-	@PutMapping(value = "/updateProjectById/{id}")
-	@Operation(summary = "Update project by id", operationId = "updateProjectById")
+	@PutMapping(value = "/updateProjectByCustomerId/{id}")
+	@Operation(summary = "Update project by customer id", operationId = "updateProjectByCustomerId")
+	public ResponseEntity<?> updateProjectByCustomerId(@PathVariable Integer id, @RequestBody ProjectDto projectDto) {
+		projectDto.setProjectId(id); // Set the ID to ensure we are updating the correct project
+		ProjectDto updatedProject = projectService.updateProjectByCustomerId(projectDto,id);
+		return ResponseEntity.ok(updatedProject);
+	}
+	@PutMapping(value = "/updateProjectByBuilderId/{id}")
+	@Operation(summary = "Update project by builder id", operationId = "updateProjectByBuilderId")
 	public ResponseEntity<?> updateProject(@PathVariable Integer id, @RequestBody ProjectDto projectDto) {
 		projectDto.setProjectId(id); // Set the ID to ensure we are updating the correct project
-		ProjectDto updatedProject = projectService.updateProject(projectDto);
+		ProjectDto updatedProject = projectService.updateProjectByBuilderId(projectDto,id);
 		return ResponseEntity.ok(updatedProject);
 	}
 }

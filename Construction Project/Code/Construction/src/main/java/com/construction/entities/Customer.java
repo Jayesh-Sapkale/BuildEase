@@ -2,8 +2,8 @@ package com.construction.entities;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.construction.enums.Role;
+import com.construction.enums.Status;
 
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,8 @@ public class Customer extends User {
 
 	public Customer() {
 		super();
-		this.setRole("customer");
+		this.setRole(Role.CUSTOMER);
+		this.setStatus(Status.ACTIVE);
 		this.setAccountCreationDate(LocalDate.now());
 	}
 

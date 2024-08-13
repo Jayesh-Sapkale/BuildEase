@@ -8,8 +8,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ConstructionDetails;
 import com.construction.enums.ProjectStatus;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,8 +25,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Project {
 
@@ -41,25 +39,23 @@ public class Project {
 	@JoinColumn(name = "builderId")
 	private Builder builder;
 
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "constructionDetailsId")
 	private ConstructionDetails constructionDetails;
-	
-	
-	@OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "addressId")
 	private Address address;
 
 	@NotNull
 	private String projectName;
-
 
 	@NotNull
 	private LocalDate startDate;
@@ -76,5 +72,6 @@ public class Project {
 
 	@NotNull
 	private double totalPrice; // Auto-generate as per (rate * area per square feet)
+
 
 }

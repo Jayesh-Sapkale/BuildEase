@@ -13,5 +13,8 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	List<Project> findProjectByBuilderId(Integer builderId);
 
 	@Query("select p from Project p where p.customer.id = :customerId")
-	Optional<Project> findProjectByUserId(Integer customerId);
+	Optional<Project> findProjectByCustomerId(Integer customerId);
+
+	@Query("select p from Project p where p.builder.id = :builderId")
+	Optional<Project> findByBuilderId(Integer builderId);
 }

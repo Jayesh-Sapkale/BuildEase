@@ -19,8 +19,6 @@ public class ConstructionDetailsDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer constructionDetailId; // constructionDetailId
 
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private BuilderDto builder;
 	@NotNull
 	private double areaInSqFt;
 

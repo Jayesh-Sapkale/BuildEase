@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.entities.Builder;
 import com.construction.entities.BuilderReview;
+import com.construction.entities.Customer;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.BuilderReviewRepository;
+import com.construction.repositories.CustomerRepository;
 import com.construction.service.BuilderReviewService;
 import com.construction.updateDtos.UpdateBuilderReviewDto;
 
@@ -26,24 +28,31 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 	private BuilderRepository builderRepository;
 
 	@Autowired
+	private CustomerRepository customerRepository;
+
+	@Autowired
 	private ModelMapper modelMapper;
 
 	@Override
-	public BuilderReviewDto addNewBuilderReview(BuilderReviewDto builderReviewDto) {
+	public BuilderReviewDto addNewBuilderReviewByCustomerAndBuilderId(BuilderReviewDto builderReviewDto,
+			Integer customerId, Integer builderId) {
 
+		Builder builder = builderRepository.findById(builderId)
+				.orElseThrow(() -> new EntityNotFoundException("Builder not found with id " + builderId));
 		BuilderReview builderReview = modelMapper.map(builderReviewDto, BuilderReview.class);
-		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview); // This persists the entity and
-		// returns the managed entity
+		builderReview.setBuilder(builder);
+		Customer customer = customerRepository.findById(customerId)
+				.orElseThrow(() -> new EntityNotFoundException("Customer not found with id " + customerId));
+		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview);
 
 		BuilderReviewDto savedBuilderReviewDto = modelMapper.map(savedBuilderReview, BuilderReviewDto.class);
 
-		savedBuilderReviewDto.setCustomerName(builderReviewDto.getCustomer().getBasicDetails().getFirstName() + " "
-				+ builderReviewDto.getCustomer().getBasicDetails().getLastName());
-		savedBuilderReviewDto.setBuilderName(builderReviewDto.getBuilder().getBasicDetails().getFirstName() + " "
-				+ builderReviewDto.getBuilder().getBasicDetails().getLastName());
+		savedBuilderReviewDto.setBuilderName(
+				builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());
+		savedBuilderReviewDto.setCustomerName(
+				customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
 
-		return savedBuilderReviewDto; // Convert the saved entity back to DTO and
-										// return
+		return savedBuilderReviewDto;
 	}
 
 	@Override

@@ -23,12 +23,14 @@ public class BuilderReviewController {
     @Autowired
     private BuilderReviewService builderReviewService;
 
-    @PostMapping(value="/addNewBuilderReview")
-    @Operation(summary = "Add new builder review", operationId = "addNewBuilderReview")
-    public ResponseEntity<?> addNewBuilderReview(@RequestBody BuilderReviewDto builderReviewDto) {
+    @PostMapping(value="/addNewBuilderReviewByBuilderAndCustomerId/{customerId}/{builderId}")
+    @Operation(summary = "Add new builder review", operationId = "addNewBuilderReviewByBuilderId")
+    public ResponseEntity<?> addNewBuilderReviewByBuilderId(@RequestBody BuilderReviewDto builderReviewDto,@PathVariable Integer customerId,@PathVariable Integer builderId) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(builderReviewService.addNewBuilderReview(builderReviewDto));
+                .body(builderReviewService.addNewBuilderReviewByCustomerAndBuilderId(builderReviewDto,customerId,builderId));
     }
+    
+    
 
     @PutMapping(value="/updateBuilderReviewById/{id}")
     @Operation(summary = "Update builder review by id", operationId = "updateBuilderReviewById")

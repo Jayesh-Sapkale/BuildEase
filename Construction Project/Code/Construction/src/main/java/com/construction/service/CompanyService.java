@@ -5,7 +5,7 @@ import com.construction.updateDtos.UpdateCompanyDto;
 
 public interface CompanyService {
 
-	public CompanyDto addNewCompany(CompanyDto companyDto);
+	public CompanyDto addNewCompanyByBuilderId(CompanyDto companyDto,Integer builderId);
 
 	public CompanyDto updateCompany(UpdateCompanyDto companyUpdateDto);
 

@@ -22,21 +22,20 @@ public class ConstructionDetailsController {
 	@Autowired
 	private ConstructionDetailsService constructionDetailsService;
 
-	@PostMapping(value = "addNewConstructionDetail")
-	@Operation(summary = "Add new construction detail", operationId = "addNewConstructionDetail")
-	public ResponseEntity<?> addNewConstructionDetail(@RequestBody ConstructionDetailsDto constructionDetailsDto) {
+	@PostMapping(value = "addNewConstructionDetailByBuilderId/{builderId}")
+	@Operation(summary = "Add new construction detail", operationId = "addNewConstructionDetailByBuilderId")
+	public ResponseEntity<?> addNewConstructionDetailsByBuilderId(@RequestBody ConstructionDetailsDto constructionDetailsDto, @PathVariable Integer builderId) {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(constructionDetailsService.addNewConstructionDetail(constructionDetailsDto));
+				.body(constructionDetailsService.addNewConstructionDetailByBuilderId(constructionDetailsDto,builderId));
 	}
 
 	@PutMapping(value = "/updateConstructionDetailById/{id}")
 	@Operation(summary = "Update construction detail by id", operationId = "updateConstructionDetailById")
 	public ResponseEntity<?> updateConstructionDetail(@PathVariable Integer id,
 			@RequestBody ConstructionDetailsDto constructionDetailsDto) {
-		constructionDetailsDto.setConstructionDetailId(id); // Set the ID to ensure we are updating the correct
-															// construction detail
+		
 		ConstructionDetailsDto updatedConstructionDetails = constructionDetailsService
-				.updateConstructionDetail(constructionDetailsDto);
+				.updateConstructionDetailsByBuilderId(constructionDetailsDto,id);
 		return ResponseEntity.ok(updatedConstructionDetails);
 	}
 }

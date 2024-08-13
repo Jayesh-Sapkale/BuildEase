@@ -1,5 +1,7 @@
 package com.construction.dtos;
 
+import com.construction.enums.Role;
+import com.construction.enums.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -18,7 +20,9 @@ public class UserDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer id;
 	@JsonProperty(access = Access.READ_ONLY)
-	private String role;
+	private Role role;
+	@JsonProperty(access = Access.READ_ONLY)
+	private Status status;
 	@NotNull
 	private String userName;
 	@NotNull

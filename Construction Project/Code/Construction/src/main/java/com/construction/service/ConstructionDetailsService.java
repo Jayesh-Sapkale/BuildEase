@@ -4,9 +4,9 @@ import com.construction.dtos.ConstructionDetailsDto;
 
 public interface ConstructionDetailsService {
 
-	public ConstructionDetailsDto addNewConstructionDetail(ConstructionDetailsDto constructionDetailsDto);
+	public ConstructionDetailsDto addNewConstructionDetailByBuilderId(ConstructionDetailsDto constructionDetailsDto,Integer builderId);
 
-	public ConstructionDetailsDto updateConstructionDetail(ConstructionDetailsDto constructionDetailsDto);
+	public ConstructionDetailsDto updateConstructionDetailsByBuilderId(ConstructionDetailsDto constructionDetailsDto,Integer builderId);
 
 
 	
