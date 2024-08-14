@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.construction.customExceptions.SignInException;
 import com.construction.dtos.SignInDto;
 import com.construction.service.SignInService;
 
@@ -21,21 +22,21 @@ public class SignInController {
 
 	@PostMapping(value = "/Admin")
 	@Operation(summary = "Get admin by username and password", operationId = "Admin")
-	public ResponseEntity<?> getAdmin(@RequestBody SignInDto signInDto) {
+	public ResponseEntity<?> getAdmin(@RequestBody SignInDto signInDto) throws SignInException {
 
 		return ResponseEntity.ok(signInService.adminSignIn(signInDto));
 	}
 
 	@PostMapping(value = "/Customer")
 	@Operation(summary = "Get customer by username and password", operationId = "Customer")
-	public ResponseEntity<?> getCustomer(@RequestBody SignInDto signInDto) {
+	public ResponseEntity<?> getCustomer(@RequestBody SignInDto signInDto) throws SignInException {
 		System.out.println(signInDto);
 		return ResponseEntity.ok(signInService.customerSignIn(signInDto));
 	}
 
 	@PostMapping(value = "/Builder")
 	@Operation(summary = "Get builder by username and password", operationId = "Builder")
-	public ResponseEntity<?> getBuilder(@RequestBody SignInDto signInDto) {
+	public ResponseEntity<?> getBuilder(@RequestBody SignInDto signInDto) throws SignInException {
 		return ResponseEntity.ok(signInService.builderSignIn(signInDto));
 	}
 }

@@ -19,7 +19,7 @@ public class WebSecurityConfiguration {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Allow
+				.authorizeHttpRequests(auth -> auth.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() 
 
 						.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
 				.formLogin(form -> form.loginPage("/login").permitAll())

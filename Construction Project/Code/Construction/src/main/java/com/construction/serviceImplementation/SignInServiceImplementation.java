@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.construction.customExceptions.SignInException;
 import com.construction.dtos.AdminDto;
 import com.construction.dtos.BuilderDto;
 import com.construction.dtos.CustomerDto;
@@ -39,9 +40,14 @@ public class SignInServiceImplementation implements SignInService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public BuilderDto builderSignIn(SignInDto signInDto) {
+	public BuilderDto builderSignIn(SignInDto signInDto) throws SignInException {
 
-		Builder builder = builderRepository.findBuilderByUser(signInDto.getUserName(), signInDto.getPassword())
+		String userName = builderRepository.validateUsername(signInDto.getUserName())
+				.orElseThrow(() -> new SignInException("Invalid user name!"));
+		String password = builderRepository.validatePassword(signInDto.getPassword())
+				.orElseThrow(() -> new SignInException("Invalid password!"));
+
+		Builder builder = builderRepository.findBuilderByUser(userName, password)
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found, Invalid Credentials! "));
 
 		BuilderDto builderDto = modelMapper.map(builder, BuilderDto.class);
@@ -49,7 +55,7 @@ public class SignInServiceImplementation implements SignInService {
 		signInDto.setUserName(builderDto.getUserName());
 		signInDto.setPassword(builderDto.getPassword());
 		signInDto.setRole(builderDto.getRole());
-		builderDto.setName(builder.getBasicDetails().getFirstName()+" "+builder.getBasicDetails().getLastName());
+		builderDto.setName(builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());
 		builderDto.setCity(builder.getAddress().getCity());
 		builderDto.setContactNumber(builder.getContactDetails().getContactNumber());
 
@@ -61,8 +67,13 @@ public class SignInServiceImplementation implements SignInService {
 	}
 
 	@Override
-	public CustomerDto customerSignIn(SignInDto signInDto) {
-		Customer customer = customerRepository.findCustomerByUser(signInDto.getUserName(), signInDto.getPassword())
+	public CustomerDto customerSignIn(SignInDto signInDto) throws SignInException {
+
+		String userName = customerRepository.validateUsername(signInDto.getUserName())
+				.orElseThrow(() -> new SignInException("Invalid user name!"));
+		String password = customerRepository.validatePassword(signInDto.getPassword())
+				.orElseThrow(() -> new SignInException("Invalid password!"));
+		Customer customer = customerRepository.findCustomerByUser(userName, password)
 				.orElseThrow(() -> new EntityNotFoundException("Customer not found, Invalid Credentials! "));
 
 		CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
@@ -70,8 +81,8 @@ public class SignInServiceImplementation implements SignInService {
 		signInDto.setUserName(customerDto.getUserName());
 		signInDto.setPassword(customerDto.getPassword());
 		signInDto.setRole(customerDto.getRole());
-		
-		customerDto.setName(customer.getBasicDetails().getFirstName()+" "+customer.getBasicDetails().getLastName());
+
+		customerDto.setName(customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
 		customerDto.setCity(customer.getAddress().getCity());
 		customerDto.setContactNumber(customer.getContactDetails().getContactNumber());
 
@@ -83,8 +94,13 @@ public class SignInServiceImplementation implements SignInService {
 	}
 
 	@Override
-	public AdminDto adminSignIn(SignInDto signInDto) {
-		Admin admin = adminRepository.findAdmin(signInDto.getUserName(), signInDto.getPassword())
+	public AdminDto adminSignIn(SignInDto signInDto) throws SignInException {
+
+		String userName = adminRepository.validateUsername(signInDto.getUserName())
+				.orElseThrow(() -> new SignInException("Invalid user name!"));
+		String password = adminRepository.validatePassword(signInDto.getPassword())
+				.orElseThrow(() -> new SignInException("Invalid password!"));
+		Admin admin = adminRepository.findAdmin(userName, password)
 				.orElseThrow(() -> new EntityNotFoundException("Admin not found, Invalid Credentials! "));
 
 		AdminDto adminDto = modelMapper.map(admin, AdminDto.class);
@@ -92,8 +108,8 @@ public class SignInServiceImplementation implements SignInService {
 		signInDto.setUserName(adminDto.getUserName());
 		signInDto.setPassword(adminDto.getPassword());
 		signInDto.setRole(adminDto.getRole());
-		
-		adminDto.setName(admin.getBasicDetails().getFirstName()+" "+admin.getBasicDetails().getLastName());
+
+		adminDto.setName(admin.getBasicDetails().getFirstName() + " " + admin.getBasicDetails().getLastName());
 		adminDto.setCity(admin.getAddress().getCity());
 		adminDto.setContactNumber(admin.getContactDetails().getContactNumber());
 
