@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-    <libraryInfo home="D:\AdvancejavaRequisites\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530" version="21.0.3">
+    <libraryInfo home="D:\Apps\Programming\JAVA\STS\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre" version="21.0.3"/>
+    <libraryInfo home="D:\Apps\Programming\JAVA\STS\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530" version="21.0.3">
         <bootpath>
             <entry path="null"/>
         </bootpath>
@@ -11,5 +12,5 @@
             <entry path="null"/>
         </endorsedDirs>
     </libraryInfo>
-    <libraryInfo home="D:\AdvancejavaRequisites\sts-4.24.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.3.v20240426-1530\jre" version="21.0.3"/>
+    <libraryInfo home="C:\Program Files\Java\jdk-17.0.11" version="17.0.11"/>
 </libraryInfos>
