@@ -229,4 +229,6 @@ public class AdminController {
     public ResponseEntity<?> removeAllProjects() {
         return ResponseEntity.ok(adminService.removeAllProjects());
     }
+    
+  
 }

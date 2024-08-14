@@ -7,7 +7,7 @@ import com.construction.dtos.ApiResponse;
 import com.construction.dtos.BuilderDto;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.dtos.CompanyDto;
-import com.construction.dtos.ConstructionDetailsDto;
+import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.CustomerDto;
 import com.construction.dtos.ProjectDto;
 
@@ -61,9 +61,9 @@ public interface AdminService {
 
 	public ApiResponse removeAllCompanies();
 
-	public ConstructionDetailsDto getConstructionDetailById(Integer constructionId);
+	public ProjectDetailsDto getConstructionDetailById(Integer constructionId);
 
-	public List<ConstructionDetailsDto> getAllConstructionDetails();
+	public List<ProjectDetailsDto> getAllConstructionDetails();
 
 	public ApiResponse removeConstructionDetailById(Integer id);
 

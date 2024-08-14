@@ -6,7 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import com.construction.entities.utils.Address;
-import com.construction.entities.utils.ConstructionDetails;
+import com.construction.entities.utils.ProjectDetails;
 import com.construction.enums.ProjectStatus;
 
 import jakarta.persistence.CascadeType;
@@ -34,20 +34,18 @@ public class Project {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer projectId;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne()
 	@JoinColumn(name = "builderId")
 	private Builder builder;
 
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@OneToOne()
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "constructionDetailsId")
-	private ConstructionDetails constructionDetails;
+	private ProjectDetails constructionDetails;
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)

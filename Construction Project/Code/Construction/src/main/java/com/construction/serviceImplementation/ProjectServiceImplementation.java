@@ -9,7 +9,8 @@ import com.construction.dtos.ProjectDto;
 import com.construction.entities.Builder;
 import com.construction.entities.Customer;
 import com.construction.entities.Project;
-import com.construction.entities.utils.ConstructionDetails;
+import com.construction.entities.utils.ProjectDetails;
+import com.construction.enums.ConstructionType;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.CustomerRepository;
 import com.construction.repositories.ProjectRepository;
@@ -43,9 +44,19 @@ public class ProjectServiceImplementation implements ProjectService {
 		Project project = modelMapper.map(projectDto, Project.class);
 		project.setBuilder(builder);
 		project.setCustomer(customer);
-		projectRepository.save(project);
+		Project savedProject = projectRepository.save(project);
+		String city = project.getAddress().getCity();
+		ConstructionType constructionType = builder.getConstructionType();
+		project.setTotalPrice(builder.getRatePerMonth() * constructionType.getValue());
 
 		ProjectDto savedProjectDto = modelMapper.map(project, ProjectDto.class);
+		savedProjectDto.setBuilderName(
+				builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());
+		savedProjectDto.setCustomerName(
+				customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
+		savedProjectDto.setCity(city);
+		savedProjectDto.setConstructionType(builder.getConstructionType().toString());
+
 		return savedProjectDto;
 	}
 
@@ -57,7 +68,7 @@ public class ProjectServiceImplementation implements ProjectService {
 		Project project = projectRepository.findByBuilderId(builderId)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found with ID: " + builderId));
 		modelMapper.map(projectDto, project);
-		ConstructionDetails constructionDetails = project.getConstructionDetails();
+		ProjectDetails constructionDetails = project.getConstructionDetails();
 		Customer customer = project.getCustomer();
 		project.setTotalPrice(builder.getRatePerMonth() * constructionDetails.getAreaInSqFt());
 		Project updatedProject = projectRepository.save(project);
@@ -82,8 +93,8 @@ public class ProjectServiceImplementation implements ProjectService {
 		Project project = projectRepository.findByBuilderId(customerId)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found with ID: " + customerId));
 		modelMapper.map(projectDto, project);
-		ConstructionDetails constructionDetails = project.getConstructionDetails();
-		Builder builder = constructionDetails.getBuilder();
+		ProjectDetails constructionDetails = project.getConstructionDetails();
+		Builder builder = project.getBuilder();
 		project.setTotalPrice(builder.getRatePerMonth() * constructionDetails.getAreaInSqFt());
 		Project updatedProject = projectRepository.save(project);
 		System.out.println(constructionDetails);

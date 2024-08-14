@@ -13,7 +13,7 @@ import com.construction.dtos.ApiResponse;
 import com.construction.dtos.BuilderDto;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.dtos.CompanyDto;
-import com.construction.dtos.ConstructionDetailsDto;
+import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.CustomerDto;
 import com.construction.dtos.ProjectDto;
 import com.construction.entities.Admin;
@@ -22,12 +22,12 @@ import com.construction.entities.BuilderReview;
 import com.construction.entities.Company;
 import com.construction.entities.Customer;
 import com.construction.entities.Project;
-import com.construction.entities.utils.ConstructionDetails;
+import com.construction.entities.utils.ProjectDetails;
 import com.construction.repositories.AdminRepository;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.BuilderReviewRepository;
 import com.construction.repositories.CompanyRepository;
-import com.construction.repositories.ConstructionDetailsRepository;
+import com.construction.repositories.ProjectDetailsRepository;
 import com.construction.repositories.CustomerRepository;
 import com.construction.repositories.ProjectRepository;
 import com.construction.service.AdminService;
@@ -54,7 +54,7 @@ public class AdminServiceImplementation implements AdminService {
 	private CompanyRepository companyRepository;
 
 	@Autowired
-	private ConstructionDetailsRepository constructionDetailsRepository;
+	private ProjectDetailsRepository constructionDetailsRepository;
 
 	@Autowired
 	private ProjectRepository projectRepository;
@@ -344,16 +344,16 @@ public class AdminServiceImplementation implements AdminService {
 //	Construction Service
 
 	@Override
-	public ConstructionDetailsDto getConstructionDetailById(Integer constructionId) {
-		ConstructionDetails constructionDetails = constructionDetailsRepository.findById(constructionId).orElseThrow(
+	public ProjectDetailsDto getConstructionDetailById(Integer constructionId) {
+		ProjectDetails constructionDetails = constructionDetailsRepository.findById(constructionId).orElseThrow(
 				() -> new EntityNotFoundException("Construction detail not found with ID: " + constructionId));
-		return modelMapper.map(constructionDetails, ConstructionDetailsDto.class);
+		return modelMapper.map(constructionDetails, ProjectDetailsDto.class);
 	}
 
 	@Override
-	public List<ConstructionDetailsDto> getAllConstructionDetails() {
-		List<ConstructionDetails> constructionDetailss = constructionDetailsRepository.findAll();
-		return constructionDetailss.stream().map(detail -> modelMapper.map(detail, ConstructionDetailsDto.class))
+	public List<ProjectDetailsDto> getAllConstructionDetails() {
+		List<ProjectDetails> constructionDetailss = constructionDetailsRepository.findAll();
+		return constructionDetailss.stream().map(detail -> modelMapper.map(detail, ProjectDetailsDto.class))
 				.collect(Collectors.toList());
 	}
 

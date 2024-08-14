@@ -40,9 +40,10 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 		Builder builder = builderRepository.findById(builderId)
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found with id " + builderId));
 		BuilderReview builderReview = modelMapper.map(builderReviewDto, BuilderReview.class);
-		builderReview.setBuilder(builder);
 		Customer customer = customerRepository.findById(customerId)
 				.orElseThrow(() -> new EntityNotFoundException("Customer not found with id " + customerId));
+		builderReview.setBuilder(builder);
+		builderReview.setCustomer(customer);;
 		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview);
 
 		BuilderReviewDto savedBuilderReviewDto = modelMapper.map(savedBuilderReview, BuilderReviewDto.class);

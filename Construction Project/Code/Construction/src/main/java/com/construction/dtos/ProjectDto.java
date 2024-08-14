@@ -23,7 +23,7 @@ public class ProjectDto {
 
 	
 	@JsonProperty(access = Access.WRITE_ONLY)
-	private ConstructionDetailsDto constructionDetails;
+	private ProjectDetailsDto constructionDetails;
 
 	@JsonProperty(access = Access.READ_ONLY)
 	private String builderName;
