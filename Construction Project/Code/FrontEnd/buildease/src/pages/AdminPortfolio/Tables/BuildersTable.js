@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import "./UpdateUser.css"
+import "../UpdateUser.css"
 
 const BuildersTable = () => {
   const [builders, setBuilders] = useState([]);
@@ -200,14 +200,19 @@ const BuildersTable = () => {
             </div>
             <div>
               <label htmlFor="constructionType">Construction Type:</label>
-              <input
-                type="text"
+              <select
                 id="constructionType"
                 name="constructionType"
                 value={formData.constructionType}
                 onChange={handleFormChange}
                 required
-              />
+              >
+                <option value="">Select Type</option>
+                <option value="WAREHOUSE">Warehouse</option>
+                <option value="HOUSE">House</option>
+                <option value="APARTMENT">Apartment</option>
+                <option value="MALL">Mall</option>
+              </select>
             </div>
             <div>
               <label htmlFor="emergencyContactNumber">Emergency Contact Number:</label>
@@ -224,22 +229,28 @@ const BuildersTable = () => {
             </div>
             <div>
               <label htmlFor="availability">Availability:</label>
-              <input
-                type="text"
+              <select
                 id="availability"
                 name="availability"
                 value={formData.availability}
                 onChange={handleFormChange}
                 required
-              />
+              >
+                <option value="">Select Availability</option>
+                <option value="YES">Yes</option>
+                <option value="NO">No</option>
+              </select>
             </div>
             <button type="submit">Save Changes</button>
-            <button type="button"
+            <button
+              type="button"
               onClick={() => {
                 setEditMode(false);
                 setSelectedBuilder(null);
-              }}>Cancel</button>
-
+              }}
+            >
+              Cancel
+            </button>
           </form>
         </section>
       )}

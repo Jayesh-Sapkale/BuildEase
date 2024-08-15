@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import SettingsMenu from "./SettingsMenu";
-import UsersTable from "./UsersTable";
-import BuildersTable from "./BuildersTable";
-import ProjectsTable from "./ProjectsTable";
+import UsersTable from "./Tables/CustomersTable";
+import BuildersTable from "./Tables/BuildersTable";
+import ProjectsTable from "./Tables//ProjectsTable";
 import SignOut from "./SignOut";
 import "./adminPortfolio.css";
 

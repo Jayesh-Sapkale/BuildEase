@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,10 +14,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonPropertyOrder({ "customerId" })
 public class CustomerDto extends UserDto {
 
-	@JsonProperty(value = "customerId", access = Access.READ_ONLY)
+	@JsonProperty( access = Access.READ_ONLY)
 	private Integer id;
 
 	@JsonProperty(access = Access.WRITE_ONLY)

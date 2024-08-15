@@ -9,7 +9,6 @@ import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ProjectDetails;
 import com.construction.enums.ProjectStatus;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -35,19 +34,21 @@ public class Project {
 	private Integer projectId;
 
 	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.SET_NULL)
 	@JoinColumn(name = "builderId")
 	private Builder builder;
 
 	@OneToOne()
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "constructionDetailsId")
 	private ProjectDetails constructionDetails;
 
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne()
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "addressId")
 	private Address address;

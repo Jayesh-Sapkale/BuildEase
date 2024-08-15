@@ -50,7 +50,7 @@ public class AdminController {
         return ResponseEntity.ok(updatedAdmin);
     }
 
-    @DeleteMapping(value="/removeAdminById/{id}")
+    @DeleteMapping(value="/deleteAdminById/{id}")
     @Operation(summary = "Delete admin by id", operationId = "removeAdminById")
     public ResponseEntity<?> removeAdmin(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeAdmin(id));
@@ -74,13 +74,13 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllCustomers());
     }
 
-    @DeleteMapping(value="/removeCustomerById/{id}")
+    @DeleteMapping(value="/deleteCustomerById/{id}")
     @Operation(summary = "Delete customer by id", operationId = "removeCustomerById")
     public ResponseEntity<?> removeCustomer(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeCustomer(id));
     }
 
-    @DeleteMapping(value="/removeAllCustomers")
+    @DeleteMapping(value="/deleteAllCustomers")
     @Operation(summary = "Delete all customers", operationId = "removeAllCustomers")
     public ResponseEntity<?> removeAllCustomers() {
         return ResponseEntity.ok(adminService.removeAllCustomers());
@@ -98,13 +98,13 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllBuilders());
     }
 
-    @DeleteMapping(value="/removeBuilderById/{id}")
+    @DeleteMapping(value="/deleteBuilderById/{id}")
     @Operation(summary = "Delete builder by id", operationId = "removeBuilderById")
     public ResponseEntity<?> removeBuilder(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeBuilder(id));
     }
 
-    @DeleteMapping(value="/removeAllBuilders")
+    @DeleteMapping(value="/deleteAllBuilders")
     @Operation(summary = "Delete all builders", operationId = "removeAllBuilders")
     public ResponseEntity<?> removeAllBuilders() {
         return ResponseEntity.ok(adminService.removeAllBuilders());
@@ -122,13 +122,13 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllBuilderReviews());
     }
 
-    @DeleteMapping(value="/removeBuilderReviewById/{id}")
+    @DeleteMapping(value="/deleteBuilderReviewById/{id}")
     @Operation(summary = "Delete builder review by id", operationId = "removeBuilderReviewById")
     public ResponseEntity<?> removeBuilderReview(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeBuilderReview(id));
     }
 
-    @DeleteMapping(value="/removeAllBuilderReviews")
+    @DeleteMapping(value="/deleteAllBuilderReviews")
     @Operation(summary = "Delete all builder reviews", operationId = "removeAllBuilderReviews")
     public ResponseEntity<?> removeAllBuilderReviews() {
         return ResponseEntity.ok(adminService.removeAllBuilderReviews());
@@ -158,7 +158,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getCompanyByBuilderId(builderId));
     }
 
-    @DeleteMapping(value="/removeCompanyByBuilderId/{builderId}")
+    @DeleteMapping(value="/deleteCompanyByBuilderId/{builderId}")
     @Operation(summary = "Delete company by builder id", operationId = "removeCompanyByBuilderId")
     public ResponseEntity<?> removeCompanyByBuilderId(@PathVariable Integer builderId) {
         return ResponseEntity.ok(adminService.removeCompanyByBuilderId(builderId));
@@ -218,7 +218,7 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllProjects());
     }
 
-    @DeleteMapping(value="/removeProjectById/{id}")
+    @DeleteMapping(value="/deleteProjectById/{id}")
     @Operation(summary = "Delete project by id", operationId = "removeProjectById")
     public ResponseEntity<?> removeProjectById(@PathVariable Integer id) {
         return ResponseEntity.ok(adminService.removeProjectById(id));
