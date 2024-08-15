@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import SettingsMenu from "./SettingsMenu";
-import UsersTable from "./Tables/CustomersTable";
+import CustomersTable from "./Tables/CustomersTable";
 import BuildersTable from "./Tables/BuildersTable";
 import ProjectsTable from "./Tables//ProjectsTable";
+import AdminsTable from "./Tables/AdminsTable";
 import SignOut from "./SignOut";
 import "./adminPortfolio.css";
 
 const AdminPortfolio = () => {
   const history = useHistory();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const [currentView, setCurrentView] = useState("projects"); // Default view is 'projects'
+  const [currentView, setCurrentView] = useState("admins"); // Default view is 'projects'
 
   const handleMenuClick = (view) => {
     setCurrentView(view);
@@ -38,13 +39,14 @@ const AdminPortfolio = () => {
 
       {/* Main Content */}
       <main>
-        {currentView === "users" && <UsersTable />}
+        {currentView === "admins" && <AdminsTable />}
+        {currentView === "customers" && <CustomersTable />}
         {currentView === "builders" && <BuildersTable />}
         {currentView === "projects" && <ProjectsTable />}
         {currentView === "signout" && <SignOut />}
 
         {/* Footer Buttons */}
-        {(currentView === "users" || currentView === "builders") && (
+        {(currentView === "customers" || currentView === "builders") && (
           <div className="footer-buttons">
             <button className="button confirm-btn" onClick={handleConfirmClick}>
               Confirm

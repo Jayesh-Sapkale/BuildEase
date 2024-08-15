@@ -16,7 +16,6 @@ const ProjectsTable = () => {
         projectDescription: "",
         startDate: "",
         endDate: "",
-        totalPrice: "",
     });
 
     useEffect(() => {
@@ -43,23 +42,29 @@ const ProjectsTable = () => {
             projectDescription: project.projectDescription || "",
             startDate: project.startDate || "",
             endDate: project.endDate || "",
-            totalPrice: project.totalPrice || "",
         });
         setEditMode(true);
     };
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
+            if (!selectedProject || !selectedProject.projectId) {
+                throw new Error("Invalid project selection");
+            }
+
             // PUT request to update the project's details
             const response = await axios.put(
-                `http://localhost:8081/project/updateProjectById/${selectedProject.projectId}`,
+                `http://localhost:8081/project/updateProjectByProjectId/${selectedProject.projectId}`,
                 formData
             );
 
@@ -85,16 +90,10 @@ const ProjectsTable = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this item?")) {
             try {
-             
-                // DELETE request to delete the project by ID
                 await axios.delete(`http://localhost:8081/admin/deleteProjectById/${id}`);
-
-                // Remove the deleted project from the state
                 setProjects((prevProjects) =>
                     prevProjects.filter((project) => project.projectId !== id)
                 );
-
-                // Show success message
                 toast.success("Project deleted successfully.");
             } catch (error) {
                 console.error("Error deleting project:", error.message || "An error occurred.");
@@ -196,14 +195,18 @@ const ProjectsTable = () => {
                         </div>
                         <div>
                             <label htmlFor="constructionType">Construction Type:</label>
-                            <input
-                                type="text"
+                            <select
                                 id="constructionType"
                                 name="constructionType"
                                 value={formData.constructionType}
                                 onChange={handleFormChange}
                                 required
-                            />
+                            >
+                                <option value="WAREHOUSE">Warehouse</option>
+                                <option value="HOUSE">House</option>
+                                <option value="APARTMENT">Apartment</option>
+                                <option value="MALL">Mall</option>
+                            </select>
                         </div>
                         <div>
                             <label htmlFor="projectDescription">Description:</label>
@@ -237,18 +240,7 @@ const ProjectsTable = () => {
                                 required
                             />
                         </div>
-                        <div>
-                            <label htmlFor="totalPrice">Total Price:</label>
-                            <input
-                                type="number"
-                                id="totalPrice"
-                                name="totalPrice"
-                                value={formData.totalPrice}
-                                onChange={handleFormChange}
-                                required
-                                step="0.01"
-                            />
-                        </div>
+
                         <button type="submit">Save Changes</button>
                         <button
                             type="button"

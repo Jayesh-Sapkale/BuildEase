@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import "../UpdateUser.css"
+import "../UpdateUser.css";
 
 const CustomersTable = () => {
     const [customers, setCustomers] = useState([]);
@@ -13,7 +13,6 @@ const CustomersTable = () => {
     const [formData, setFormData] = useState({
         name: "",
         contactNumber: "",
-        address: "",
     });
 
     useEffect(() => {
@@ -37,7 +36,6 @@ const CustomersTable = () => {
         setFormData({
             name: customer.name || "",
             contactNumber: customer.contactNumber || "",
-            address: customer.address || "",
         });
         setEditMode(true);
     };
@@ -50,12 +48,19 @@ const CustomersTable = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // Log form data before sending request
+        console.log("Submitting form with data:", formData);
+
         try {
+            console.log(formData)
             // PUT request to update the customer's details
             const response = await axios.put(
                 `http://localhost:8081/customer/updateCustomerById/${selectedCustomer.id}`,
                 formData
             );
+
+            // Log response data
+            console.log("Updated customer response:", response.data);
 
             // Update the customers list with the updated customer
             setCustomers((prevCustomers) =>
@@ -64,10 +69,7 @@ const CustomersTable = () => {
                 )
             );
 
-            // Show success message
             toast.success("Customer details updated successfully!");
-
-            // Reset the form and edit mode
             setEditMode(false);
             setSelectedCustomer(null);
         } catch (error) {
@@ -87,7 +89,6 @@ const CustomersTable = () => {
                     prevCustomers.filter((customer) => customer.id !== id)
                 );
 
-                // Show success message
                 toast.success("Customer deleted successfully.");
             } catch (error) {
                 console.error("Error deleting customer:", error.message || "An error occurred.");
@@ -156,7 +157,7 @@ const CustomersTable = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="7">No customers available</td>
+                                    <td colSpan="6">No customers available</td>
                                 </tr>
                             )}
                         </tbody>
@@ -190,17 +191,6 @@ const CustomersTable = () => {
                                 required
                                 maxLength="10"
                                 minLength="10"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="address">Address:</label>
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                value={formData.address}
-                                onChange={handleFormChange}
-                                required
                             />
                         </div>
                         <button type="submit">Save Changes</button>

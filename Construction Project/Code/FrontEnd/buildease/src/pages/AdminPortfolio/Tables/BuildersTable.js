@@ -207,7 +207,6 @@ const BuildersTable = () => {
                 onChange={handleFormChange}
                 required
               >
-                <option value="">Select Type</option>
                 <option value="WAREHOUSE">Warehouse</option>
                 <option value="HOUSE">House</option>
                 <option value="APARTMENT">Apartment</option>

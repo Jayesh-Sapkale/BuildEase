@@ -13,8 +13,8 @@ import com.construction.dtos.ApiResponse;
 import com.construction.dtos.BuilderDto;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.dtos.CompanyDto;
-import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.CustomerDto;
+import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.ProjectDto;
 import com.construction.entities.Admin;
 import com.construction.entities.Builder;
@@ -27,10 +27,11 @@ import com.construction.repositories.AdminRepository;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.BuilderReviewRepository;
 import com.construction.repositories.CompanyRepository;
-import com.construction.repositories.ProjectDetailsRepository;
 import com.construction.repositories.CustomerRepository;
+import com.construction.repositories.ProjectDetailsRepository;
 import com.construction.repositories.ProjectRepository;
 import com.construction.service.AdminService;
+import com.construction.updateDtos.UpdateAdminDto;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -103,16 +104,18 @@ public class AdminServiceImplementation implements AdminService {
 	}
 
 	@Override
-	public AdminDto updateAdmin(AdminDto adminDto) {
-		Admin admin = adminRepository.findById(adminDto.getId())
-				.orElseThrow(() -> new EntityNotFoundException("Admin not found with ID: " + adminDto.getId()));
-		modelMapper.map(adminDto, admin);
+	public AdminDto updateAdmin(UpdateAdminDto updateAdminDto) {
+		
+		Integer id = updateAdminDto.getId();
+		Admin admin = adminRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Admin not found with ID: " + id));
+		modelMapper.map(updateAdminDto, admin);
 		Admin updatedAdmin = adminRepository.save(admin);
 		AdminDto savedAdminDto = modelMapper.map(updatedAdmin, AdminDto.class);
-		savedAdminDto.setCity(adminDto.getAddress().getCity());
+		savedAdminDto.setCity(updatedAdmin.getAddress().getCity());
 		savedAdminDto
-				.setName(adminDto.getBasicDetails().getFirstName() + " " + adminDto.getBasicDetails().getLastName());
-		savedAdminDto.setContactNumber(adminDto.getContactDetails().getContactNumber());
+				.setName(updateAdminDto.getName());
+		savedAdminDto.setContactNumber(updateAdminDto.getContactNumber());
 		return savedAdminDto;
 	}
 

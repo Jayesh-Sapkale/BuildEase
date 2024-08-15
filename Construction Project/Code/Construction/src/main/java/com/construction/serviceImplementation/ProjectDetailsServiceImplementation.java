@@ -36,7 +36,6 @@ public class ProjectDetailsServiceImplementation implements ProjectDetailsServic
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found with id " + projectId));
 		ProjectDetails constructionDetails = modelMapper.map(constructionDetailsDto, ProjectDetails.class);
 		Builder builder = project.getBuilder();
-		constructionDetails.setProject(project);
 
 		ProjectDetails savedConstructionDetails = constructionDetailsRepository.save(constructionDetails);
 
@@ -52,15 +51,17 @@ public class ProjectDetailsServiceImplementation implements ProjectDetailsServic
 	public ProjectDetailsDto updateConstructionDetailsByProjectId(ProjectDetailsDto constructionDetailsDto,
 			Integer projectId) {
 
-		ProjectDetails constructionDetails = constructionDetailsRepository.getByProjectId(projectId).orElseThrow(
+		Project project = projectRepository.findById(projectId).orElseThrow(
 				() -> new EntityNotFoundException("Construction details not found for builder id " + projectId));
 
-		modelMapper.map(constructionDetailsDto, constructionDetails);
-		ProjectDetails updatedConstructionDetails = constructionDetailsRepository.save(constructionDetails);
+		ProjectDetails projectDetails = project.getConstructionDetails();
+
+		modelMapper.map(constructionDetailsDto, projectDetails);
+		ProjectDetails updatedConstructionDetails = constructionDetailsRepository.save(projectDetails);
 
 		ProjectDetailsDto savedConstructionDetailsDto = modelMapper.map(updatedConstructionDetails,
 				ProjectDetailsDto.class);
-		Builder builder = updatedConstructionDetails.getProject().getBuilder();
+		Builder builder = project.getBuilder();
 
 		savedConstructionDetailsDto.setBuilderName(
 				builder.getBasicDetails().getFirstName() + " " + builder.getBasicDetails().getLastName());

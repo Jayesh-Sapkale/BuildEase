@@ -9,6 +9,7 @@ import com.construction.dtos.CustomerDto;
 import com.construction.entities.Customer;
 import com.construction.repositories.CustomerRepository;
 import com.construction.service.CustomerService;
+import com.construction.updateDtos.UpdateCustomerDto;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -37,15 +38,18 @@ public class CustomerServiceImplementation implements CustomerService {
 	}
 
 	@Override
-	public CustomerDto updateCustomer(CustomerDto customerDto) {
-		Customer customer = customerRepository.findById(customerDto.getId())
-				.orElseThrow(() -> new EntityNotFoundException("Customer not found with ID: " + customerDto.getId()));
-		modelMapper.map(customerDto, customer);
+	public CustomerDto updateCustomer(UpdateCustomerDto updateCustomerDto) {
+		Integer id = updateCustomerDto.getId();
+		Customer customer = customerRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Customer not found with ID: " +id));
+		modelMapper.map(updateCustomerDto, customer);
+		System.out.println(updateCustomerDto);
 		Customer updatedCustomer = customerRepository.save(customer);
 		CustomerDto savedCustomerDto = modelMapper.map(updatedCustomer, CustomerDto.class);
-		savedCustomerDto.setName(customerDto.getBasicDetails().getFirstName()+" "+customerDto.getBasicDetails().getLastName());
-		savedCustomerDto.setCity(customerDto.getAddress().getCity());
-		savedCustomerDto.setContactNumber(customerDto.getContactDetails().getContactNumber());// entity
+		savedCustomerDto.setName(updateCustomerDto.getName());
+		savedCustomerDto.setContactNumber(updateCustomerDto.getContactNumber());// entity
+		savedCustomerDto.setCity(updatedCustomer.getAddress().getCity());// entity
+		
 		return savedCustomerDto; 
 	}
 

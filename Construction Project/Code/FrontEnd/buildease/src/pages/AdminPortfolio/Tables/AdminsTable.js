@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import "./UpdateUser.css";
+import "../UpdateUser.css";
 
 const AdminsTable = () => {
     const [admins, setAdmins] = useState([]);
@@ -13,7 +13,6 @@ const AdminsTable = () => {
     const [formData, setFormData] = useState({
         name: "",
         contactNumber: "",
-        address: "",
     });
 
     useEffect(() => {
@@ -37,7 +36,7 @@ const AdminsTable = () => {
         setFormData({
             name: admin.name || "",
             contactNumber: admin.contactNumber || "",
-            address: admin.address || "",
+
         });
         setEditMode(true);
     };
@@ -116,7 +115,7 @@ const AdminsTable = () => {
                                 <th>Admin ID</th>
                                 <th>Name</th>
                                 <th>Contact Number</th>
-                                <th>Address</th>
+
                                 <th>City</th>
                                 <th>Last Login</th>
                                 <th>Last Password Change</th>
@@ -130,7 +129,7 @@ const AdminsTable = () => {
                                         <td>{admin.id}</td>
                                         <td>{admin.name}</td>
                                         <td>{admin.contactNumber}</td>
-                                        <td>{admin.address}</td>
+
                                         <td>{admin.city}</td>
                                         <td>{new Date(admin.lastLogin).toLocaleDateString()}</td>
                                         <td>{new Date(admin.lastPasswordChange).toLocaleDateString()}</td>
@@ -196,17 +195,7 @@ const AdminsTable = () => {
                                 minLength="10"
                             />
                         </div>
-                        <div>
-                            <label htmlFor="address">Address:</label>
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                value={formData.address}
-                                onChange={handleFormChange}
-                                required
-                            />
-                        </div>
+
                         <button type="submit">Save Changes</button>
                         <button
                             type="button"

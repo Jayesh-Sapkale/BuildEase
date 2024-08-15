@@ -7,9 +7,10 @@ import com.construction.dtos.ApiResponse;
 import com.construction.dtos.BuilderDto;
 import com.construction.dtos.BuilderReviewDto;
 import com.construction.dtos.CompanyDto;
-import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.CustomerDto;
+import com.construction.dtos.ProjectDetailsDto;
 import com.construction.dtos.ProjectDto;
+import com.construction.updateDtos.UpdateAdminDto;
 
 public interface AdminService {
 
@@ -19,7 +20,7 @@ public interface AdminService {
 
 	public List<AdminDto> getAllAdmins();
 
-	public AdminDto updateAdmin(AdminDto adminDto);
+	public AdminDto updateAdmin(UpdateAdminDto updateAdminDto);
 
 	public ApiResponse removeAdmin(Integer id);
 

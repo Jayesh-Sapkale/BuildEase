@@ -43,7 +43,7 @@ public class Project {
 	@JoinColumn(name = "customerId")
 	private Customer customer;
 
-	@OneToOne
+	@OneToOne()
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "constructionDetailsId")
 	private ProjectDetails constructionDetails;

@@ -1,12 +1,18 @@
 import React from "react";
 
+
 const SettingsMenu = ({ onMenuClick }) => {
     return (
         <div className="settings-menu visible">
             <ul>
                 <li>
-                    <a href="#users" onClick={() => onMenuClick("users")}>
-                        List of Users
+                    <a href="#admins" onClick={() => onMenuClick("admins")}>
+                        List of Admins
+                    </a>
+                </li>
+                <li>
+                    <a href="#customers" onClick={() => onMenuClick("customers")}>
+                        List of Customers
                     </a>
                 </li>
                 <li>
@@ -22,6 +28,7 @@ const SettingsMenu = ({ onMenuClick }) => {
                 <li>
                     <a href="#signout" onClick={() => onMenuClick("signout")}>
                         Sign Out
+                        
                     </a>
                 </li>
             </ul>

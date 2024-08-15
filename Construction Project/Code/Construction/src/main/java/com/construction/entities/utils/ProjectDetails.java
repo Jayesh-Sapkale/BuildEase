@@ -1,9 +1,5 @@
 package com.construction.entities.utils;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
-import com.construction.entities.Project;
 import com.construction.enums.ConstructionType;
 
 import jakarta.persistence.Entity;
@@ -12,8 +8,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,23 +21,15 @@ public class ProjectDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer constructionDetailId; // constructionDetailId
-
-	@OneToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JoinColumn(name = "projectId")
-	private Project project;
-	
+	private Integer constructionDetailId;
 
 	@NotNull
 	private double areaInSqFt;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private ConstructionType constructionType; // Enum values: [WAREHOUSE, HOUSE, APARTMENT, MALL]
-
+	private ConstructionType constructionType;
 
 	@NotNull
 	private String constructionDescription;
-
 }

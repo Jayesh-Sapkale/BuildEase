@@ -15,6 +15,7 @@ import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.CustomerRepository;
 import com.construction.repositories.ProjectRepository;
 import com.construction.service.ProjectService;
+import com.construction.updateDtos.UpdateProjectDto;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -44,7 +45,7 @@ public class ProjectServiceImplementation implements ProjectService {
 		Project project = modelMapper.map(projectDto, Project.class);
 		project.setBuilder(builder);
 		project.setCustomer(customer);
-		Project savedProject = projectRepository.save(project);
+		projectRepository.save(project);
 		String city = project.getAddress().getCity();
 		ConstructionType constructionType = builder.getConstructionType();
 		project.setTotalPrice(builder.getRatePerMonth() * constructionType.getValue());
@@ -95,6 +96,29 @@ public class ProjectServiceImplementation implements ProjectService {
 		modelMapper.map(projectDto, project);
 		ProjectDetails constructionDetails = project.getConstructionDetails();
 		Builder builder = project.getBuilder();
+		project.setTotalPrice(builder.getRatePerMonth() * constructionDetails.getAreaInSqFt());
+		Project updatedProject = projectRepository.save(project);
+		System.out.println(constructionDetails);
+		ProjectDto savedProjectDto = modelMapper.map(updatedProject, ProjectDto.class);
+		savedProjectDto.setBuilderName(updatedProject.getBuilder().getBasicDetails().getFirstName() + " "
+				+ customer.getBasicDetails().getLastName());
+
+		savedProjectDto.setCustomerName(updatedProject.getCustomer().getBasicDetails().getFirstName() + " "
+				+ updatedProject.getCustomer().getBasicDetails().getLastName());
+
+		savedProjectDto.setConstructionType(constructionDetails.getConstructionType().toString());
+		savedProjectDto.setCity(updatedProject.getAddress().getCity());
+		return savedProjectDto;
+	}
+
+	@Override
+	public ProjectDto updateProjectById(UpdateProjectDto updateProjectDto, Integer id) {
+		Project project = projectRepository.findByBuilderId(id)
+				.orElseThrow(() -> new EntityNotFoundException("Project not found with ID: " + id));
+		modelMapper.map(updateProjectDto, project);
+		ProjectDetails constructionDetails = project.getConstructionDetails();
+		Builder builder = project.getBuilder();
+		Customer customer = project.getCustomer();
 		project.setTotalPrice(builder.getRatePerMonth() * constructionDetails.getAreaInSqFt());
 		Project updatedProject = projectRepository.save(project);
 		System.out.println(constructionDetails);

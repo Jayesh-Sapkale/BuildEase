@@ -25,7 +25,7 @@ import UserPortfolio from "./pages/UserPortfolio/UserPortfolio";
 
 const App = () => {
 
- 
+
 
   return (
     <Router>

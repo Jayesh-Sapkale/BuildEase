@@ -1,15 +1,16 @@
 import React from "react";
 
+
 const SignOut = () => {
     return (
-        <div className="table-container">
+        < div className="table-container" >
             <section>
                 <h2>Sign Out</h2>
-                <p>
-                    You have been signed out. Please <a href="/login">log in again</a>.
-                </p>
+
+                You have been successfuly signed out please <a href="/signIn">log in again</a>.
+
             </section>
-        </div>
+        </div >
     );
 };
 

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.construction.dtos.CustomerDto;
 import com.construction.service.CustomerService;
+import com.construction.updateDtos.UpdateCustomerDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -19,20 +20,20 @@ import io.swagger.v3.oas.annotations.Operation;
 @RequestMapping("/customer")
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+	@Autowired
+	private CustomerService customerService;
 
-    @PostMapping(value = "/signUp")
-    @Operation(summary = "Add new customer", operationId = "addNewCustomer")
-    public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
-    }
+	@PostMapping(value = "/signUp")
+	@Operation(summary = "Add new customer", operationId = "addNewCustomer")
+	public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
+	}
 
-    @PutMapping(value = "/updateCustomerById/{id}")
-    @Operation(summary = "Update customer by id", operationId = "updateCustomerById")
-    public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody CustomerDto customerDto) {
-        customerDto.setId(id); // Set the ID to ensure we are updating the correct customer
-        CustomerDto updatedCustomer = customerService.updateCustomer(customerDto);
-        return ResponseEntity.ok(updatedCustomer);
-    }
+	@PutMapping(value = "/updateCustomerById/{id}")
+	@Operation(summary = "Update customer by id", operationId = "updateCustomerById")
+	public ResponseEntity<?> updateCustomer(@PathVariable Integer id, @RequestBody UpdateCustomerDto updateCustomerDto) {
+		updateCustomerDto.setId(id); // Set the ID to ensure we are updating the correct customer
+		CustomerDto updatedCustomer = customerService.updateCustomer(updateCustomerDto);
+		return ResponseEntity.ok(updatedCustomer);
+	}
 }

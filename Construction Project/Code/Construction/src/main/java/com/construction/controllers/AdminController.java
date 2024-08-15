@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.construction.dtos.AdminDto;
 import com.construction.service.AdminService;
+import com.construction.updateDtos.UpdateAdminDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -44,7 +45,7 @@ public class AdminController {
 
     @PutMapping(value="/updateAdminById/{id}")
     @Operation(summary = "Update admin by id", operationId = "updateAdminById")
-    public ResponseEntity<?> updateAdmin(@PathVariable Integer id, @RequestBody AdminDto adminDto) {
+    public ResponseEntity<?> updateAdmin(@PathVariable Integer id, @RequestBody UpdateAdminDto adminDto) {
         adminDto.setId(id); // Set the ID to ensure we are updating the correct admin
         AdminDto updatedAdmin = adminService.updateAdmin(adminDto);
         return ResponseEntity.ok(updatedAdmin);

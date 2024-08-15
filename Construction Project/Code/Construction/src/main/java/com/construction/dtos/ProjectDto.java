@@ -3,6 +3,7 @@ package com.construction.dtos;
 import java.time.LocalDate;
 
 import com.construction.enums.ProjectStatus;
+import com.construction.enums.RequestStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -45,6 +46,9 @@ public class ProjectDto {
 
 	@NotNull
 	private LocalDate endDate;
+	
+	@JsonProperty(access = Access.READ_ONLY)
+	private RequestStatus requestStatus;
 
 	@NotNull
 	@Enumerated(EnumType.STRING)

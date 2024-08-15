@@ -1,11 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 import "./builderPortfolio.css";
 
 const BuilderPortfolio = () => {
   const history = useHistory();
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState("Current Work"); // Default tab
+
+  const [currentWork, setCurrentWork] = useState([]);
+  const [previousWork, setPreviousWork] = useState([]);
+
+  const url = "http://localhost:8081";
+
+  const fetchCurrentWork = async () => {
+    try {
+      const response = await axios.get(`${url}/builder/getCurrentProjects`);
+      console.log("Current Work Data:", response.data); // Debugging log
+      setCurrentWork(response.data);
+    } catch (error) {
+      console.error("Error fetching current work data:", error.response ? error.response.data : error.message);
+    }
+  };
+
+  const fetchPreviousWork = async () => {
+    try {
+      const response = await axios.get(`${url}/builder/getPreviousProjects`);
+      console.log("Previous Work Data:", response.data); // Debugging log
+      setPreviousWork(response.data);
+    } catch (error) {
+      console.error("Error fetching previous work data:", error.response ? error.response.data : error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchCurrentWork();
+    fetchPreviousWork();
+  }, []);
+
+  const handleStatusChange = async (id, accepted) => {
+    try {
+      await axios.put(`${url}/builder/updateProjectRequestStatusByBuilderId/${id}/${accepted}`);
+
+      // Update state locally for current work
+      const updatedCurrentWork = currentWork.map((work) =>
+        work.projectId === id
+          ? { ...work, projectStatus: accepted ? "true" : "false" }
+          : work
+      );
+      setCurrentWork(updatedCurrentWork);
+
+      // Optionally, refetch the data or update previous work state similarly
+      // await fetchCurrentWork(); // Uncomment if you want to refetch data
+      // await fetchPreviousWork(); // Uncomment if you want to refetch data
+
+      // Show success toast
+      toast.success(`Project ${accepted ? "accepted" : "declined"} successfully!`);
+    } catch (error) {
+      console.error("Error updating work status:", error.response ? error.response.data : error.message);
+      toast.error("Error updating project status. Please try again.");
+    }
+  };
 
   const toggleMenu = () => {
     setMenuOpen((prevState) => !prevState);
@@ -57,41 +114,30 @@ const BuilderPortfolio = () => {
                 <table className="builder-portfolio-table">
                   <thead>
                     <tr>
-                      <th>PID</th>
-                      <th>Current Work Name</th>
-                      <th>Status</th>
-                      <th>Location</th>
-                      <th>Date of Project</th>
-                      <th>Actions</th>
+                      <th>Project Details Id</th>
+                      <th>Builder Name</th>
+                      <th>Customer Name</th>
+                      <th>Construction Type</th>
+                      <th>City</th>
+                      <th>Project Name</th>
+                      <th>Project Status</th>
+                      <th>Request Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <a href="project1.html">001</a>
-                      </td>
-                      <td>Project Alpha</td>
-                      <td>In Progress</td>
-                      <td>Location A</td>
-                      <td className="date-column">01 Aug 2024</td>
-                      <td className="action-buttons">
-                        <button className="accept">Accept</button>
-                        <button className="decline">Decline</button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a href="project2.html">002</a>
-                      </td>
-                      <td>Project Beta</td>
-                      <td>Completed</td>
-                      <td>Location B</td>
-                      <td className="date-column">05 Aug 2024</td>
-                      <td className="action-buttons">
-                        <button className="accept">Accept</button>
-                        <button className="decline">Decline</button>
-                      </td>
-                    </tr>
+                    {currentWork.map((work) => (
+                      <tr key={work.projectId}>
+                        <td>{work.projectId}</td>
+                        <td>{work.builderName}</td>
+                        <td>{work.customerName}</td>
+                        <td>{work.constructionType}</td>
+                        <td>{work.city}</td>
+                        <td>{work.projectName}</td>
+                        <td>{work.projectStatus}</td>
+                        <td>{work.requestStatus}</td>
+
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -105,50 +151,56 @@ const BuilderPortfolio = () => {
                 <table className="builder-portfolio-table">
                   <thead>
                     <tr>
-                      <th>PID</th>
-                      <th>Previous Work Name</th>
-                      <th>Status</th>
-                      <th>Location</th>
-                      <th>Date of Project</th>
+                      <th>Project Details Id</th>
+                      <th>Builder Name</th>
+                      <th>Customer Name</th>
+                      <th>Construction Type</th>
+                      <th>City</th>
+                      <th>Project Name</th>
+                      <th>Project Status</th>
+                      <th>Request Status</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <a href="previous1.html">A01</a>
-                      </td>
-                      <td>Old Project X</td>
-                      <td>Completed</td>
-                      <td>Location X</td>
-                      <td className="date-column">15 Jun 2023</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <a href="previous2.html">A02</a>
-                      </td>
-                      <td>Old Project Y</td>
-                      <td>Completed</td>
-                      <td>Location Y</td>
-                      <td className="date-column">20 Jun 2023</td>
-                    </tr>
+                    {previousWork.map((work) => (
+                      <tr key={work.projectId}>
+                        <td>{work.projectId}</td>
+                        <td>{work.builderName}</td>
+                        <td>{work.customerName}</td>
+                        <td>{work.constructionType}</td>
+                        <td>{work.city}</td>
+                        <td>{work.projectName}</td>
+                        <td>{work.projectStatus}</td>
+                        <td>{work.requestStatus}</td>
+                        <td className="action-buttons">
+                          {work.projectStatus !== "Accepted" && work.projectStatus !== "Declined" && (
+                            <>
+                              <button
+                                className="accept"
+                                onClick={() => handleStatusChange(work.projectId, true)}
+                              >
+                                Accept
+                              </button>
+                              <button
+                                className="decline"
+                                onClick={() => handleStatusChange(work.projectId, false)}
+                              >
+                                Decline
+                              </button>
+                            </>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
             </section>
           )}
-
-          {/* <section className="builder-portfolio-reminder-section">
-            <h2>Deadline Reminders</h2>
-            <ul className="builder-portfolio-reminder-list">
-              <li className="reminder-item">
-                Project Alpha - Deadline: 15th August
-              </li>
-              <li className="reminder-item">
-                Project Beta - Deadline: 20th August
-              </li>
-            </ul>
-          </section> */}
         </main>
+
+        <ToastContainer /> {/* Add this line to display Toastify notifications */}
       </div>
     </div>
   );
