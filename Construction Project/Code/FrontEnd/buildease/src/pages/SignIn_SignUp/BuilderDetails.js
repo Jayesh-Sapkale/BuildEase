@@ -1,4 +1,3 @@
-// BuilderDetails.js
 import React from "react";
 
 const BuilderDetails = ({ builderDetails, onChange, onBlur, errors }) => (
@@ -36,10 +35,20 @@ const BuilderDetails = ({ builderDetails, onChange, onBlur, errors }) => (
             value={builderDetails.constructionType}
             onChange={onChange}
         >
+            <option value="Construction type">--Select--</option>
             <option value="WAREHOUSE">Warehouse</option>
             <option value="HOUSE">House</option>
             <option value="APARTMENT">Apartment</option>
             <option value="MALL">Mall</option>
+        </select>
+        <select
+            name="availability"
+            value={builderDetails.availability}
+            onChange={onChange}
+        >
+            <option value="Availability">--Select--</option>
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
         </select>
     </fieldset>
 );
