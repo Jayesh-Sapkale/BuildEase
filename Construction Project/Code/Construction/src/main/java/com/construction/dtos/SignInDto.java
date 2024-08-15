@@ -15,7 +15,6 @@ public class SignInDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer signInId;
 
-	
 	@NotNull
 	private String userName;
 	@NotNull	

@@ -2,6 +2,7 @@ package com.construction.entities;
 
 import com.construction.enums.Availability;
 import com.construction.enums.ConstructionType;
+import com.construction.enums.RequestStatus;
 import com.construction.enums.Role;
 import com.construction.enums.Status;
 
@@ -24,6 +25,9 @@ public class Builder extends User {
 
 	@NotNull
 	private double ratePerMonth;
+	
+	@Enumerated(EnumType.STRING)
+	private RequestStatus requestStatus;
 
 	@Enumerated(EnumType.STRING)
 	private ConstructionType constructionType; // Enum values: [WAREHOUSE, HOUSE, APARTMENT, MALL]
@@ -43,6 +47,7 @@ public class Builder extends User {
 		super();
 		this.setRole(Role.BUILDER);
 		this.setStatus(Status.ACTIVE);
+		this.setRequestStatus(RequestStatus.PENDING);
 	}
 
 }

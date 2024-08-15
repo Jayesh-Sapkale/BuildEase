@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.construction.dtos.BuilderDto;
 import com.construction.service.BuilderService;
+import com.construction.updateDtos.UpdateBuilderDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 
@@ -22,7 +23,7 @@ public class BuilderController {
     @Autowired
     private BuilderService builderService;
 
-    @PostMapping(value="/addNewBuilder")
+    @PostMapping(value="/signUp")
     @Operation(summary = "Add new builder", operationId = "addNewBuilder")
     public ResponseEntity<?> addNewBuilder(@RequestBody BuilderDto builderDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(builderService.addNewBuilder(builderDto));
@@ -30,9 +31,9 @@ public class BuilderController {
 
     @PutMapping(value="/updateBuilderById/{id}")
     @Operation(summary = "Update builder by id", operationId = "updateBuilderById")
-    public ResponseEntity<?> updateBuilder(@PathVariable Integer id, @RequestBody BuilderDto builderDto) {
-        builderDto.setId(id); // Set the ID to ensure we are updating the correct builder
-        BuilderDto updatedBuilder = builderService.updateBuilder(builderDto);
+    public ResponseEntity<?> updateBuilder(@PathVariable Integer id, @RequestBody UpdateBuilderDto updateBuilderDto) {
+    	updateBuilderDto.setId(id); // Set the ID to ensure we are updating the correct builder
+        BuilderDto updatedBuilder = builderService.updateBuilder(updateBuilderDto);
         return ResponseEntity.ok(updatedBuilder);
     }
 }

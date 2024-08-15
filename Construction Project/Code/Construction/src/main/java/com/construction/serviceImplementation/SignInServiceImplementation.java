@@ -38,6 +38,8 @@ public class SignInServiceImplementation implements SignInService {
 
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	
 
 	@Override
 	public BuilderDto builderSignIn(SignInDto signInDto) throws SignInException {
@@ -95,6 +97,8 @@ public class SignInServiceImplementation implements SignInService {
 
 	@Override
 	public AdminDto adminSignIn(SignInDto signInDto) throws SignInException {
+		
+		System.out.println(signInDto.getUserName());
 
 		String userName = adminRepository.validateUsername(signInDto.getUserName())
 				.orElseThrow(() -> new SignInException("Invalid user name!"));

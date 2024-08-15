@@ -24,7 +24,7 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping
+    @PostMapping("/signUp")
     @Operation(summary = "Add new admin", operationId = "addNewAdmin")
     public ResponseEntity<?> addNewAdmin(@RequestBody AdminDto adminDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(adminService.addNewAdmin(adminDto));

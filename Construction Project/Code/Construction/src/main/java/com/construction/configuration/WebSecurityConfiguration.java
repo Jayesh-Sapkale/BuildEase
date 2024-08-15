@@ -1,7 +1,5 @@
 package com.construction.configuration;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,13 +16,8 @@ public class WebSecurityConfiguration {
 
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(csrf -> csrf.disable())
-				.authorizeHttpRequests(auth -> auth.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() 
-
-						.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
-				.formLogin(form -> form.loginPage("/login").permitAll())
-				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout"))
-				.httpBasic(withDefaults());
+		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/swagger-ui/**").permitAll()
+				.anyRequest().permitAll());
 		return http.build();
 	}
 
@@ -40,5 +33,4 @@ public class WebSecurityConfiguration {
 	PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
 }

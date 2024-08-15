@@ -25,7 +25,7 @@ public class CustomerServiceImplementation implements CustomerService {
 	@Override
 	public CustomerDto addNewCustomer(CustomerDto customerDto) {
 		
-		
+		System.out.println(customerDto);
 		Customer customer = modelMapper.map(customerDto, Customer.class);
 		Customer savedCustomer = customerRepository.save(customer); // This persists the entity and returns the managed
 									

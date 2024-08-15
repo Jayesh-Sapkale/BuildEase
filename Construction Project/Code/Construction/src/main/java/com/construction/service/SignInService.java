@@ -14,5 +14,6 @@ public interface SignInService {
 	
 	public AdminDto adminSignIn(SignInDto singInDto) throws SignInException;
 	
+	
 
 }

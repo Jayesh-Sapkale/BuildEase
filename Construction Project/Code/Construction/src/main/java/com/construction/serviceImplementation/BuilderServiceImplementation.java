@@ -9,6 +9,7 @@ import com.construction.dtos.BuilderDto;
 import com.construction.entities.Builder;
 import com.construction.repositories.BuilderRepository;
 import com.construction.service.BuilderService;
+import com.construction.updateDtos.UpdateBuilderDto;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -37,16 +38,14 @@ public class BuilderServiceImplementation implements BuilderService {
 	}
 
 	@Override
-	public BuilderDto updateBuilder(BuilderDto builderDto) {
-		Builder builder = builderRepository.findById(builderDto.getId())
-				.orElseThrow(() -> new EntityNotFoundException("Builder not found with ID: " + builderDto.getId()));
-		modelMapper.map(builderDto, builder);
+	public BuilderDto updateBuilder(UpdateBuilderDto updateBuilderDto) {
+		
+		Integer id = updateBuilderDto.getId();
+		Builder builder = builderRepository.findById(id)
+				.orElseThrow(() -> new EntityNotFoundException("Builder not found with ID: " + id));
+		modelMapper.map(updateBuilderDto, builder);
 		Builder updatedBuilder = builderRepository.save(builder);
 		BuilderDto savedBuilderDto = modelMapper.map(updatedBuilder, BuilderDto.class);
-		savedBuilderDto.setCity(builderDto.getAddress().getCity());
-		savedBuilderDto.setName(
-				builderDto.getBasicDetails().getFirstName() + " " + builderDto.getBasicDetails().getLastName());
-		savedBuilderDto.setContactNumber(builderDto.getContactDetails().getContactNumber());// entity
 		return savedBuilderDto;
 	}
 

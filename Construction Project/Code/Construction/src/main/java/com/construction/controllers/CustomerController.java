@@ -22,7 +22,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @PostMapping(value = "/addNewCustomer")
+    @PostMapping(value = "/signUp")
     @Operation(summary = "Add new customer", operationId = "addNewCustomer")
     public ResponseEntity<?> addNewCustomer(@RequestBody CustomerDto customerDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(customerService.addNewCustomer(customerDto));
