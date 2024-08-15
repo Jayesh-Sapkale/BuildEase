@@ -1,0 +1,129 @@
+/* Root level custom properties for colors */
+:root {
+  --primary-bg: #004d40;
+  --primary-color: #ffffff;
+  --dropdown-bg: #ffffff;
+  --dropdown-hover-bg: #f0f8ff;
+  --dropdown-text: #004d40;
+  --header-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --border-color: #ddd;
+}
+
+/* Header container */
+.header {
+  background-color: var(--primary-bg); /* Dark green background */
+  color: var(--primary-color); /* White text */
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--header-shadow);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 70px;
+}
+
+/* Header title */
+.header-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Hamburger button styles */
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 24px;
+  cursor: pointer;
+  width: 60px;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Icon styles */
+.icon-hamburger,
+.icon-settings {
+  font-size: 24px;
+}
+
+/* Header buttons container */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Settings button */
+.settings-btn {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  width: 50px;
+}
+
+.settings-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position it directly below the header-buttons */
+  right: 0;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--header-shadow);
+  width: 180px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show dropdown menu when active */
+.dropdown-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dropdown menu link styles */
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--dropdown-text);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--dropdown-hover-bg);
+}
+
+/* Media queries for responsive design */
+@media(max-width: 768px) {
+  .header {
+      padding: 10px 20px;
+  }
+
+  .header-title {
+      font-size: 20px;
+  }
+
+  .dropdown-menu {
+      width: 160px;
+  }
+}

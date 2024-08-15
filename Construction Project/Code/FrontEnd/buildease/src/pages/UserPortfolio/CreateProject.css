@@ -1,0 +1,68 @@
+.create-project-form {
+  width: 100%; /* Set a max-width for the form */
+  /* margin: 0 auto; Center the form horizontally */
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.create-project-form h2 {
+  margin-bottom: 20px; /* Space below the heading */
+  font-size: 24px; /* Font size for the heading */
+  color: #333; /* Dark text color */
+}
+
+.create-project-form .form-group {
+  margin-bottom: 20px; /* Space between form groups */
+}
+
+.create-project-form .form-group label {
+  display: block; /* Labels on their own line */
+  margin-bottom: 5px; /* Space below the label */
+  font-weight: bold; /* Bold labels */
+}
+
+.create-project-form .form-group select,
+.create-project-form .form-group input {
+  width: 100%; /* Full width of the form group */
+  padding: 10px; /* Space inside the input/select */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.create-project-form .form-group input[type="date"] {
+  padding: 10px; /* Space inside date input */
+}
+
+.create-project-form .form-group .form-check {
+  margin-bottom: 10px; /* Space between radio buttons */
+}
+
+.create-project-form .form-group .form-check-input {
+  margin-right: 10px; /* Space between radio button and label */
+}
+
+.create-project-form .form-group button {
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size for the button */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.create-project-form .form-group button:hover {
+  background-color: #0056b3; /* Darker button background on hover */
+  /* transform: scale(1.05); Slightly larger button on hover */
+}
+.card {
+  margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

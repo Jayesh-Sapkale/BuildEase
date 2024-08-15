@@ -1,0 +1,190 @@
+.admin-portfolio {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5; 
+    min-height: 80vh;
+  }
+  
+  .admin-portfolio header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #004C99;   
+    color: white;
+    /* border-bottom: 3px solid #555555; */
+    position: relative;
+  }
+  
+  .admin-portfolio #back-button, 
+  .admin-portfolio #settings {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 0 5px;
+    background: linear-gradient(145deg, #0066CC, #004C99);
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    transition: background 0.3s, transform 0.3s;
+    font-weight: 900;
+}
+.admin-portfolio #back-button{
+    width: 60px;
+}
+.admin-portfolio #settings {
+      width: 60px;
+  }
+  
+  .admin-portfolio #back-button:hover, 
+  .admin-portfolio #settings:hover {
+    background: linear-gradient(145deg, #0057D9, #003C8F);
+    /* transform: scale(1.05); */
+  }
+  
+  .admin-portfolio h1 {
+    margin: 0;
+    font-size: 28px;
+    text-align: center;
+    flex-grow: 1;
+    color: #ffffff;
+  }
+  
+  .admin-portfolio #settings {
+    font-size: 24px;
+  }
+  
+  .admin-portfolio .settings-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 90px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    z-index: 1000;
+    width: 200px;
+  }
+  
+  .admin-portfolio .settings-menu.visible {
+    display: block;
+  }
+  
+  .admin-portfolio .settings-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .admin-portfolio .settings-menu li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+  
+  .admin-portfolio .settings-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .admin-portfolio .settings-menu li a {
+    color: #003366;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .admin-portfolio .settings-menu li a:hover {
+    background-color: #F5F5F5;
+  }
+  
+  .admin-portfolio .button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    background: linear-gradient(145deg, #0066CC, #004C99);
+    color: white;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    transition: background 0.3s, transform 0.3s;
+    width: 150px;
+  }
+  
+  .admin-portfolio .button:hover {
+    background: linear-gradient(145deg, #0057D9, #003C8F);
+    transform: scale(1.05);
+  }
+  
+  .admin-portfolio .button:active {
+    transform: scale(0.98);
+  }
+  
+  .admin-portfolio .table-container {
+    /* width: 100%; */
+    margin: 30px;
+    /* max-width: 900px; */
+    margin-bottom: 40px;
+  }
+  
+  .admin-portfolio .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .admin-portfolio table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    color: #333333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  
+  .admin-portfolio th, 
+  .admin-portfolio td {
+    border: 1px solid #CCCCCC;
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .admin-portfolio th {
+    background-color: #003366;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  
+  .admin-portfolio td {
+    background-color: #FFFFFF;
+  }
+  
+  .admin-portfolio tbody tr:nth-child(even) td {
+    background-color: #F5F5F5;
+  }
+  
+  .admin-portfolio tbody tr:hover td {
+    /* background-color: #D3D3D3; */
+    color: #003366;
+  }
+  
+  .admin-portfolio th, 
+  .admin-portfolio td {
+    min-width: 120px;
+  }
+  
+  .admin-portfolio .action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .admin-portfolio .footer-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .admin-portfolio .footer-buttons .button {
+    margin: 0 10px;
+  }
+
+  

@@ -1,0 +1,217 @@
+/* Root level custom properties for colors, radius, and shadow */
+:root {
+    --primary-blue: #081F5C;
+    --primary-blue-hover: #0056b3;
+    --yellow: #003C8F;
+    --yellow-hover: #e0a800;
+    --white: #fffef5;
+    --black: #343a40;
+    --gray: #6c757d;
+    --dark-gray: #495057;
+    --light-gray: #f8f9fa;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-radius: 5px;
+    --box-shadow: 0px 4px 12px var(--shadow-color);
+}
+
+.builder-portfolio {
+    background-color: var(--light-gray);
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+}
+
+.builder-portfolio-container {
+    width: 100%;
+}
+
+.builder-portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--yellow);
+    width: 100%;
+    padding: 1rem;   
+    position: relative; /* Ensure relative positioning for dropdown */
+}
+
+.builder-portfolio-back-button-container,
+.builder-portfolio-hamburger-menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.builder-portfolio-title-container {
+    width: 70%;  
+    text-align: center;
+}
+
+.builder-portfolio-title-container h1 {
+    font-size: 28px;
+    color: #fff;
+    margin: 0;
+}
+
+.builder-portfolio #back-button,
+.builder-portfolio #hamburger-menu {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: 900;
+}
+
+.builder-portfolio #back-button:hover,
+.builder-portfolio #hamburger-menu:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+.builder-portfolio .BuilderDropdown-menu {
+    position: absolute;
+    right: 70px;
+    top: 164px; /* Adjusted to be below the header */
+    border: 1px solid #CCCCCC;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 1000;
+    padding: 10px;
+    width: 200px;
+}
+
+.builder-portfolio .BuilderDropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.builder-portfolio .BuilderDropdown-menu ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+    color: var(--black);
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.builder-portfolio .BuilderDropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.builder-portfolio .BuilderDropdown-menu ul li:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.builder-portfolio-main {
+    padding: 30px;
+}
+
+.builder-portfolio-section {
+    margin-bottom: 30px;
+}
+
+.builder-portfolio-table-container {
+    overflow-x: auto;
+}
+
+.builder-portfolio-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+.builder-portfolio th,
+.builder-portfolio td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.builder-portfolio th {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.builder-portfolio td a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.builder-portfolio td a:hover {
+    text-decoration: underline;
+}
+
+.builder-portfolio .action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.builder-portfolio .action-buttons button {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 40px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.builder-portfolio .action-buttons .accept {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.builder-portfolio .action-buttons .accept:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+.builder-portfolio .action-buttons .decline {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+.builder-portfolio .action-buttons .decline:hover {
+    background-color: var(--yellow-hover);
+}
+
+.builder-portfolio .date-column {
+    font-style: italic;
+    color: var(--dark-gray);
+}
+
+.builder-portfolio-reminder-section {
+    width: 100%;
+    max-width: 900px;
+}
+
+.builder-portfolio-reminder-item {
+    background-color: var(--yellow);
+    color: var(--black);
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: var(--box-shadow);
+}
+
+@media(max-width: 767px) {
+    .builder-portfolio-header {
+        padding: 10px;
+    }
+
+    .builder-portfolio-main {
+        padding: 10px;
+    }
+
+    .builder-portfolio-title-container h1 {
+        font-size: 24px;
+    }
+
+    .builder-portfolio-table th,
+    .builder-portfolio-table td {
+        padding: 10px;
+    }
+}
