@@ -23,7 +23,7 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	@PostMapping(value = "/addNewProject/{ust}/{builderId}")
+	@PostMapping(value = "/addNewProject/{customerId}/{builderId}")
 	@Operation(summary = "Add new project", operationId = "addNewProject")
 	public ResponseEntity<?> addNewProject(@RequestBody ProjectDto projectDto, @PathVariable Integer customerId,
 			@PathVariable Integer builderId) {

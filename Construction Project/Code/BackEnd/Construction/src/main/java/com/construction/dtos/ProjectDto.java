@@ -2,13 +2,10 @@ package com.construction.dtos;
 
 import java.time.LocalDate;
 
-import com.construction.enums.ProjectStatus;
 import com.construction.enums.RequestStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +19,6 @@ public class ProjectDto {
 	@JsonProperty(access = Access.READ_ONLY)
 	private Integer projectId;
 
-	
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private ProjectDetailsDto constructionDetails;
 
@@ -34,7 +30,7 @@ public class ProjectDto {
 	private String constructionType;
 	@JsonProperty(access = Access.READ_ONLY)
 	private String city;
-	
+
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private AddressDto address;
 
@@ -46,13 +42,9 @@ public class ProjectDto {
 
 	@NotNull
 	private LocalDate endDate;
-	
+
 	@JsonProperty(access = Access.READ_ONLY)
 	private RequestStatus requestStatus;
-
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private ProjectStatus projectStatus; // Enum values: [COMPLETE, PENDING, IN_PROGRESS]
 
 	@NotNull
 	private String projectDescription;
@@ -60,7 +52,5 @@ public class ProjectDto {
 	@NotNull
 	@JsonProperty(access = Access.READ_ONLY)
 	private double totalPrice; // Auto-generate as per (rate * area per square feet)
-	
-	
 
 }

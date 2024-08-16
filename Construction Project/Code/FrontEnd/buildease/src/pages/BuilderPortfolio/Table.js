@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Table = ({ data = [], onStatusChange, tab }) => {
+    const isPendingRequests = tab === "Pending Requests";
+
     return (
         <section className="builder-portfolio-section">
             <h2>{tab}</h2>
@@ -14,9 +16,9 @@ const Table = ({ data = [], onStatusChange, tab }) => {
                             <th>Construction Type</th>
                             <th>City</th>
                             <th>Project Name</th>
-                            <th>Project Status</th>
+                           
                             <th>Request Status</th>
-                            {tab === "Previous Work" && <th>Actions</th>}
+                            {isPendingRequests && <th>Actions</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -28,9 +30,9 @@ const Table = ({ data = [], onStatusChange, tab }) => {
                                 <td>{work.constructionType}</td>
                                 <td>{work.city}</td>
                                 <td>{work.projectName}</td>
-                                <td>{work.projectStatus}</td>
+                               
                                 <td>{work.requestStatus}</td>
-                                {tab === "Previous Work" && (
+                                {isPendingRequests && (
                                     <td className="action-buttons">
                                         {work.projectStatus !== "Accepted" && work.projectStatus !== "Declined" && (
                                             <>

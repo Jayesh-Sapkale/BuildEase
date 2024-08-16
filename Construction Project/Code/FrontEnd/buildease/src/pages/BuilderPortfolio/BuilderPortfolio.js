@@ -11,49 +11,52 @@ import "./builderPortfolio.css";
 const BuilderPortfolio = () => {
   const history = useHistory();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("Current Work"); // Default tab
+  const [selectedTab, setSelectedTab] = useState("My Work"); // Default tab
 
-  const [currentWork, setCurrentWork] = useState([]);
-  const [previousWork, setPreviousWork] = useState([]);
+  // Initialize with default values
+  const [pendingRequests, setPendingRequests] = useState([]);
+  const [myWork, setMyWork] = useState([]);
+  const [loading, setLoading] = useState(true); // Loading state
 
   const url = "http://localhost:8081";
 
-  const fetchCurrentWork = async () => {
+  const fetchPendingRequests = async () => {
     try {
-      const response = await axios.get(`${url}/builder/getCurrentProjects`);
-      setCurrentWork(response.data);
+      const response = await axios.get(`${url}/builder/getPendingProjects`);
+      setPendingRequests(response.data);
     } catch (error) {
-      console.error("Error fetching current work data:", error.response ? error.response.data : error.message);
+      console.error("Error fetching pending requests data:", error.response ? error.response.data : error.message);
+      toast.error("Error fetching pending requests data.");
     }
   };
 
-  const fetchPreviousWork = async () => {
+  const fetchMyWork = async () => {
     try {
-      const response = await axios.get(`${url}/builder/getPreviousProjects`);
-      setPreviousWork(response.data);
+      const response = await axios.get(`${url}/builder/getCurrentProjects`);
+      setMyWork(response.data);
     } catch (error) {
-      console.error("Error fetching previous work data:", error.response ? error.response.data : error.message);
+      console.error("Error fetching my work data:", error.response ? error.response.data : error.message);
+      toast.error("Error fetching my work data.");
     }
   };
 
   useEffect(() => {
-    fetchCurrentWork();
-    fetchPreviousWork();
+    setLoading(true);
+    fetchPendingRequests();
+    fetchMyWork();
+    setLoading(false);
   }, []);
 
   const handleStatusChange = async (id, accepted) => {
     try {
       await axios.put(`${url}/builder/updateProjectRequestStatusByBuilderId/${id}/${accepted}`);
 
-      // Refetch data after the status update
-      if (selectedTab === "Current Work") {
-        await fetchCurrentWork();
-      } else if (selectedTab === "Previous Work") {
-        await fetchPreviousWork();
-      }
+      // Refetch both data sets after the status update
+      await Promise.all([fetchPendingRequests(), fetchMyWork()]);
 
       // Show success toast
-      toast.success(`Project ${accepted ? "accepted" : "declined"} successfully!`);
+      toast.success(`Project ${accepted ? "accepted" : "rejected"} successfully!`);
+
     } catch (error) {
       console.error("Error updating work status:", error.response ? error.response.data : error.message);
       toast.error("Error updating project status. Please try again.");
@@ -80,7 +83,7 @@ const BuilderPortfolio = () => {
 
         <main className="builder-portfolio-main">
           <Table
-            data={selectedTab === "Current Work" ? currentWork : previousWork}
+            data={selectedTab === "My Work" ? myWork : pendingRequests}
             onStatusChange={handleStatusChange}
             tab={selectedTab}
           />

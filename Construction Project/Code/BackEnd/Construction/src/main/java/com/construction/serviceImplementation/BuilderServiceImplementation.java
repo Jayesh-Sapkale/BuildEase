@@ -13,7 +13,6 @@ import com.construction.dtos.ProjectDto;
 import com.construction.entities.Builder;
 import com.construction.entities.Customer;
 import com.construction.entities.Project;
-import com.construction.enums.ProjectStatus;
 import com.construction.enums.RequestStatus;
 import com.construction.repositories.BuilderRepository;
 import com.construction.repositories.ProjectRepository;
@@ -62,7 +61,7 @@ public class BuilderServiceImplementation implements BuilderService {
 	}
 
 	@Override
-	public List<ProjectDto> getPreviousProjects() {
+	public List<ProjectDto> getPendingProjects() {
 
 		// Retrieve all projects from the repository
 		List<Project> projects = projectRepository.findAll();
@@ -77,11 +76,9 @@ public class BuilderServiceImplementation implements BuilderService {
 					+ pr.getCustomer().getBasicDetails().getLastName());
 			projectDto.setCity(pr.getAddress().getCity());
 			projectDto.setConstructionType(pr.getConstructionDetails().getConstructionType().toString());
-			projectDto.setRequestStatus(pr.getBuilder().getRequestStatus());
 
 			return projectDto;
-		}).filter(p -> p.getProjectStatus().equals(ProjectStatus.COMPLETE)
-				|| p.getProjectStatus().equals(ProjectStatus.PENDING)) // Filter completed projects
+		}).filter(p -> p.getRequestStatus().equals(RequestStatus.PENDING)) // Filter completed projects
 				.collect(Collectors.toList()); // Collect the filtered list
 
 		return previousProjects;
@@ -104,12 +101,12 @@ public class BuilderServiceImplementation implements BuilderService {
 					+ pr.getCustomer().getBasicDetails().getLastName());
 			projectDto.setCity(pr.getAddress().getCity());
 			projectDto.setConstructionType(pr.getConstructionDetails().getConstructionType().toString());
-			projectDto.setRequestStatus(RequestStatus.ACCEPTED);
 
 			return projectDto;
-		}).filter(p -> p.getProjectStatus().equals(ProjectStatus.IN_PROGRESS)) // Filter completed projects
+		}).filter(p -> (p.getRequestStatus().equals(RequestStatus.ACCEPTED))) // Filter completed projects
 				.collect(Collectors.toList()); // Collect the filtered list
 
+		previousProjects.stream().forEach(p->System.out.println(p));
 		return previousProjects;
 	}
 
@@ -118,20 +115,16 @@ public class BuilderServiceImplementation implements BuilderService {
 		Builder builder = builderRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Builder not found with ID: " + id));
 		RequestStatus request;
-		ProjectStatus projectStatus;
 
 		Project project = projectRepository.findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Project not found with builder id " + id));
 
-		if (!status) {
+		if (!status)
 			request = RequestStatus.REJECTED;
-			projectStatus = ProjectStatus.PENDING;
-		} else {
+		else
 			request = RequestStatus.ACCEPTED;
-			projectStatus = ProjectStatus.IN_PROGRESS;
-		}
 
-		builder.setRequestStatus(request);
+		project.setRequestStatus(request);
 		Project updatedProject = projectRepository.save(project);
 
 		Customer customer = updatedProject.getCustomer();
@@ -144,8 +137,7 @@ public class BuilderServiceImplementation implements BuilderService {
 		savedProjectDto.setCustomerName(
 				customer.getBasicDetails().getFirstName() + " " + customer.getBasicDetails().getLastName());
 		savedProjectDto.setConstructionType(savedProjectDto.getConstructionDetails().getConstructionType().toString());
-		savedProjectDto.setProjectStatus(projectStatus);
-		System.out.println(savedProjectDto);
+		savedProjectDto.setRequestStatus(savedProjectDto.getRequestStatus());
 
 		return savedProjectDto;
 	}

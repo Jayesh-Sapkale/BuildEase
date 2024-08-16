@@ -12,7 +12,7 @@ public interface BuilderService {
 
 	public BuilderDto updateBuilder(UpdateBuilderDto updateBuilderDto);
 
-	public List<ProjectDto> getPreviousProjects();
+	public List<ProjectDto> getPendingProjects();
 
 	public List<ProjectDto> getCurrentProjects();
 

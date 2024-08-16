@@ -1,3 +1,6 @@
+USE CONSTRUCTION;
+
+
 -- Populate the ADDRESS Table
 INSERT INTO ADDRESS (adr_line1, adr_line2, city, country, state, zipcode)
 VALUES
@@ -47,10 +50,10 @@ VALUES
 ('admin456', 'ADMIN', 'ACTIVE', 'priyaadmin', '2024-01-01', '2024-02-01', 2, 2, 2);
 
 -- Populate the BUILDER Table
-INSERT INTO BUILDER (password, role, status, user_name, availability, construction_type, emergency_contact_number, rate_per_month, request_status, years_of_experience, address_id, basic_details_id, contact_details_id)
+INSERT INTO BUILDER (password, role, status, user_name, availability, construction_type, emergency_contact_number, rate_per_month, years_of_experience, address_id, basic_details_id, contact_details_id)
 VALUES
-('builder123', 'BUILDER', 'ACTIVE', 'amitbuilder', 'YES', 'HOUSE', '9876543210', 45000, 'ACCEPTED', 10, 3, 3, 3),
-('builder456', 'BUILDER', 'ACTIVE', 'sunibuilder', 'YES', 'APARTMENT', '9876543211', 55000, 'PENDING', 8, 4, 4, 4);
+('builder123', 'BUILDER', 'ACTIVE', 'amitbuilder', 'YES', 'HOUSE', '9876543210', 45000, 10, 3, 3, 3),
+('builder456', 'BUILDER', 'ACTIVE', 'sunibuilder', 'YES', 'APARTMENT', '9876543211', 55000,  8, 4, 4, 4);
 
 -- Populate the CUSTOMER Table
 INSERT INTO CUSTOMER (password, role, status, user_name, account_creation_date, address_id, basic_details_id, contact_details_id)
@@ -78,7 +81,7 @@ VALUES
 
 
 -- Populate the PROJECT Table
-INSERT INTO PROJECT (end_date, project_description, project_name, project_status, start_date, total_price, address_id, builder_id, construction_details_id, customer_id)
+INSERT INTO PROJECT (end_date, project_description, project_name, start_date, total_price, address_id, builder_id, construction_details_id, customer_id,request_status)
 VALUES
-('2025-01-01', 'Residential project in Bengaluru', 'Bengaluru Residency', 'IN_PROGRESS', '2024-05-01', 5000000, 1, 1, 1, 1),
-('2025-06-01', 'Luxury apartments in Mumbai', 'Mumbai Heights', 'PENDING', '2024-06-01', 10000000, 2, 2, 2, 2);
+('2025-01-01', 'Residential project in Bengaluru', 'Bengaluru Residency',  '2024-05-01', 5000000, 1, 1, 1, 1,"PENDING"),
+('2025-06-01', 'Luxury apartments in Mumbai', 'Mumbai Heights',  '2024-06-01', 10000000, 2, 2, 2, 2,"PENDING");

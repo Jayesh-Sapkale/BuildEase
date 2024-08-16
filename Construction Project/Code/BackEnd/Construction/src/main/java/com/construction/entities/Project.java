@@ -7,7 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import com.construction.entities.utils.Address;
 import com.construction.entities.utils.ProjectDetails;
-import com.construction.enums.ProjectStatus;
+import com.construction.enums.RequestStatus;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,11 +21,9 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Project {
 
@@ -62,15 +60,16 @@ public class Project {
 	@NotNull
 	private LocalDate endDate;
 
-	@NotNull
 	@Enumerated(EnumType.STRING)
-	private ProjectStatus projectStatus; // Enum values: [COMPLETE, PENDING, IN_PROGRESS]
-
+	private RequestStatus requestStatus;
 	@NotNull
 	private String projectDescription;
 
 	@NotNull
 	private double totalPrice; // Auto-generate as per (rate * area per square feet)
 
+	public Project() {
+		this.setRequestStatus(RequestStatus.PENDING);
+	}
 
 }

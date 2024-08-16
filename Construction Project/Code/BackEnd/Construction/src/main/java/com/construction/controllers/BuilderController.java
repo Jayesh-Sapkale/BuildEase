@@ -39,10 +39,10 @@ public class BuilderController {
 		return ResponseEntity.ok(updatedBuilder);
 	}
 
-	@GetMapping(value = "/getPreviousProjects")
+	@GetMapping(value = "/getPendingProjects")
 	@Operation(summary = "Get previous projects", operationId = "getPreviousProjects")
-	public ResponseEntity<?> getPreviousProjects() {
-		return ResponseEntity.ok(builderService.getPreviousProjects());
+	public ResponseEntity<?> getPendingProjects() {
+		return ResponseEntity.ok(builderService.getPendingProjects());
 	}
 
 	@GetMapping(value = "/getCurrentProjects")
