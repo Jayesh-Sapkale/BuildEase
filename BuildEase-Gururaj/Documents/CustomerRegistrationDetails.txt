@@ -1,0 +1,141 @@
+use myDatabase;
+
+db.customers.insertMany([
+  {
+    username: "rahuldeshmukh",
+    password: "rahul@123",
+    personalDetails: {
+      firstName: "Rahul",
+      lastName: "Deshmukh",
+      birthdate: "1993-04-15",
+      gender: "Male"
+    },
+    contactDetails: {
+      email: "rahul.deshmukh@gmail.com",
+      phone: "+91 9876543210"
+    }
+  },
+  {
+    username: "snehapatil",
+    password: "sneha@123",
+    personalDetails: {
+      firstName: "Sneha",
+      lastName: "Patil",
+      birthdate: "1998-07-22",
+      gender: "Female"
+    },
+    contactDetails: {
+      email: "sneha.patil@yahoo.com",
+      phone: "+91 8765432109"
+    }
+  },
+  {
+    username: "vijayjoshi",
+    password: "vijay@123",
+    personalDetails: {
+      firstName: "Vijay",
+      lastName: "Joshi",
+      birthdate: "1989-11-05",
+      gender: "Male"
+    },
+    contactDetails: {
+      email: "vijay.joshi@gmail.com",
+      phone: "+91 9765432108"
+    }
+  },
+  {
+    username: "priyasawant",
+    password: "priya@123",
+    personalDetails: {
+      firstName: "Priya",
+      lastName: "Sawant",
+      birthdate: "1995-02-28",
+      gender: "Female"
+    },
+    contactDetails: {
+      email: "priya.sawant@yahoo.com",
+      phone: "+91 8765432198"
+    }
+  },
+  {
+    username: "anilkulkarni",
+    password: "anil@123",
+    personalDetails: {
+      firstName: "Anil",
+      lastName: "Kulkarni",
+      birthdate: "1983-08-10",
+      gender: "Male"
+    },
+    contactDetails: {
+      email: "anil.kulkarni@reddit.com",
+      phone: "+91 9765432197"
+    }
+  },
+  {
+    username: "meenachavan",
+    password: "meena@123",
+    personalDetails: {
+      firstName: "Meena",
+      lastName: "Chavan",
+      birthdate: "1991-12-03",
+      gender: "Female"
+    },
+    contactDetails: {
+      email: "meena.chavan@gmail.com",
+      phone: "+91 8765432176"
+    }
+  },
+  {
+    username: "rohitkadam",
+    password: "rohit@123",
+    personalDetails: {
+      firstName: "Rohit",
+      lastName: "Kadam",
+      birthdate: "1990-06-18",
+      gender: "Male"
+    },
+    contactDetails: {
+      email: "rohit.kadam@yahoo.com",
+      phone: "+91 9876543210"
+    }
+  },
+  {
+    username: "aartinaik",
+    password: "aarti@123",
+    personalDetails: {
+      firstName: "Aarti",
+      lastName: "Naik",
+      birthdate: "1994-09-25",
+      gender: "Female"
+    },
+    contactDetails: {
+      email: "aarti.naik@reddit.com",
+      phone: "+91 8765432189"
+    }
+  },
+  {
+    username: "sureshjadhav",
+    password: "suresh@123",
+    personalDetails: {
+      firstName: "Suresh",
+      lastName: "Jadhav",
+      birthdate: "1987-03-30",
+      gender: "Male"
+    },
+    contactDetails: {
+      email: "suresh.jadhav@gmail.com",
+      phone: "+91 9876543211"
+    }
+  }
+]);
+
+/*
+-username
+-password
+-firstName
+-lastName
+-birthdate
+-gender
+-email
+-phone
+*/

@@ -1,0 +1,138 @@
+/* Container */
+.update-projects-container {
+  padding: 20px;
+  background-color: #f8fcff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  /* margin: 0 auto; */
+  margin-top: 20px;
+}
+
+/* Title */
+.update-projects-title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Project list */
+.update-projects-list {
+  list-style: none;
+  padding: 0;
+}
+
+/* Individual project item */
+.update-projects-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.update-projects-item:hover {
+  background-color: #d9e8ff;
+  transform: translateY(-3px);
+}
+
+/* Project image */
+.update-projects-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+/* Project details */
+.update-projects-details {
+  flex: 1;
+}
+
+.project-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.project-rooms, .project-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Action buttons */
+.update-projects-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.update-btn, .delete-btn {
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.update-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #b02a37;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .update-projects-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .update-projects-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .update-projects-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .update-btn, .delete-btn {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .update-projects-title {
+    font-size: 1.5rem;
+  }
+
+  .project-name {
+    font-size: 1.1rem;
+  }
+
+  .project-rooms, .project-description {
+    font-size: 0.9rem;
+  }
+}

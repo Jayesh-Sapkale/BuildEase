@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="utils.css" type="text/css">
+    <link rel="stylesheet" href="responsive.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Construction Builder</title>
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="signInContainer" class="">
+            <form action="/signIn" method="post">
+                <span id="title" class="span">Sign In</span>
+                <div id="accountCards">
+                    <div class="cardElement hoverEffect">
+                        <a href=""><i class="fa-brands fa-google-plus-g"></i>
+                        </a>
+                        <span class="hidden">Google</span>
+                    </div>
+                    <div class="cardElement hoverEffect">
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                        <span class="hidden">Facebook</span>
+                    </div>
+                    <div class="cardElement hoverEffect">
+                        <a href=""><i class="fa-brands fa-github"></i></a>
+                        <span class="hidden">GitHub</span>
+                    </div>
+                    <div class="cardElement hoverEffect">
+                        <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                        <span class="hidden">LinkedIn</span>
+
+                    </div>
+                    <div class="cardElement hoverEffect">
+                        <a href=""><i class="fa-solid fa-mobile"></i></a>
+                        <span class="hidden">Otp</span>
+
+                    </div>
+
+                </div>
+                <p>or use your email & password</p>
+                <input type="email" required placeholder="Email" name="signInEmail" id="signInEmail"><br>
+                <span id="signInEmailError" class="errorSpan "></span><br>
+                <input type="password" required placeholder="Password" name="signInPassword" id="signInPassword"><br>
+                <span id="signInPasswordError" class="errorSpan "></span><br>
+
+                <p>Forget Your Password?</p>
+                <div id="signInContainerButtons">
+                    <button type="submit" class="button hoverEffect ">SIGN IN</button>
+                    <button type="submit" class="button hoverEffect shake hidden" onclick="change()" name="signUpButton"
+                        id="signUpButton">SIGN UP</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="signUpContainer" class="hidden">
+            <form action="/signUp">
+                <span id="title" class="span">Sign Up</span>
+                <div id="signUpInputs">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="firstName">First Name: </label>
+                            </td>
+
+                            <td>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="lastName">Last Name: </label>
+                            </td>
+                            <td>
+                                <input type="text" id="lastName" name="lastName" required>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="contactNumber">Contact Number: </label>
+                            </td>
+                            <td>
+                                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="dateOfBirth">Date of Birth: </label>
+                            </td>
+                            <td>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Gender: </label>
+                            </td>
+                            <td id="gender">
+                                <label for="male">Male</label> <input type="radio" id="male" name="gender" required>
+                                <label for="female">Female</label> <input type="radio" id="female" name="gender"
+                                    required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="signUpEmail">Email: </label>
+                            </td>
+                            <td>
+
+                                <input type="email" id="signUpEmail" name="signUpEmail" required>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="signUpPassword">Password: </label>
+                            </td>
+                            <td>
+                                <input type="password" id="signUpPassword" name="signUpPassword" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="signUpPasswordConfirm">Confirm Password: </label>
+                            </td>
+                            <td>
+                                <input type="password" id="signUpPasswordConfirm" name="signUpPasswordConfirm" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="button hoverEffect shake">SIGN UP</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+            </form>
+        </div>
+
+        <div id="rightContainer">
+            <div id="rightContainerText">
+                <span class="span">Hello, Buddy!</span>
+                <p>Register with your personal details to use all of site features</p>
+                <button type="submit" class="button hoverEffect" id="signUpButton" onclick="change()">SIGN
+                    UP</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,602 @@
+### Explanation
+
+1.admin_id: Unique identifier for the admin.
+2.username: Admin's login username.
+3.password_hash: Hashed password for security.
+4.security_details: Nested JSON object containing security code, question, and hashed answer.
+5.personal_details: Nested JSON object containing first name, middle name, last name, and date of birth.
+6.contact_details: Nested JSON object containing email, phone number, and backup email.
+7.address: Nested JSON object containing street, city, state, ZIP code, and country.
+8.status: Current status of the admin account.
+9.timestamps: Nested JSON object containing created_at, updated_at, last_login, and last_password_change timestamps.
+10.grant access: JSON object specifying the access rights of the admin.
+    super admin(only one)- rights on read write update delete both customer and builder 
+    admin(multiple allowed)- rights read write update only, no deletion allowed 
+
+
+mongo
+use constructionAppDb;
+db.createCollection("admins")
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+db.createCollection("admins", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["admin_id", "username", "password_hash", "security_details", "personal_details", "contact_details", "address", "status", "timestamps", "security_features", "profile_picture", "notes", "last_accessed", "access_rights"],
+            properties: {
+                admin_id: {
+                    bsonType: "int",
+                    description: "Unique identifier for the admin"
+                },
+                username: {
+                    bsonType: "string",
+                    description: "Admin's login username"
+                },
+                password_hash: {
+                    bsonType: "string",
+                    description: "Hashed password for security"
+                },
+                security_details: {
+                    bsonType: "object",
+                    required: ["security_code", "security_question", "security_answer_hash"],
+                    properties: {
+                        security_code: {
+                            bsonType: "string",
+                            description: "Security code for account recovery"
+                        },
+                        security_question: {
+                            bsonType: "string",
+                            description: "Security question for account recovery"
+                        },
+                        security_answer_hash: {
+                            bsonType: "string",
+                            description: "Hashed answer to security question"
+                        }
+                    }
+                },
+                personal_details: {
+                    bsonType: "object",
+                    required: ["first_name", "last_name", "date_of_birth"],
+                    properties: {
+                        first_name: {
+                            bsonType: "string",
+                            description: "Admin's first name"
+                        },
+                        middle_name: {
+                            bsonType: "string",
+                            description: "Admin's middle name"
+                        },
+                        last_name: {
+                            bsonType: "string",
+                            description: "Admin's last name"
+                        },
+                        date_of_birth: {
+                            bsonType: "date",
+                            description: "Admin's date of birth"
+                        }
+                    }
+                },
+                contact_details: {
+                    bsonType: "object",
+                    required: ["email", "phone_number"],
+                    properties: {
+                        email: {
+                            bsonType: "string",
+                            description: "Admin's email address"
+                        },
+                        phone_number: {
+                            bsonType: "string",
+                            description: "Admin's phone number"
+                        },
+                        backup_email: {
+                            bsonType: "string",
+                            description: "Admin's backup email address"
+                        }
+                    }
+                },
+                address: {
+                    bsonType: "object",
+                    required: ["street", "city", "state", "zip_code", "country"],
+                    properties: {
+                        street: {
+                            bsonType: "string",
+                            description: "Street address"
+                        },
+                        city: {
+                            bsonType: "string",
+                            description: "City"
+                        },
+                        state: {
+                            bsonType: "string",
+                            description: "State"
+                        },
+                        zip_code: {
+                            bsonType: "string",
+                            description: "ZIP code"
+                        },
+                        country: {
+                            bsonType: "string",
+                            description: "Country"
+                        }
+                    }
+                },
+                status: {
+                    bsonType: "string",
+                    description: "Current status of the admin account"
+                },
+                timestamps: {
+                    bsonType: "object",
+                    required: ["created_at", "updated_at", "last_login", "last_password_change"],
+                    properties: {
+                        created_at: {
+                            bsonType: "date",
+                            description: "Timestamp of account creation"
+                        },
+                        updated_at: {
+                            bsonType: "date",
+                            description: "Timestamp of last account update"
+                        },
+                        last_login: {
+                            bsonType: "date",
+                            description: "Timestamp of last login"
+                        },
+                        last_password_change: {
+                            bsonType: "date",
+                            description: "Timestamp of last password change"
+                        }
+                    }
+                },
+                profile_picture: {
+                    bsonType: "string",
+                    description: "URL of admin's profile picture"
+                },
+                notes: {
+                    bsonType: "string",
+                    description: "Additional notes or comments"
+                },
+                last_accessed: {
+                    bsonType: "object",
+                    required: ["last_accessed_ip", "last_accessed_location"],
+                    properties: {
+                        last_accessed_ip: {
+                            bsonType: "string",
+                            description: "IP address of last access"
+                        },
+                        last_accessed_location: {
+                            bsonType: "string",
+                            description: "Location of last access"
+                        }
+                    }
+                },
+                access_rights: {
+                    bsonType: "object",
+                    description: "Access rights on customers and builders",
+                    properties: {
+                        super_admin: {
+                            bsonType: "bool",
+                            description: "Flag indicating if the admin is a super admin"
+                        },
+                        customer_rights: {
+                            bsonType: "object",
+                            description: "Access rights on customers",
+                            properties: {
+                                read: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has read access on customers"
+                                },
+                                write: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has write access on customers"
+                                },
+                                update: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has update access on customers"
+                                },
+                                delete: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has delete access on customers"
+                                }
+                            }
+                        },
+                        builder_rights: {
+                            bsonType: "object",
+                            description: "Access rights on builders",
+                            properties: {
+                                read: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has read access on builders"
+                                },
+                                write: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has write access on builders"
+                                },
+                                update: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has update access on builders"
+                                },
+                                delete: {
+                                    bsonType: "bool",
+                                    description: "Flag indicating if the admin has delete access on builders"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+});
+---------------------------------------------------------------------------------------------------------------------
+populating data 
+
+Mimansha Shekhawat (super admin) 
+Madhura Gajanan Halwai
+Akash Solunke
+Jayesh Sapkale
+Jadhav Vallabh Ajit
+Kambale Gururaj Mahadevappa
+
+-------------------------------------------------------------------------------1. Mimansha Shekhawat
+db.admins.insertOne({
+    admin_id: 1,
+    username: "mimansha_shekhawat",
+    password_hash: "hashed_password_1",
+    security_details: {
+        security_code: "123456",
+        security_question: "What is your mother's maiden name?",
+        security_answer_hash: "hashed_answer_1"
+    },
+    personal_details: {
+        first_name: "Mimansha",
+        middle_name: "",
+        last_name: "Shekhawat",
+        date_of_birth: ISODate("1990-03-15")
+    },
+    contact_details: {
+        email: "mimansha@example.com",
+        phone_number: "+91 9876543210",
+        backup_email: "mimansha.backup@example.com"
+    },
+    address: {
+        street: "123 Main Street",
+        city: "Jaipur",
+        state: "Rajasthan",
+        zip_code: "302001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T09:00:00Z"),
+        updated_at: ISODate("2024-05-20T09:00:00Z"),
+        last_login: ISODate("2024-05-20T09:00:00Z"),
+        last_password_change: ISODate("2024-05-20T09:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_1",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.1.1",
+        last_accessed_location: "Jaipur, Rajasthan"
+    },
+    access_rights: {
+        super_admin: true,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: true
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: true
+        }
+    }
+})
+
+-------------------------------------------------------------------------------2.Madhura Gajanan Halwai
+db.admins.insertOne({
+    admin_id: 2,
+    username: "madhura_halwai",
+    password_hash: "hashed_password_2",
+    security_details: {
+        security_code: "246810",
+        security_question: "What is your favorite pet's name?",
+        security_answer_hash: "hashed_answer_2"
+    },
+    personal_details: {
+        first_name: "Madhura",
+        middle_name: "Gajanan",
+        last_name: "Halwai",
+        date_of_birth: ISODate("1991-05-10")
+    },
+    contact_details: {
+        email: "madhura@example.com",
+        phone_number: "+91 8765432109",
+        backup_email: "madhura.backup@example.com"
+    },
+    address: {
+        street: "456 Oak Street",
+        city: "Mumbai",
+        state: "Maharashtra",
+        zip_code: "400001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T10:00:00Z"),
+        updated_at: ISODate("2024-05-20T10:00:00Z"),
+        last_login: ISODate("2024-05-20T10:00:00Z"),
+        last_password_change: ISODate("2024-05-20T10:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_2",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.2.2",
+        last_accessed_location: "Mumbai, Maharashtra"
+    },
+    access_rights: {
+        super_admin: false,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        }
+    }
+})
+
+
+-------------------------------------------------------------------------------3.Aakash Eknath Bharambe
+db.admins.insertOne({
+    admin_id: 3,
+    username: "aakash_bharambe",
+    password_hash: "hashed_password_3",
+    security_details: {
+        security_code: "987654",
+        security_question: "What is your favorite color?",
+        security_answer_hash: "hashed_answer_3"
+    },
+    personal_details: {
+        first_name: "Aakash",
+        middle_name: "",
+        last_name: "Bharambe",
+        date_of_birth: ISODate("1992-06-25")
+    },
+    contact_details: {
+        email: "aakash@example.com",
+        phone_number: "+91 8765432109",
+        backup_email: "aakash.backup@example.com"
+    },
+    address: {
+        street: "789 Elm Street",
+        city: "Pune",
+        state: "Maharashtra",
+        zip_code: "411001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T11:00:00Z"),
+        updated_at: ISODate("2024-05-20T11:00:00Z"),
+        last_login: ISODate("2024-05-20T11:00:00Z"),
+        last_password_change: ISODate("2024-05-20T11:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_3",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.3.3",
+        last_accessed_location: "Pune, Maharashtra"
+    },
+    access_rights: {
+        super_admin: false,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        }
+    }
+})
+
+
+-------------------------------------------------------------------------------4.Jayesh Sapkale
+db.admins.insertOne({
+    admin_id: 4,
+    username: "jayesh_sapkale",
+    password_hash: "hashed_password_4",
+    security_details: {
+        security_code: "654321",
+        security_question: "What is your mother's maiden name?",
+        security_answer_hash: "hashed_answer_4"
+    },
+    personal_details: {
+        first_name: "Jayesh",
+        middle_name: "",
+        last_name: "Sapkale",
+        date_of_birth: ISODate("1990-10-15")
+    },
+    contact_details: {
+        email: "jayesh@example.com",
+        phone_number: "+91 9876543210",
+        backup_email: "jayesh.backup@example.com"
+    },
+    address: {
+        street: "456 Oak Street",
+        city: "Mumbai",
+        state: "Maharashtra",
+        zip_code: "400001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T12:00:00Z"),
+        updated_at: ISODate("2024-05-20T12:00:00Z"),
+        last_login: ISODate("2024-05-20T12:00:00Z"),
+        last_password_change: ISODate("2024-05-20T12:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_4",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.4.4",
+        last_accessed_location: "Mumbai, Maharashtra"
+    },
+    access_rights: {
+        super_admin: false,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        }
+    }
+})
+
+
+-------------------------------------------------------------------------------5.Jhadhav Vallabh Ajit
+db.admins.insertOne({
+    admin_id: 5,
+    username: "jhadhav_vallabh",
+    password_hash: "hashed_password_5",
+    security_details: {
+        security_code: "987654",
+        security_question: "What is your favorite food?",
+        security_answer_hash: "hashed_answer_5"
+    },
+    personal_details: {
+        first_name: "Jhadhav",
+        middle_name: "",
+        last_name: "Vallabh Ajit",
+        date_of_birth: ISODate("1985-07-21")
+    },
+    contact_details: {
+        email: "jhadhav@example.com",
+        phone_number: "+91 9876543210",
+        backup_email: "jhadhav.backup@example.com"
+    },
+    address: {
+        street: "789 Maple Avenue",
+        city: "Pune",
+        state: "Maharashtra",
+        zip_code: "411001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T12:00:00Z"),
+        updated_at: ISODate("2024-05-20T12:00:00Z"),
+        last_login: ISODate("2024-05-20T12:00:00Z"),
+        last_password_change: ISODate("2024-05-20T12:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_5",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.5.5",
+        last_accessed_location: "Pune, Maharashtra"
+    },
+    access_rights: {
+        super_admin: false,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        }
+    }
+})
+
+
+-------------------------------------------------------------------------------6.Kambhle Gururaj Mahadevappa
+db.admins.insertOne({
+    admin_id: 6,
+    username: "kambhle_gururaj",
+    password_hash: "hashed_password_6",
+    security_details: {
+        security_code: "135792",
+        security_question: "What is your favorite movie?",
+        security_answer_hash: "hashed_answer_6"
+    },
+    personal_details: {
+        first_name: "Kambhle",
+        middle_name: "Gururaj",
+        last_name: "Mahadevappa",
+        date_of_birth: ISODate("1990-03-15")
+    },
+    contact_details: {
+        email: "kambhle@example.com",
+        phone_number: "+91 9876543210",
+        backup_email: "kambhle.backup@example.com"
+    },
+    address: {
+        street: "456 Oak Street",
+        city: "Mumbai",
+        state: "Maharashtra",
+        zip_code: "400001",
+        country: "India"
+    },
+    status: "active",
+    timestamps: {
+        created_at: ISODate("2024-05-20T12:00:00Z"),
+        updated_at: ISODate("2024-05-20T12:00:00Z"),
+        last_login: ISODate("2024-05-20T12:00:00Z"),
+        last_password_change: ISODate("2024-05-20T12:00:00Z")
+    },
+    profile_picture: "url_to_profile_picture_6",
+    notes: "Admin account",
+    last_accessed: {
+        last_accessed_ip: "192.168.6.6",
+        last_accessed_location: "Mumbai, Maharashtra"
+    },
+    access_rights: {
+        super_admin: false,
+        customer_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        },
+        builder_rights: {
+            read: true,
+            write: true,
+            update: true,
+            delete: false
+        }
+    }
+})
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+
+db.admins.find().pretty()
+
+
+
+
