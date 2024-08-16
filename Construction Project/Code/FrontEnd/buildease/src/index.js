@@ -21,6 +21,7 @@ import Profile1 from "./pages/Other/profile";
 import BuilderPortfolio from "./pages/BuilderPortfolio/BuilderPortfolio";
 import AdminPortfolio from "./pages/AdminPortfolio/AdminPortfolio";
 import UserPortfolio from "./pages/UserPortfolio/UserPortfolio";
+import Payment from "./pages/payment/payment"
 
 
 const App = () => {
@@ -43,8 +44,10 @@ const App = () => {
           <Route path="/builder-portfolio" component={BuilderPortfolio} />
           <Route path="/admin-portfolio" component={AdminPortfolio} />
           <Route path="/user-portfolio" component={UserPortfolio} />
+          <Route path="/payment" component={Payment} />
           <Route path="/NotFound1" component={NotFound1} />
           <Route path="*" component={NotFound1} />
+
           <Redirect to="*" />
         </Switch>
         <Footer />

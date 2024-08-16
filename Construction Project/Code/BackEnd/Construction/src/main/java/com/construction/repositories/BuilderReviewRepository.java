@@ -1,10 +1,12 @@
 package com.construction.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.construction.dtos.BuilderReviewDto;
 import com.construction.entities.BuilderReview;
 
 public interface BuilderReviewRepository extends JpaRepository<BuilderReview, Integer> {
@@ -14,5 +16,8 @@ public interface BuilderReviewRepository extends JpaRepository<BuilderReview, In
 
 	@Query("select br from BuilderReview br where br.builder.id=:builderId and br.customer.id=:customerId")
 	Optional<BuilderReview> findByBuilderByCustomerAndBuilderId(Integer customerId,Integer builderId);
+
+	@Query("select br from BuilderReview br where br.builder.id =:builderId")
+	List<BuilderReviewDto> findAllByBuilderId(Integer builderId);
 
 }

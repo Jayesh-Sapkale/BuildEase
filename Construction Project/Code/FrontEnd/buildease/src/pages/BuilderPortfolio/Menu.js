@@ -6,6 +6,7 @@ const Menu = ({ handleTabChange, history }) => {
             <ul>
                 <li onClick={() => handleTabChange("My Work")}>My Work</li>
                 <li onClick={() => handleTabChange("Pending Requests")}>Pending Requests</li>
+                <li onClick={() => handleTabChange("Reviews")}>Reviews</li>
                 <li onClick={() => history.push("/signout")}>Sign Out</li>
             </ul>
         </nav>

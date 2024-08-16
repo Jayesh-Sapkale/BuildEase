@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import "./pricing.css";
+import { Link } from "react-router-dom";
 
 const Pricing = (props) => {
   const [isMonthly, setIsMonthly] = useState(true);
@@ -88,9 +89,10 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
-              <button className="pricing-button04 thq-button-outline thq-button-animated">
+              <Link to="/payment"><button className="pricing-button04 thq-button-outline thq-button-animated">
                 <span className="thq-body-small">{props.plan1Action}</span>
-              </button>
+                
+              </button></Link>
             </div>
             <div className="pricing-column1 thq-card">
               <div className="pricing-price02">
@@ -136,9 +138,11 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
+              <Link to="/payment">
               <button className="pricing-button05 thq-button-animated thq-button-filled">
                 <span className="thq-body-small">{props.plan2Action}</span>
               </button>
+              </Link>
             </div>
             <div className="pricing-column2 thq-card">
               <div className="pricing-price04">
@@ -192,9 +196,11 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
+              <Link to="/payment">
               <button className="pricing-button06 thq-button-animated thq-button-filled">
                 <span className="thq-body-small">{props.plan3Action}</span>
               </button>
+              </Link>
             </div>
           </div>
         )}
@@ -238,9 +244,11 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
+              <Link to="/payment">
               <button className="pricing-button07 thq-button-outline thq-button-animated">
                 <span className="thq-body-small">{props.plan1Action1}</span>
               </button>
+              </Link>
             </div>
             <div className="pricing-column4 thq-card">
               <div className="pricing-price08">
@@ -288,9 +296,11 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
+              <Link to="/payment">
               <button className="pricing-button08 thq-button-animated thq-button-filled">
                 <span className="thq-body-small">{props.plan2Action1}</span>
               </button>
+              </Link>
             </div>
             <div className="pricing-column5 thq-card">
               <div className="pricing-price10">
@@ -346,9 +356,11 @@ const Pricing = (props) => {
                   </div>
                 </div>
               </div>
+              <Link to="/payment">
               <button className="pricing-button09 thq-button-animated thq-button-filled">
                 <span className="thq-body-small">{props.plan3Action1}</span>
               </button>
+              </Link>
             </div>
           </div>
         )}
@@ -360,13 +372,13 @@ const Pricing = (props) => {
 Pricing.defaultProps = {
   heading1: "Our Pricing Plans",
 
-  plan1Action: "Sign Up Now",
-  plan2Action: "Sign Up Now",
-  plan3Action: "Sign Up Now",
+  plan1Action: "Sign in Now",
+  plan2Action: "Sign in Now",
+  plan3Action: "Sign in Now",
 
-  plan1Action1: "Sign Up Now",
-  plan2Action1: "Sign Up Now",
-  plan3Action1: "Sign Up Now",
+  plan1Action1: "Sign in Now",
+  plan2Action1: "Sign in Now",
+  plan3Action1: "Sign in Now",
 
   plan3Feature11: "24/7 Customer Support for All Projects.",
   plan3Feature21: "Comprehensive Project Management and Consultation.",

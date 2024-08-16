@@ -1,5 +1,8 @@
 package com.construction.serviceImplementation;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,7 +46,8 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 		Customer customer = customerRepository.findById(customerId)
 				.orElseThrow(() -> new EntityNotFoundException("Customer not found with id " + customerId));
 		builderReview.setBuilder(builder);
-		builderReview.setCustomer(customer);;
+		builderReview.setCustomer(customer);
+		;
 		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview);
 
 		BuilderReviewDto savedBuilderReviewDto = modelMapper.map(savedBuilderReview, BuilderReviewDto.class);
@@ -85,6 +89,19 @@ public class BuilderReviewServiceImplementation implements BuilderReviewService 
 		BuilderReview savedBuilderReview = builderReviewRepository.save(builderReview);
 
 		return modelMapper.map(savedBuilderReview, BuilderReviewDto.class);
+	}
+
+	@Override
+	public List<BuilderReviewDto> getBuilderReviewsByBuilderId(Integer builderId) {
+		List<BuilderReviewDto> builderReviews = builderReviewRepository.findAllByBuilderId(builderId);
+		System.out.println(builderReviews.get(1));
+		builderReviews.stream().map(br -> {
+			BuilderReviewDto builderReviewDto = modelMapper.map(br, BuilderReviewDto.class);
+
+			builderReviewDto.setCustomerName(br.getCustomerName());
+			return builderReviewDto;
+		}).collect(Collectors.toList());
+		return builderReviews;
 	}
 
 }
