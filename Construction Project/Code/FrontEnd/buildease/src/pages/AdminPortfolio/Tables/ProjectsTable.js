@@ -125,7 +125,7 @@ const ProjectsTable = () => {
                                 <th>City</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
-                                <th>Status</th>
+
                                 <th>Description</th>
                                 <th>Total Price</th>
                                 <th>Action</th>
@@ -141,7 +141,7 @@ const ProjectsTable = () => {
                                         <td>{project.city}</td>
                                         <td>{new Date(project.startDate).toLocaleDateString()}</td>
                                         <td>{new Date(project.endDate).toLocaleDateString()}</td>
-                                        <td>{project.projectStatus}</td>
+
                                         <td>{project.projectDescription}</td>
                                         <td>{project.totalPrice.toFixed(2)}</td>
                                         <td>

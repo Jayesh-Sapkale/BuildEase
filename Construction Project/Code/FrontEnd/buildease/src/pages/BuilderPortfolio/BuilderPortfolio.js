@@ -42,7 +42,7 @@ const BuilderPortfolio = () => {
 
   const fetchBuilderReviews = async () => {
     try {
-      const response = await axios.get(`${url}/builderReview/getBuilderReviewsByBuilderId/${id}`);
+      const response = await axios.get(`${url}/admin/getAllBuilderReviews`);
       setBuilderReviews(response.data);
     } catch (error) {
       console.error("Error fetching builder reviews data:", error.response ? error.response.data : error.message);

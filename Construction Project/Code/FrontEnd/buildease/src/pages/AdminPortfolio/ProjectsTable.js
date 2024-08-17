@@ -36,7 +36,7 @@ const ProjectsTable = () => {
                             <tr>
                                 <th>Project ID</th>
                                 <th>Project Name</th>
-                                <th>Status</th>
+
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Total Price</th>
@@ -50,7 +50,7 @@ const ProjectsTable = () => {
                                 <tr key={project.projectId}>
                                     <td>{project.projectId}</td>
                                     <td>{project.projectName}</td>
-                                    <td>{project.projectStatus}</td>
+
                                     <td>{project.startDate}</td>
                                     <td>{project.endDate}</td>
                                     <td>{project.totalPrice}</td>

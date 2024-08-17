@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CoursePayment.css';
 
+
 const subscriptionPlans = {
   MONTHLY: {
     BASIC: 1000,
